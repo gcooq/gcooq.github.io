@@ -9,10 +9,10 @@ table#tlayout {
 
 body {
 	background: white;
-	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+	#font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
 	padding-bottom: 8px;
 	margin: auto;
-	width:100%;
+	width:50%;
 }
 
 #layout-menu {
@@ -156,6 +156,8 @@ p {
 }
 
 li {
+	margin-top: 0.2em;
+	margin-bottom: 0.2em;
 font-size: 110%;
 }
 
