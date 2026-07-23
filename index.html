@@ -1,335 +1,1484 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
-  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<!--    <meta name="viewport" content="width=device-width,minimum-scale=0.5,maximum-scale=2,user-scalable=yes">-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
-<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<link rel="stylesheet" href="css/jemdoc.css" type="text/css" />
-    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<title>Qiang's Personal Page</title>
-<!-- MathJax -->
-<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-      TeX: { equationNumbers: { autoNumber: "AMS" } }
-});
-</script>
-<!-- End MathJax -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Qiang Gao | Spatiotemporal Intelligence</title>
+    <meta name="description" content="Dr. Qiang Gao, Professor at SWUFE. Research in Spatiotemporal Data Mining, Mobility Learning, and AI for Financial Intelligence.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: { equationNumbers: { autoNumber: "AMS" } }
+        };
+    </script>
+    <style>
+        :root {
+            --st-primary: #0a1628;
+            --st-secondary: #132238;
+            --st-accent: #00d4ff;
+            --st-accent-soft: rgba(0, 212, 255, 0.15);
+            --st-accent2: #00a8b5;
+            --st-warm: #ff9f43;
+            --st-warm-soft: rgba(255, 159, 67, 0.15);
+            --st-light: #f4f7fb;
+            --st-card: #ffffff;
+            --st-text: #1a202c;
+            --st-text-light: #5a6a7a;
+            --st-border: #e2e8f0;
+            --st-gradient: linear-gradient(135deg, #0a1628 0%, #132238 50%, #0d3b4c 100%);
+            --st-gradient-accent: linear-gradient(135deg, #00d4ff 0%, #00a8b5 100%);
+            --shadow: 0 4px 6px -1px rgba(10, 22, 40, 0.07), 0 2px 4px -1px rgba(10, 22, 40, 0.05);
+            --shadow-lg: 0 20px 25px -5px rgba(10, 22, 40, 0.1), 0 10px 10px -5px rgba(10, 22, 40, 0.04);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: var(--st-light);
+            color: var(--st-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 260px;
+            height: 100vh;
+            background: var(--st-card);
+            border-right: 1px solid var(--st-border);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            padding: 1.5rem;
+            overflow-y: auto;
+        }
+
+        .sidebar-logo {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--st-border);
+        }
+
+        .sidebar-logo img {
+            max-width: 120px;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar-logo img:hover {
+            transform: scale(1.03);
+        }
+
+        .nav-menu {
+            list-style: none;
+            flex: 1;
+        }
+
+        .nav-menu li {
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-menu a {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            color: var(--st-text-light);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            background: var(--st-accent-soft);
+            color: var(--st-secondary);
+            transform: translateX(4px);
+        }
+
+        .nav-menu a i {
+            width: 20px;
+            text-align: center;
+            color: var(--st-accent2);
+        }
+
+        .sidebar-social {
+            padding-top: 1rem;
+            border-top: 1px solid var(--st-border);
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .sidebar-social a {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--st-text-light);
+            background: var(--st-light);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .sidebar-social a:hover {
+            background: var(--st-gradient-accent);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 260px;
+            min-height: 100vh;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            background: var(--st-gradient);
+            color: white;
+            padding: 4rem 3rem;
+            overflow: hidden;
+            min-height: 420px;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                linear-gradient(rgba(0, 212, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 212, 255, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(0, 212, 255, 0.2) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 20%, rgba(255, 159, 67, 0.15) 0%, transparent 35%);
+            pointer-events: none;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-photo {
+            position: relative;
+        }
+
+        .hero-photo img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 40px rgba(0, 212, 255, 0.3), 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .hero-photo:hover img {
+            transform: scale(1.03);
+        }
+
+        .hero-photo::before {
+            content: '';
+            position: absolute;
+            inset: -8px;
+            border-radius: 50%;
+            border: 2px dashed rgba(0, 212, 255, 0.4);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero-info h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        .hero-info h1 .chinese-name {
+            font-weight: 400;
+            opacity: 0.9;
+            font-size: 1.8rem;
+            margin-left: 0.5rem;
+        }
+
+        .hero-title {
+            font-size: 1.25rem;
+            color: var(--st-accent);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .hero-affiliations {
+            font-size: 1rem;
+            line-height: 1.8;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+        }
+
+        .hero-affiliations a {
+            color: #a8d8e8;
+            text-decoration: none;
+            border-bottom: 1px dotted rgba(168, 216, 232, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .hero-affiliations a:hover {
+            color: white;
+            border-bottom-color: white;
+        }
+
+        .hero-contact {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .hero-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        .hero-contact-item i {
+            color: var(--st-accent);
+        }
+
+        .hero-links {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .hero-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-link:hover {
+            background: var(--st-gradient-accent);
+            border-color: transparent;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 212, 255, 0.2);
+        }
+
+        /* Spatiotemporal badge */
+        .st-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(0, 212, 255, 0.15);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 25px;
+            font-size: 0.85rem;
+            color: var(--st-accent);
+            margin-bottom: 1rem;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--st-border);
+        }
+
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: var(--st-gradient-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.25rem;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--st-primary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -1rem;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--st-gradient-accent);
+            border-radius: 2px;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--st-card);
+            border-radius: 16px;
+            padding: 1.75rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--st-border);
+            transition: all 0.3s ease;
+            margin-bottom: 1.5rem;
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+        }
+
+        /* Research Interests */
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .research-card {
+            background: var(--st-card);
+            border-radius: 16px;
+            padding: 1.5rem;
+            border: 1px solid var(--st-border);
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .research-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--st-gradient-accent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .research-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .research-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .research-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            background: var(--st-accent-soft);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--st-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .research-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--st-primary);
+        }
+
+        .research-card p {
+            font-size: 0.95rem;
+            color: var(--st-text-light);
+            line-height: 1.5;
+        }
+
+        /* Intro text */
+        .intro-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--st-text);
+            margin-bottom: 2rem;
+        }
+
+        .intro-text strong {
+            color: var(--st-secondary);
+        }
+
+        .intro-text u {
+            text-decoration: none;
+            border-bottom: 2px solid var(--st-accent);
+            font-weight: 600;
+        }
+
+        /* News Section */
+        .news-section {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.05) 0%, rgba(255, 159, 67, 0.05) 100%);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid rgba(0, 212, 255, 0.15);
+        }
+
+        .news-list {
+            list-style: none;
+        }
+
+        .news-list li {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .news-list li:last-child {
+            border-bottom: none;
+        }
+
+        .news-list li i {
+            color: var(--st-warm);
+            margin-top: 0.25rem;
+            flex-shrink: 0;
+        }
+
+        .news-list li strong {
+            color: var(--st-secondary);
+        }
+
+        .news-list a {
+            color: var(--st-accent2);
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .news-list a:hover {
+            border-bottom-color: var(--st-accent2);
+        }
+
+        /* Publications */
+        .pub-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .pub-tab {
+            padding: 0.6rem 1.2rem;
+            border: 1px solid var(--st-border);
+            background: var(--st-card);
+            color: var(--st-text-light);
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .pub-tab:hover,
+        .pub-tab.active {
+            background: var(--st-gradient-accent);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        .pub-panel {
+            display: none;
+        }
+
+        .pub-panel.active {
+            display: block;
+        }
+
+        .pub-year {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--st-secondary);
+            margin: 1.5rem 0 1rem;
+            padding-left: 1rem;
+            border-left: 4px solid var(--st-accent);
+        }
+
+        .pub-list {
+            list-style: none;
+        }
+
+        .pub-list li {
+            padding: 1rem 1.25rem;
+            margin-bottom: 0.75rem;
+            background: var(--st-card);
+            border-radius: 12px;
+            border-left: 4px solid var(--st-accent);
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            line-height: 1.6;
+        }
+
+        .pub-list li:hover {
+            transform: translateX(5px);
+            box-shadow: var(--shadow-lg);
+            border-left-color: var(--st-warm);
+        }
+
+        .pub-list li strong {
+            color: var(--st-primary);
+        }
+
+        .pub-list li em {
+            color: var(--st-text-light);
+            font-style: italic;
+        }
+
+        .pub-list li a {
+            color: var(--st-accent2);
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 0.25rem;
+            transition: all 0.3s ease;
+        }
+
+        .pub-list li a:hover {
+            color: var(--st-warm);
+        }
+
+        .pub-tag {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-left: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .tag-oral {
+            background: var(--st-warm-soft);
+            color: var(--st-warm);
+        }
+
+        .tag-award {
+            background: rgba(231, 76, 60, 0.1);
+            color: #e74c3c;
+        }
+
+        .tag-accepted {
+            background: rgba(46, 204, 113, 0.1);
+            color: #27ae60;
+        }
+
+        /* Funds, Activities, Teaching */
+        .content-list {
+            list-style: none;
+        }
+
+        .content-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--st-border);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            line-height: 1.6;
+        }
+
+        .content-list li:last-child {
+            border-bottom: none;
+        }
+
+        .content-list li::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--st-gradient-accent);
+            margin-top: 0.5rem;
+            flex-shrink: 0;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .sub-section-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--st-secondary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .sub-section-title i {
+            color: var(--st-accent);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--st-primary);
+            color: white;
+            padding: 2rem 3rem;
+            text-align: center;
+            margin-left: 260px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .footer p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: var(--st-accent);
+            text-decoration: none;
+        }
+
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--st-gradient-accent);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.4);
+        }
+
+        /* Mobile toggle */
+        .mobile-toggle {
+            display: none;
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            z-index: 1001;
+            width: 44px;
+            height: 44px;
+            border-radius: 8px;
+            background: var(--st-primary);
+            color: white;
+            border: none;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-photo {
+                margin: 0 auto;
+            }
+
+            .hero-contact,
+            .hero-links {
+                justify-content: center;
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            .main-content,
+            .footer {
+                margin-left: 0;
+            }
+
+            .hero {
+                padding: 6rem 1.5rem 3rem;
+            }
+
+            .section {
+                padding: 2rem 1.5rem;
+            }
+
+            .hero-info h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-info h1 .chinese-name {
+                font-size: 1.3rem;
+            }
+
+            .research-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Print */
+        @media print {
+            .sidebar,
+            .mobile-toggle,
+            .back-to-top {
+                display: none !important;
+            }
+            .main-content,
+            .footer {
+                margin-left: 0;
+            }
+        }
+
+        /* Accessibility */
+        a:focus-visible,
+        button:focus-visible {
+            outline: 2px solid var(--st-accent);
+            outline-offset: 2px;
+        }
+    </style>
 </head>
 <body>
-<table summary="Table for page layout." id="tlayout">
-<tr valign="top">
-<td id="layout-menu">
-<div class="menu-category"><a href="https://www.swufe.edu.cn/"><img src="img/swufe-logo.jpg" width=105px align="center"></a></div>
-<div class="menu-item"><a href="index.html" class="current"><br />Home</a></div>
-<!--<div class="menu-item"><a href="#pubs">Research</a></div>-->
-<div class="menu-item"><a href="#pubs">Publications</a></div>
-<div class="menu-item"><a href="#teach">Teaching</a></div>
-<!--<div class="menu-item"><a href="#student">Students</a></div>-->
-</td>
-<td id="layout-content">
-<div id="toptitle">
-<h1><a href="https://nicelab.swufe.edu.cn/"><img src="img/nicelab.jpg" width=235px align="center">   </a></h1>
-</div>
-<!--<table class="imgtable"><tr><td>-->
-<!--<img src="img/qg.jpg" alt="Qiang Gao" height="200px" />&nbsp;</td>-->
-<!--<td align="center"><p style="font-style: italic;"><b>Contact:</b> <br /></p>-->
-<!--<p style="font-style: italic;"> NiceLab, Jingshi Building<br />-->
-<!--Liutai Avenue, Wenjiang <br />-->
-<!--Chengdu, Sichuan, CHINA, 611130 <br /></p>-->
+    <button class="mobile-toggle" aria-label="Toggle menu">
+        <i class="fas fa-bars"></i>
+    </button>
 
-<!--&lt;!&ndash;    <p><a href="https://it.swufe.edu.cn/info/1119/17228.htm">[中文页面]</a></p>&ndash;&gt;-->
-<!--<p><strong>Email: </strong>qianggao AT swufe DOT edu DOT cn</p>-->
-<!--</td></tr></table>-->
-<!--    style="font-family: 'Georgia', serif; font-size: 18px; font-weight: bold; font-style: italic; color: #333; text-align: center;-->
-<!--<h2 style="text-align: center;font-style: italic;">Dr. Qiang Gao (<font face="楷体">高强</font>) </h2>-->
-        <p style="font-style: italic;text-align: center;font-size: 20px;">
-             <a><img src="img/qg.jpg" width=155px align="center"></a>
-        </p>
-            <p style="font-style: italic;text-align: center;font-size: 20px;">
-             <b>Dr. Qiang Gao <font face="楷体">高强</font> </b> <br />
-                 <b>Professor, Ph.D. Supervisor </b><br />
-        </p>
-    <p style="font-style: italic;text-align: center;font-size: 20px;">
-        <a href='https://nicelab.swufe.edu.cn/'>Complex Laboratory of New Finance and Economics (NiceLab)</a>, <a href='https://e.swufe.edu.cn/'>Southwestern University of Finance and Economics</a> (SWUFE) <br />
-        <a href='https://it.swufe.edu.cn/'>School of Computing and Artificial Intelligence</a>, <a href='https://e.swufe.edu.cn/'>Southwestern University of Finance and Economics</a> (SWUFE) <br />
-        Engineering Research Center of Intelligent Finance, Ministry of Education<br />
-        Kash Institute of Electronics and Information Industry <br />
-            <a href="https://scholar.google.com/citations?user=3KPOGeAAAAAJ">[Google Schoolar]</a> <a href="https://it.swufe.edu.cn/info/1120/18368.htm">[中文页面]</a>
-    </p>
-<p style="font-style: italic;text-align: center;font-size: 20px;">
-    <b>Contact:</b> <br />
-    NiceLab, Jingshi Building, Liutai Avenue, Wenjiang <br />
-Chengdu, Sichuan, CHINA, 611130 <br />
-<strong>Email: </strong>qianggao AT swufe DOT edu DOT cn
-</p>
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+            <a href="https://www.swufe.edu.cn/">
+                <img src="img/swufe-logo.jpg" alt="SWUFE Logo">
+            </a>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="#home" class="active"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="#research"><i class="fas fa-globe"></i> Research</a></li>
+            <li><a href="#news"><i class="fas fa-bullhorn"></i> News</a></li>
+            <li><a href="#publications"><i class="fas fa-book"></i> Publications</a></li>
+            <li><a href="#funds"><i class="fas fa-coins"></i> Funds</a></li>
+            <li><a href="#activities"><i class="fas fa-users"></i> Activities</a></li>
+            <li><a href="#teaching"><i class="fas fa-chalkboard-user"></i> Teaching</a></li>
+        </ul>
+        <div class="sidebar-social">
+            <a href="https://scholar.google.com/citations?user=3KPOGeAAAAAJ" aria-label="Google Scholar" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+            <a href="https://github.com/gcooq" aria-label="GitHub" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://it.swufe.edu.cn/info/1120/18368.htm" aria-label="中文页面" title="中文页面"><i class="fas fa-language"></i></a>
+        </div>
+    </aside>
 
-<!--<span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-google fa-stack-1x fa-inverse"></i></span>-->
-<!--    <p>I am currently a Professor, PhD supervisor at the Complex Laboratory of New Finance and Economics (<a href='https://nicelab.swufe.edu.cn/'>NiceLab</a>), <a href='https://it.swufe.edu.cn/'>School of Computing and Artificial Intelligence</a>, and <a href="https://x.swufe.edu.cn/yjtd/rztd/kxrgznyfyyyyjtd.htm">Research Institute for Digital Economy and Interdisciplinary Sciences</a>, <a href='https://e.swufe.edu.cn/'>Southwestern University of Finance and Economics</a> (SWUFE).-->
-<!--            I (supervised by Prof. <a href='https://sise.uestc.edu.cn/info/1035/5658.htm'>Fengli Zhang</a> and Prof. <a href='https://sise.uestc.edu.cn/info/1035/9375.htm'>Fan Zhou</a>) received the Ph.D. degree in Software Engineering from <a href='https://en.uestc.edu.cn/'>University of Electronic Science and Technology of China</a> (UESTC), Chengdu, China.-->
-<!--            I was a visiting scholar, supervised by Prof. <a href='https://www.mccormick.northwestern.edu/research-faculty/directory/profiles/klabjan-diego.html'>Diego Klabjan</a> and Prof. <a href='https://www.mccormick.northwestern.edu/research-faculty/directory/affiliated/trajcevski-goce.html'>Goce Trajchevski</a>, at <a href='https://www.northwestern.edu/'>Northwestern University</a> from 2019 to 2020.</p>-->
-<h2>Research Interests</h2>
-    <p>I am leading the <b>Geospatial Intelligence and Social Computing (GeoSoc)</b> group at NiceLab.
-        And I also serve as one of the team leaders at The Research Team of Trustworthy Artificial Intelligence R&D and Application.
-        </p>
-     <p>
-        Broadly, my research focuses on <u>Spatiotemporal Data Mining (SDM)</u>, e.g., mobility learning, spatio-temporal representation learning and LLM (multimodal)-based GIS.
-        Recently, I am interested in Open Spatiotemporal Intelligence for Financial and Economic Systems, e.g., quantitative trading and market (enterprise) analysis.
-        Our research group has established deep collaborations with several universities both domestically and internationally, including Iowa State University (ISU), University of Maryland (UMD), Chinese University of Hong Kong (CUHK), Vrije University Amsterdam, and etc.</p>
-<!--    <p>Github:<a href="https://github.com/gcooq"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-github fa-stack-1x fa-inverse"></i></span></a>-->
-    </p>
-    <ul>
-       <li>Mobility Mining@Deep Learning</li>
-       <li>Spatiotemporal Data Mining</li>
-       <li>Open-world Learning</li>
-       <li>AI for Financial and Economic Intelligence (FinEconTech)</li>
-    </ul>
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <div class="hero-photo">
+                    <img src="img/qg.jpg" alt="Dr. Qiang Gao">
+                </div>
+                <div class="hero-info">
+                    <div class="st-badge">
+                        <i class="fas fa-satellite-dish"></i>
+                        Spatiotemporal Intelligence & Data Mining
+                    </div>
+                    <h1>Dr. Qiang Gao <span class="chinese-name" lang="zh">高强</span></h1>
+                    <div class="hero-title">
+                        <i class="fas fa-user-tie"></i>
+                        Professor, Ph.D. Supervisor
+                    </div>
+                    <div class="hero-affiliations">
+                        <a href="https://nicelab.swufe.edu.cn/">Complex Laboratory of New Finance and Economics (NiceLab)</a>,
+                        <a href="https://e.swufe.edu.cn/">Southwestern University of Finance and Economics (SWUFE)</a><br>
+                        <a href="https://it.swufe.edu.cn/">School of Computing and Artificial Intelligence</a>, SWUFE<br>
+                        Engineering Research Center of Intelligent Finance, Ministry of Education<br>
+                        Kash Institute of Electronics and Information Industry
+                    </div>
+                    <div class="hero-contact">
+                        <div class="hero-contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>NiceLab, Jingshi Building, Liutai Avenue, Wenjiang, Chengdu, Sichuan, CHINA, 611130</span>
+                        </div>
+                        <div class="hero-contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>qianggao AT swufe DOT edu DOT cn</span>
+                        </div>
+                    </div>
+                    <div class="hero-links">
+                        <a href="https://scholar.google.com/citations?user=3KPOGeAAAAAJ" class="hero-link"><i class="fas fa-graduation-cap"></i> Google Scholar</a>
+                        <a href="https://it.swufe.edu.cn/info/1120/18368.htm" class="hero-link"><i class="fas fa-language"></i> 中文页面</a>
+                        <a href="https://nicelab.swufe.edu.cn/" class="hero-link"><i class="fas fa-flask"></i> NiceLab</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
+        <!-- Research Interests -->
+        <section class="section" id="research">
+            <div class="section-header">
+                <div class="section-icon"><i class="fas fa-brain"></i></div>
+                <h2 class="section-title">Research Interests</h2>
+            </div>
 
-<!--<ul>-->
-<!--  <li><i class="fas fa-check-circle"></i> 列表项 1</li>-->
-<!--  <li><i class="fas fa-arrow-right"></i> 列表项 2</li>-->
-<!--  <li><i class="fas fa-star"></i> 列表项 3</li>-->
-<!--</ul>-->
+            <p class="intro-text">
+                I am leading the <strong>Geospatial Intelligence and Social Computing (GeoSoc)</strong> group at NiceLab,
+                and also serve as one of the team leaders at the Research Team of Trustworthy Artificial Intelligence R&D and Application.
+                Broadly, my research focuses on <u>Spatiotemporal Data Mining (SDM)</u>, including mobility learning, spatio-temporal representation learning,
+                and LLM (multimodal)-based GIS. Recently, I am interested in <strong>Open Spatiotemporal Intelligence for Financial and Economic Systems</strong>,
+                e.g., quantitative trading and market (enterprise) analysis. Our group has established deep collaborations with
+                Iowa State University (ISU), University of Maryland (UMD), Chinese University of Hong Kong (CUHK), Vrije University Amsterdam, and more.
+            </p>
 
-    <h2><font color="red">News</font></h2>
-     <li style="list-style-type: none;"><font size="4" color="red"><i class="fas fa-arrow-right"></i> 课题组主要关注时空数据挖掘与财经科技，主要涉及开放时空表征建模及其在企业关系分析、证券市场分析、产业链安全应用等。</font>
-    </li>
-    <li style="list-style-type: none;"><font size="4" color="red"><i class="fas fa-arrow-right"></i> I am looking for motivated MSc, PhD, and Postdoc to join my research group, please feel free to contact me if you are interested in my research area.</font>
-    <font size="4" color="blue">(课题组诚招时空数据处理方向博士后1名，欢迎邮件联系！（西南财经大学光华博士后-管理科学与工程）：<a href='https://zzrsb.swufe.edu.cn/info/1028/6981.htm'>链接</a></font></li>
-        <li style="list-style-type: none;"><font size="4" color="red"><i class="fas fa-arrow-right"></i> 课题组常年招收博士生、硕士生，名额充足。</font>
-    </li>
+            <div class="research-grid">
+                <div class="research-card">
+                    <div class="research-icon"><i class="fas fa-route"></i></div>
+                    <h3>Mobility Mining</h3>
+                    <p>Deep learning for human mobility, trajectory representation, and next-location prediction.</p>
+                </div>
+                <div class="research-card">
+                    <div class="research-icon"><i class="fas fa-clock"></i></div>
+                    <h3>Spatiotemporal Data Mining</h3>
+                    <p>Spatial-temporal graph neural networks, urban flow inference, and crime prediction.</p>
+                </div>
+                <div class="research-card">
+                    <div class="research-icon"><i class="fas fa-door-open"></i></div>
+                    <h3>Open-world Learning</h3>
+                    <p>Anomalous trajectory recognition, continual learning, and open-world state space models.</p>
+                </div>
+                <div class="research-card">
+                    <div class="research-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>AI for FinEconTech</h3>
+                    <p>Stock selection, market analysis, and enterprise resilience via spatiotemporal intelligence.</p>
+                </div>
+            </div>
+        </section>
 
-    <p><a name="pubs"> </a></p>
-<h2>Selected Publications (*Corresponding Author)</h2>
-<!--    <h3>Preprints</h3>-->
-<!--              <ul>-->
-<!--                   <li>-->
-<!--                      <strong>Qiang Gao</strong>, Siqi Yang, Xiaojun Shan, Fan Zhou, and Goce Trajcevski. "<em>Continual Learning via Adaptive Neuron Selection</em>", preprint, 2023.-->
-<!--          </li>-->
-<!--                   <li>-->
-<!--                      (<em class="text-danger">Accepted</em>) <strong>Qiang Gao</strong>, Xinzhu Zhou, Kunpeng Zhang, Li Huang, Siyuan Liu, and Fan Zhou. "<em>Incorporating Interactive Facts for Stock Selection via Neural Recursive ODEs</em>", arXiv preprint arXiv:2210.15925, 2022. [<a href=https://arxiv.org/abs/2210.15925>Paper</a>]-->
-<!--          </li>-->
-<!--              </ul>-->
-    <h3>Books</h3>
-     <ul>
-         <li>
-             <strong>Qiang Gao</strong>. "<em>Deep Learning and Semantic Dynamics of Human Mobility</em>", <strong><em>Encyclopedia of GIS</em></strong>, Third edition, Springer, 2025. [chapter].
-        </li>
-         </ul>
-    <h3>Conference Papers</h3>
-    <ul>
-                <li>
-            Jian Lang, Rongpei Hong, Meihui Zhong, Kaiju Li, Ting Zhong, <strong>Qiang Gao</strong>, and Fan Zhou. "<em>LEAF: Towards Lightweight Explainable Hateful Video Detection via Self-Grounding CoT Guided Stage-Wise Distillation</em>", The 64th Annual Meeting of the Association for Computational Linguistics, ACL 2026 Findings. (<em class="text-danger">Accepted</em>)
-        </li>
-        <li>
-            Yanzhe Xie, Tuohang Li, Heng Wang, Yujun Ge, Li Huang, <strong>Qiang Gao*</strong>. "<em>Frequency-Aware Dynamic Graph Learning via Pseudo-Spectral Decomposition for Metro Flow Forecasting</em>", 2026 IEEE International Conference on Acoustics, Speech, and Signal Processing (ICASSP 2026). (<em class="text-danger">Accepted</em>)
-        </li>
-        <li>
-               Jian Lang, Rongpei Hong, Ting Zhong, Leiting Chen, <strong>Qiang Gao</strong>, Fan Zhou. "<em>From Shallow Humor to Metaphor: Towards Label-Free Harmful Meme Detection via LMM Agent Self-Improvement</em>", The 32st SIGKDD Conference on Knowledge Discovery and Data Mining (KDD 2026). (<em class="text-danger">Accepted</em>)
-        </li>
-        <li>
-               Yanzhe Xie, Li Huang, <strong>Qiang Gao*</strong>, Xueqin Chen, Fan Zhou, Kunpeng Zhang. "<em>Beyond Graph Priors: A Co-evolving Framework under Uncertainty for Enterprise Resilience Assessment</em>", The 40th Annual AAAI Conference on Artificial Intelligence (AAAI 2026). (<em class="text-danger">Accepted</em>)
-        </li>
-         <li>
-             Jiao Li, Jian Lang, Xikai Tang, Wenzheng Shu, Ting Zhong, <strong>Qiang Gao</strong>, Yong Wang, Leiting Chen, and Fan Zhou. "<em>Shedding the Facades, Connecting the Domains: Detecting Shifting Multimodal Malicious Content with Test-Time Adaptation</em>", The 40th Annual AAAI Conference on Artificial Intelligence (AAAI 2026). (<em class="text-danger">Accepted</em>)
-        </li>
-        <li>Li Huang, Yujie Wu, Xiaolong Song, <strong>Qiang Gao*</strong>, Goce Trajcevski, and Xueqin Chen. "<em>Enhancing Urban Region Representation via Adaptive Risk-aware Consensus Learning</em>", the 33rd ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems (SIGSPATIAL 2025). (<em class="text-danger">Accepted</em>)
-        </li>
-        <li>Xueqin Chen, Xiaoyu Huang, <strong>Qiang Gao*</strong>, Li Huang, Jiaojing Yu, and Guisong Liu. "<em>Birds of a Feather: Enhancing Multimodal Fake News Detection via Multi-Element Retrieval</em>", The 41st IEEE International Conference on Data Engineering (ICDE 2025). [<a href=https://www.computer.org/csdl/proceedings-article/icde/2025/360300d615/26FZBSCNLCU>Paper</a>]
-        </li>
-        <li><strong>Qiang Gao</strong>, Zizheng Wang, Li Huang,  Goce Trajcevski, Guisong Liu, and Xueqin Chen. "<em>Responsive Dynamic Graph Disentanglement for Metro Flow Forecasting</em>", The 39th Annual AAAI Conference on Artificial Intelligence (AAAI 2025). [<a href=https://ojs.aaai.org/index.php/AAAI/article/view/33272>Paper</a>] (<font size="4" color="red">Oral</font>)
-        </li>
-        <li>Li Huang, Haowen Liu, <strong>Qiang Gao*</strong>,  Jiajing Yu, Guisong Liu, and Xueqin Chen. "<em>Adversity-aware Few-shot Named Entity Recognition via Augmentation Learning</em>", The 39th Annual AAAI Conference on Artificial Intelligence (AAAI 2025). [<a href=https://ojs.aaai.org/index.php/AAAI/article/view/34588>Paper</a>] (<font size="4" color="red">Oral</font>)
-        </li>
-        <li>Li Huang, Yanzhe Xie, <strong>Qiang Gao*</strong>, Kunpeng Zhang, Guisong Liu, and Xueqin Chen. "<em>Progressive Dependency Representation Learning for Stock Ranking in Uncertain Risk Contrasting</em>", The 31st SIGKDD Conference on Knowledge Discovery and Data Mining (KDD 2025). [<a href=https://dl.acm.org/doi/abs/10.1145/3690624.3709189>Paper</a>]
-        </li>
-        <li>Jianfei Sun#, <strong>Qiang Gao#</strong>, Cong Wu, Yuxian Li, Jiacheng Wang, and Dusit Niyato. "<em>Secure Resource Allocation via Constrained Deep Reinforcement Learning</em>", The Sixth International Conference on Machine Learning for Cyber Security (ML4CS 2024). [<a href=https://link.springer.com/chapter/10.1007/978-981-96-4566-4_1>Paper</a>] (<font size="4" color="red">Best Paper Award</font>)
-        </li>
-        <li>Haoran Li, <strong>Qiang Gao</strong>, Hongmei Wu, and Li Huang. "<em>Advancing Event Causality Identification via Heuristic Semantic Dependency Inquiry Network</em>", The 2024 Conference on Empirical Methods in Natural Language Processing (EMNLP 2024). [<a href=https://arxiv.org/pdf/2409.13621>Paper</a>]
-        </li>
-        <li><strong>Qiang Gao</strong>, Zizheng Wang, Li Huang, Goce Trajcevski, Kunpeng Zhang, and Xueqin Chen. "<em>Enhancing Dependency Dynamics in Traffic Flow Forecasting via Graph Risk Bootstrap</em>", The 32nd ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems (ACM SIGSPATIAL 2024). [<a href=https://dl.acm.org/doi/pdf/10.1145/3678717.3691237>Paper</a>]
-        </li>
-         <li><strong>Qiang Gao</strong>, Xiaolong Song, Li Huang, Goce Trajcevski, Fan Zhou, and Xueqin Chen. "<em>Enhancing Fine-Grained Urban Flow Inference via Incremental Neural Operator</em>", The 33rd International Joint Conference on Artificial Intelligence (IJCAI-24). [<a href=https://www.ijcai.org/proceedings/2024/644>Paper</a>]
-        </li>
-           <li>
-           Kai Yang, Yi Yang,  <strong>Qiang Gao</strong>, Ting Zhong, Yong Wang, and Fan Zhou. "<em>Self-Explainable Next POI Recommendation</em>",  The 47th International ACM SIGIR Conference on Research and Development in Information Retrieval (SIGIR 2024). [<a href=https://dl.acm.org/doi/abs/10.1145/3626772.3657967>Paper</a>]
-            </li>
-           <li>
-           Jinyu Hong, Ping Kuang, <strong>Qiang Gao*</strong>, Fan Zhou. "<em>Disentanglement-Guided Spatial-Temporal Graph Neural Network for Metro Flow Forecasting (Student Abstract)</em>",  The Thirty-Eighth AAAI Conference on Artificial Intelligence (AAAI 2024). [<a href=https://ojs.aaai.org/index.php/AAAI/article/view/30452>Paper</a>]
-            </li>
-                 <li>
-            Hongzhu Fu, Fan Zhou, Qing Guo, <strong>Qiang Gao*</strong>. "<em>Spatial-Temporal Augmentation for Crime Prediction (Student Abstract)</em>",  The Thirty-Eighth AAAI Conference on Artificial Intelligence (AAAI 2024). [<a href=https://ojs.aaai.org/index.php/AAAI/article/view/30442>Paper</a>]
-            </li>
-        <li><strong>Qiang Gao</strong>, Xiaojun Shan, Yuchen Zhang, and Fan Zhou. "<em>Enhancing Knowledge Transfer for Task Incremental Learning with Data-free Subnetwork</em>", Thirty-seventh Conference on Neural Information Processing Systems (NeurIPS 2023). [<a href=https://openreview.net/pdf?id=uj9PxVTVqq>Paper</a>]
-</li>
-        <li>
-            <strong>Qiang Gao</strong>, Xiaohan Wang, Chaoran Liu, Goce Trajcevski, Li Huang, Fan Zhou. "<em>Open Anomalous Trajectory Recognition via Probabilistic Metric Learning</em>",  The 32nd International Joint Conference on Artificial Intelligence (IJCAI 2023). [<a href=https://www.ijcai.org/proceedings/2023/0233.pdf>Paper</a>]
-            </li>
-        <li>
-            <strong>Qiang Gao</strong>, Hongzhu Fu, Yutao Wei, Li Huang, Xingmin Liu, and Guisong Liu. "<em>Spatial-Temporal Diffusion Probabilistic Learning for Crime Prediction</em>",  The 16th International Conference on Knowledge Science, Engineering and Management (KSEM 2023). [<a href=https://link.springer.com/chapter/10.1007/978-3-031-40286-9_22>Paper</a>]
-            </li>
-        <li>
-           	Li Huang, Kai Liu, Chaoran Liu, <strong>Qiang Gao*</strong>, Xiao Zhou, and Guisong Liu "<em>HBay: Predicting Human Mobility via Hyperspherical Bayesian Learning</em>",  The 16th International Conference on Knowledge Science, Engineering and Management (KSEM 2023). [<a href=https://link.springer.com/chapter/10.1007/978-3-031-40286-9_21>Paper</a>] (<a href='https://www.ksem2023.conferences.academy/award'><font size="4" color="red">Best Paper Award</font></a>)
-            </li>
-        <li>
-            Li Huang, Hongmei Wu, <strong>Qiang Gao*</strong>, Guisong Liu. "<em>ATTENTION LOCALNESS IN SHARED ENCODER-DECODER MODEL FOR TEXT SUMMARIZATION</em>",  2023 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP 2023). [<a href=https://ieeexplore.ieee.org/abstract/document/10096291>Paper</a>]
-            </li>
-        <li>
-        Miaomiao Li, Jiaqi Zhu, Xin Yang, Yi Yang, <strong>Qiang Gao</strong>, Hongan Wang. "<em>CL-WSTC: Continual Learning for Weakly Supervised Text Classification on the Internet</em>",  The 2023 ACM Web Conference, (WWW 2023). [<a href=https://dl.acm.org/doi/abs/10.1145/3543507.3583249>Paper</a>]
-            </li>
-         <li>
-            Jinyu Hong, Fan Zhou, <strong>Qiang Gao*</strong>, Kuang Ping, Kunpeng Zhang. "<em>Mobility Prediction via Sequential Trajectory Disentanglement (Student Abstract)</em>",  The Thirty-Seventh AAAI Conference on Artificial Intelligence (AAAI 2023). [<a href=https://ojs.aaai.org/index.php/AAAI/article/view/26975>Paper</a>]
-            </li>
+        <!-- News -->
+        <section class="section" id="news">
+            <div class="section-header">
+                <div class="section-icon"><i class="fas fa-bullhorn"></i></div>
+                <h2 class="section-title">News</h2>
+            </div>
+            <div class="news-section">
+                <ul class="news-list">
+                    <li>
+                        <i class="fas fa-arrow-right"></i>
+                        <span>课题组主要关注<strong>时空数据挖掘</strong>与<strong>财经科技</strong>，主要涉及开放时空表征建模及其在企业关系分析、证券市场分析、产业链安全应用等。</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-arrow-right"></i>
+                        <span>I am looking for motivated MSc, PhD, and Postdoc to join my research group. Please feel free to contact me if you are interested in my research area.
+                        <a href="https://zzrsb.swufe.edu.cn/info/1028/6981.htm">课题组诚招时空数据处理方向博士后1名（西南财经大学光华博士后-管理科学与工程）</a></span>
+                    </li>
+                    <li>
+                        <i class="fas fa-arrow-right"></i>
+                        <span>课题组常年招收博士生、硕士生，名额充足。</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
 
-        <li>
-            Yujie Li, Yuxuan Yang, <strong>Qiang Gao*</strong>, Xin Yang. "<em>Cross-regional Fraud Detection via Continual Learning (Student Abstract)</em>",  The Thirty-Seventh AAAI Conference on Artificial Intelligence (AAAI 2023). [<a href=https://ojs.aaai.org/index.php/AAAI/article/view/26990>Paper</a>]
-            </li>
-        <li>
-            Joojo Walker, Ting Zhong, Fengli Zhang, <strong>Qiang Gao</strong> and Fan Zhou. "<em>Recommendation via Collaborative Diffusion Generative Model</em>", The 15th International Conference on Knowledge Science, Engineering and Management (KSEM 2022). [<a href=https://link.springer.com/chapter/10.1007/978-3-031-10989-8_47>Paper</a>]
-            </li>
-        <li>
-            Fan Zhou, Rongfan Li, <strong>Qiang Gao</strong>, Goce Trajcevski, Kunpeng Zhang, Ting Zhong. "<em>Dynamic Manifold Learning for Land Deformation Forecasting</em>", Thirty-Sixth AAAI Conference on Artificial Intelligence (AAAI),2022. [<a href=https://ojs.aaai.org/index.php/AAAI/article/view/20398>Paper</a>]
-            </li>
-            <li>
-               <strong>Qiang Gao</strong>, Fan Zhou, Goce Trajcevski, Fengli Zhang, Xucheng Luo. "<em>Adversity-based Social Circles Inference via Context-Aware Mobility</em>", 2020 IEEE Global Communications Conference. [<a href=https://ieeexplore.ieee.org/abstract/document/9322357>Paper</a>]
-            </li>
-            <li>
-               <strong>Qiang Gao</strong>, Goce Trajcevski, Fan Zhou, Kunpeng Zhang, Ting Zhong, and Fengli Zhang. "<em>DeepTrip: Adversarially Understanding Human Mobility for Trip Recommendation</em>". Proceedings of the 27th ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems (ACM SIGSPATIAL 2019). [<a href=https://dl.acm.org/doi/abs/10.1145/3347146.3359088>Paper</a>]
-            </li>
-          <li>
-            <strong>Qiang Gao</strong>, Fan Zhou, Goce Trajcevski, Kunpeng Zhang, Ting Zhong and Fengli Zhang, "<em>Predicting Human mobility via Variational Attention</em>", The World Wide Web Conference (WWW 2019). [<a href=https://dl.acm.org/doi/abs/10.1145/3308558.3313610>Paper</a>][<a href=https://github.com/gcooq/VANext>Code</a>]
-            </li>
-            <li>
-              <strong>Qiang Gao</strong>, Goce Trajcevski, Fan Zhou, Kunpeng Zhang, Ting Zhong and Fengli Zhang, "<em>Trajectory-based Social Circle Inference</em>", Proceedings of the 26th ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems (ACM SIGSPATIAL 2018). [<a href=https://dl.acm.org/doi/abs/10.1145/3274895.3274908>Paper</a>][<a href=https://github.com/gcooq/TSCI>Code</a>]
-            </li>
-            <li>
-              Fan Zhou, <strong>Qiang Gao</strong>, Goce Trajcevski, Kunpeng Zhang, Ting Zhong, Fengli Zhang, "<em>Trajectory-User Linking via Variational AutoEncoder</em>", IJCAI 2018. [<a href=https://www.ijcai.org/proceedings/2018/0446.pdf>Paper</a>]
-            </li>
-            <li>
-              <strong>Qiang Gao</strong>, Fan Zhou, Kunpeng Zhang, Goce Trajcevski, Xuecheng Luo, Fengli Zhang, "<em>Identifying Human Mobility via Trajectory Embeddings</em>", IJCAI 2017. [<a href=https://www.ijcai.org/proceedings/2017/0234.pdf>Paper</a>][<a href=https://github.com/gcooq/TUL>Code</a>]
-            </li>
-          </ul>
-<h3>Journal Papers</h3>
-    <ul>
-        <li>
-        Li Huang, Letian Ning, Chaoran Liu, Rong Zhang, <strong>Qiang Gao*</strong>, and Goce Trajcevski. "<em> Dual-Offset Trajectory Recovery on Roads with Dynamic Transition Probability</em>", IEEE Transactions on Intelligent Transportation Systems, 2026. (<em class="text-danger">Accepted</em>)
-         </li>
-                        <li>
-        Li Huang, Yanzhe Xie, Zizheng Wang, <strong>Qiang Gao*</strong>, Kunpeng Zhang, and Philip S. Yu. "<em> Understanding Interactive Stock Dynamics via Sensitivity-aware Dependency Learning</em>", IEEE Transactions on Knowledge and Data Engineering, 2026. (<em class="text-danger">Accepted</em>)
-         </li>
-                <li>
-        <strong>Qiang Gao</strong>, Letian Ning, Li Huang, Chaoran Liu, Xueqin Chen, and Fan Zhou. "<em> Aligning Authentic Location Shares with Mobility Information Bottleneck</em>", IEEE Transactions on Big Data, 2025. (<em class="text-danger">Accepted</em>)
-         </li>
-                <li>
-        Haolun Ding, Zhengwen Fu, Rong Zhang, Li Huang, Xuan Luo, and <strong>Qiang Gao*</strong>. "<em>Probabilistic Bayesian Learning with Long-Tail Awareness for Trajectory-User Linking</em>", Neural Networks, 2025. [<a href=https://www.sciencedirect.com/science/article/abs/pii/S0893608025011396>Paper</a>]
-         </li>
-        <li>
-        Hongzhu Fu, Yutao Wei, Gege Chen, Xing He, <strong>Qiang Gao</strong>, and Fan Zhou. "<em>Augmented Graph Information Bottleneck with Type-Aware Periodicity Heterogeneity for Explainable Crime Prediction</em>", Information Processing and Management, 2025. [<a href=https://www.sciencedirect.com/science/article/pii/S0306457325001682>Paper</a>]
-         </li>
-                                <li>
-        Xueqin Chen, Xiaoyu Huang, <strong>Qiang Gao*</strong>, Li Huang, and Guisong Liu. "<em>Enhancing Text-centric Fake News Detection via External Knowledge Distillation from LLMs</em>", Neural Networks, 2025. [<a href=https://www.sciencedirect.com/science/article/abs/pii/S0893608025002564>Paper</a>]
-         </li>
-                        <li>
-        <strong>Qiang Gao</strong>, Chaoran Liu, Li Huang, Goce Trajcevski, Qing Guo, and Fan Zhou. "<em>Learning to Discover Anomalous Spatiotemporal Trajectory via Open-World State Space Model</em>", Knowledge-Based Systems, 2024. [<a href=https://www.sciencedirect.com/science/article/abs/pii/S0950705124015521>Paper</a>]
-         </li>
-                        <li>
-        Yanlong Huang, WenxinTai, FanZhou, <strong>Qiang Gao</strong>, Ting Zhong, and Kunpeng Zhang. "<em>Extracting Key Insights from Earnings Call Transcript via Information-Theoretic Contrastive Learning</em>", Information Processing and Management, 2025. [<a href=https://www.sciencedirect.com/science/article/abs/pii/S0306457324003571>Paper</a>]
-         </li>
-                <li>
-        <strong>Qiang Gao</strong>, Zhengxiang Liu, Li Huang, Kunpeng Zhang, Jun Wang, and Guisong Liu. "<em>Relational Stock Selection via Probabilistic State Space Learning</em>", IEEE Transactions on Knowledge and Data Engineering, 2024. [<a href=https://ieeexplore.ieee.org/abstract/document/10771680>Paper</a>]
-         </li>
-        <li>
-        Yujie Li, Xin Yang, <strong>Qiang Gao</strong>, Hao Wang, Junbo Zhang, and Tianrui Li. "<em>Cross-regional Fraud Detection via Continual Learning with Knowledge Transfer</em>", IEEE Transactions on Knowledge and Data Engineering, 2024. [<a href=https://ieeexplore.ieee.org/abstract/document/10654781/>Paper</a>]
-         </li>
-        <li>
-        Nan Liu, Fengli Zhang, <strong>Qiang Gao</strong> and Xueqin Chen. "<em>Contrastive Learning with Edge-wise Augmentation for Rumor Detection</em>", International Journal of Intelligent Systems, 2024. [<a href=https://onlinelibrary.wiley.com/doi/pdf/10.1155/2024/3858526>Paper</a>]
-        </li>
-        <li>
-           Li Huang, Pei Li, <strong>Qiang Gao*</strong>, Guisong Liu, Zhipeng Luo, and Tianrui Li. "<em>Diffusion Probabilistic Model for Bike-sharing Demand Recovery with Factual Knowledge Fusion</em>", Neural Networks, 2024. [<a href=https://www.sciencedirect.com/science/article/abs/pii/S0893608024004623>Paper</a>]
-            </li>
-                <li>
-           Zhipeng Luo, <strong>Qiang Gao</strong>, Yazhou He, Hongjun Wang, Milos Hauskrecht, and Tianrui Li. "<em>Hierarchical Active Learning with Label Proportions on Data Regions</em>", IEEE Transactions on Knowledge and Data Engineering, 2024. [<a href=https://ieeexplore.ieee.org/abstract/document/10579754/>Paper</a>]
-            </li>
-        <li>
-           <strong>Qiang Gao*</strong>, Xinzhu Zhou, Li Huang, Kunpeng Zhang, Siyuan Liu, and Fan Zhou. "<em>Relational Fusion-based Stock Selection with Neural Recursive Ordinary Differential Equation Networks</em>", Information Fusion, 2024. [<a href=https://www.sciencedirect.com/science/article/abs/pii/S156625352400246X>Paper</a>].
-            </li>
-        <li>
-           <strong>Qiang Gao</strong>, Jinyu Hong, Xovee Xu, Ping Kuang, Fan Zhou, and Goce Trajcevski. "<em>Predicting Human Mobility via Self-supervised Disentanglement Learning</em>", IEEE Transactions on Knowledge and Data Engineering, 2023. [<a href=https://ieeexplore.ieee.org/document/10265198>Paper</a>].
-            </li>
-        <li>
-           Xovee Xu, Zhiyuan Wang, <strong>Qiang Gao</strong> Ting Zhong, Bei Hui, Fan Zhou, and Goce Trajcevski. "<em>Spatial-Temporal Contrasting for Fine-Grained Urban Flow Inference</em>", IEEE Transactions on Big Data, 2023. [<a href=https://ieeexplore.ieee.org/abstract/document/10254322>Paper</a>]
-            </li>
-        <li>
-           <strong>Qiang Gao</strong>, Hongzhu Fu, Kunpeng Zhang, Goce Trajcevski, Xu Teng, and Fan Zhou. "<em>Inferring Real Mobility in Presence of Fake Check-ins Data</em>", ACM Transactions on Intelligent Systems and Technology, 2023. [<a href=https://dl.acm.org/doi/10.1145/3604941>Paper</a>].
-            </li>
-        <li>
-           Xin Yang, Metoh Adler LOUA, Meijun Wu, Li Huang, <strong>Qiang Gao</strong>. "<em>Multi-granularity Stock Prediction with Sequential Three-way Decisions</em>", Information Sciences, 2023. [<a href=https://www.sciencedirect.com/science/article/abs/pii/S002002552201369X>Paper</a>]
-            </li>
-        <li>
-            <strong>Qiang Gao</strong>, Wei Wang, Li Huang, Xin Yang, Tianrui Li and Hamido Fujita. "<em>Dual-grained Human Mobility Learning for Location-aware Trip Recommendation with Spatial-temporal Graph Knowledge Fusion</em>", Information Fusion, 2023. [<a href=https://www.sciencedirect.com/science/article/abs/pii/S1566253522002287>Paper</a>]
-            </li>
-        <li>
-            <strong>Qiang Gao</strong>, Fan Zhou, Xin Yang and Guisong Liu. "<em>When Friendship Meets Sequential Human Check-ins: Inferring Social Circles with Variational Mobility</em>", Neurocomputing, 2023. [<a href=https://www.sciencedirect.com/science/article/abs/pii/S0925231222013297>Paper</a>]
-            </li>
-        <li>
-            <strong>Qiang Gao</strong>, Fan Zhou, Ting Zhong, Goce Trajcevski, Xin Yang and Tianrui Li. "<em>Contextual Spatio-Temporal Graph Representation Learning for Reinforced Human Mobility Mining</em>", Information Sciences, 2022. [<a href=https://www.sciencedirect.com/science/article/abs/pii/S0020025522004819>Paper</a>]
-            </li>
-         <li>
-             <strong>Qiang Gao</strong>, Wei Wang, Kunpeng Zhang, Xin Yang, Congcong Miao and Tianrui Li. "<em>Self-supervised Representation Learning for Trip Recommendation</em>", Knowledge-Based Systems, 2022. [<a href=https://www.sciencedirect.com/science/article/abs/pii/S0950705122003720>Paper</a>]
-           </li>
-        <li>
-            <strong>Qiang Gao</strong>, Zhipeng Luo, Diego Klabjan and Fengli Zhang. "Efficient Architecture Search for Continual Learning", IEEE Transactions on Neural Networks and Learning Systems, 2022. [<a href=https://ieeexplore.ieee.org/abstract/document/9724647>Paper</a>]
-        </li>
-            <li>
-             Fan Zhou, Yurou Dai, <strong>Qiang Gao</strong>, Pengyu Wang, and Ting Zhong. "<em>Self-Supervised Human Mobility Learning for Next Location Prediction and Trajectory Classification</em>", Knowledge-Based Systems, 2021. [<a href=https://www.sciencedirect.com/science/article/abs/pii/S0950705121004767>Paper</a>]
-           </li>
-           <li>
-             <strong>Qiang Gao</strong>, Fan Zhou, Goce Trajcevski, Kunpeng Zhang, Ting Zhong and Fengli Zhang. "<em>Adversarial Human Trajectory Learning for Trip Recommendation</em>", IEEE Transactions on Neural Networks and Learning Systems, 2021. [<a href=https://ieeexplore.ieee.org/abstract/document/9361427/>Paper</a>]
-           </li>
-            <li>
-             <strong>Qiang Gao</strong>, Fengli Zhang, Fuming Yao, Ailing Li, Lin Mei and Fan Zhou. "<em>Adversarial Mobility Learning for Human Trajectory Classification</em>", IEEE Access, 2020. [<a href=https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8967063>Paper</a>]
-            </li>
-            <li>
-             <strong>Qiang Gao</strong>, Fengli Zhang, Ruijin Wang, and Fan Zhou. (2017). Trajectory big data: a review of key technologies in data processing[J]. Journal of Software, 2016, 28(4): 959-992. [<a href=http://www.jos.org.cn/jos/article/pdf/5143>Paper</a>]
-            </li>
-          </ul>
-<h2>Some Funds</h2>
-                    <ul>
-                        <li>Fundamental Research Funds for the Central Universities. Grant No.JBK2406078 (PI, 2024.6-2025.6)</li>
-                        <li>Science and Technology Program of Sichuan Province，Grant No.2023ZYD0145 (PI, 2023.12-2024.12)</li>
-                        <li>Chengdu Science and Technology Program, Grant No.2023-JB00-00016-GX (PI, 2023-2025)</li>
-                        <li>National Natural Science Foundation of China, Grant No.62102326 (PI, 2022.01-2024.12)</li>
-                        <li>Natural Science Foundation of Sichuan Province, Grant No.2023NSFSC1411 (PI, 2023.01-2024.12)</li>
-                        <li>the Fundamental Research Funds for the Central Universities (PI, Key Grant, 2021)</li>
-                        <li>Guanghua Talent Project of SWUFE (PI, 2023-2025)</li>
-                    </ul>
+        <!-- Publications -->
+        <section class="section" id="publications">
+            <div class="section-header">
+                <div class="section-icon"><i class="fas fa-book-open"></i></div>
+                <h2 class="section-title">Selected Publications</h2>
+            </div>
 
-<h2>Activities &amp; Services</h2>
-                    <p><strong>Conference &amp; Journal Organization:</strong></p>
-                    <ul>
+            <div class="pub-tabs">
+                <button class="pub-tab active" data-panel="books">Books</button>
+                <button class="pub-tab" data-panel="conferences">Conference Papers</button>
+                <button class="pub-tab" data-panel="journals">Journal Papers</button>
+            </div>
+
+            <!-- Books -->
+            <div class="pub-panel active" id="books-panel">
+                <ul class="pub-list">
+                    <li>
+                        <strong>Qiang Gao</strong>. "<em>Deep Learning and Semantic Dynamics of Human Mobility</em>",
+                        <strong>Encyclopedia of GIS</strong>, Third edition, Springer, 2025. [chapter]
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Conference Papers -->
+            <div class="pub-panel" id="conferences-panel">
+                <h3 class="pub-year">2026</h3>
+                <ul class="pub-list">
+                    <li>
+                        Jian Lang, Rongpei Hong, Meihui Zhong, Kaiju Li, Ting Zhong, <strong>Qiang Gao</strong>, and Fan Zhou.
+                        "<em>LEAF: Towards Lightweight Explainable Hateful Video Detection via Self-Grounding CoT Guided Stage-Wise Distillation</em>",
+                        The 64th Annual Meeting of the Association for Computational Linguistics, <strong>ACL 2026 Findings</strong>.
+                        <span class="pub-tag tag-accepted">Accepted</span>
+                    </li>
+                    <li>
+                        Yanzhe Xie, Tuohang Li, Heng Wang, Yujun Ge, Li Huang, <strong>Qiang Gao*</strong>.
+                        "<em>Frequency-Aware Dynamic Graph Learning via Pseudo-Spectral Decomposition for Metro Flow Forecasting</em>",
+                        <strong>ICASSP 2026</strong>.
+                        <span class="pub-tag tag-accepted">Accepted</span>
+                    </li>
+                    <li>
+                        Jian Lang, Rongpei Hong, Ting Zhong, Leiting Chen, <strong>Qiang Gao</strong>, Fan Zhou.
+                        "<em>From Shallow Humor to Metaphor: Towards Label-Free Harmful Meme Detection via LMM Agent Self-Improvement</em>",
+                        The 32nd SIGKDD Conference on Knowledge Discovery and Data Mining, <strong>KDD 2026</strong>.
+                        <span class="pub-tag tag-accepted">Accepted</span>
+                    </li>
+                    <li>
+                        Yanzhe Xie, Li Huang, <strong>Qiang Gao*</strong>, Xueqin Chen, Fan Zhou, Kunpeng Zhang.
+                        "<em>Beyond Graph Priors: A Co-evolving Framework under Uncertainty for Enterprise Resilience Assessment</em>",
+                        The 40th Annual AAAI Conference on Artificial Intelligence, <strong>AAAI 2026</strong>.
+                        <span class="pub-tag tag-accepted">Accepted</span>
+                    </li>
+                    <li>
+                        Jiao Li, Jian Lang, Xikai Tang, Wenzheng Shu, Ting Zhong, <strong>Qiang Gao</strong>, Yong Wang, Leiting Chen, and Fan Zhou.
+                        "<em>Shedding the Facades, Connecting the Domains: Detecting Shifting Multimodal Malicious Content with Test-Time Adaptation</em>",
+                        The 40th Annual AAAI Conference on Artificial Intelligence, <strong>AAAI 2026</strong>.
+                        <span class="pub-tag tag-accepted">Accepted</span>
+                    </li>
+                </ul>
+
+                <h3 class="pub-year">2025</h3>
+                <ul class="pub-list">
+                    <li>
+                        Li Huang, Yujie Wu, Xiaolong Song, <strong>Qiang Gao*</strong>, Goce Trajcevski, and Xueqin Chen.
+                        "<em>Enhancing Urban Region Representation via Adaptive Risk-aware Consensus Learning</em>",
+                        The 33rd ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems, <strong>SIGSPATIAL 2025</strong>.
+                        <span class="pub-tag tag-accepted">Accepted</span>
+                    </li>
+                    <li>
+                        Xueqin Chen, Xiaoyu Huang, <strong>Qiang Gao*</strong>, Li Huang, Jiaojing Yu, and Guisong Liu.
+                        "<em>Birds of a Feather: Enhancing Multimodal Fake News Detection via Multi-Element Retrieval</em>",
+                        The 41st IEEE International Conference on Data Engineering, <strong>ICDE 2025</strong>.
+                        [<a href="https://www.computer.org/csdl/proceedings-article/icde/2025/360300d615/26FZBSCNLCU">Paper</a>]
+                    </li>
+                    <li>
+                        <strong>Qiang Gao</strong>, Zizheng Wang, Li Huang, Goce Trajcevski, Guisong Liu, and Xueqin Chen.
+                        "<em>Responsive Dynamic Graph Disentanglement for Metro Flow Forecasting</em>",
+                        The 39th Annual AAAI Conference on Artificial Intelligence, <strong>AAAI 2025</strong>.
+                        [<a href="https://ojs.aaai.org/index.php/AAAI/article/view/33272">Paper</a>]
+                        <span class="pub-tag tag-oral">Oral</span>
+                    </li>
+                    <li>
+                        Li Huang, Haowen Liu, <strong>Qiang Gao*</strong>, Jiajing Yu, Guisong Liu, and Xueqin Chen.
+                        "<em>Adversity-aware Few-shot Named Entity Recognition via Augmentation Learning</em>",
+                        The 39th Annual AAAI Conference on Artificial Intelligence, <strong>AAAI 2025</strong>.
+                        [<a href="https://ojs.aaai.org/index.php/AAAI/article/view/34588">Paper</a>]
+                        <span class="pub-tag tag-oral">Oral</span>
+                    </li>
+                    <li>
+                        Li Huang, Yanzhe Xie, <strong>Qiang Gao*</strong>, Kunpeng Zhang, Guisong Liu, and Xueqin Chen.
+                        "<em>Progressive Dependency Representation Learning for Stock Ranking in Uncertain Risk Contrasting</em>",
+                        The 31st SIGKDD Conference on Knowledge Discovery and Data Mining, <strong>KDD 2025</strong>.
+                        [<a href="https://dl.acm.org/doi/abs/10.1145/3690624.3709189">Paper</a>]
+                    </li>
+                </ul>
+
+                <h3 class="pub-year">2024</h3>
+                <ul class="pub-list">
+                    <li>
+                        Jianfei Sun#, <strong>Qiang Gao#</strong>, Cong Wu, Yuxian Li, Jiacheng Wang, and Dusit Niyato.
+                        "<em>Secure Resource Allocation via Constrained Deep Reinforcement Learning</em>",
+                        The Sixth International Conference on Machine Learning for Cyber Security, <strong>ML4CS 2024</strong>.
+                        [<a href="https://link.springer.com/chapter/10.1007/978-981-96-4566-4_1">Paper</a>]
+                        <span class="pub-tag tag-award">Best Paper Award</span>
+                    </li>
+                    <li>
+                        Haoran Li, <strong>Qiang Gao</strong>, Hongmei Wu, and Li Huang.
+                        "<em>Advancing Event Causality Identification via Heuristic Semantic Dependency Inquiry Network</em>",
+                        The 2024 Conference on Empirical Methods in Natural Language Processing, <strong>EMNLP 2024</strong>.
+                        [<a href="https://arxiv.org/pdf/2409.13621">Paper</a>]
+                    </li>
+                    <li>
+                        <strong>Qiang Gao</strong>, Zizheng Wang, Li Huang, Goce Trajcevski, Kunpeng Zhang, and Xueqin Chen.
+                        "<em>Enhancing Dependency Dynamics in Traffic Flow Forecasting via Graph Risk Bootstrap</em>",
+                        The 32nd ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems, <strong>SIGSPATIAL 2024</strong>.
+                        [<a href="https://dl.acm.org/doi/pdf/10.1145/3678717.3691237">Paper</a>]
+                    </li>
+                    <li>
+                        <strong>Qiang Gao</strong>, Xiaolong Song, Li Huang, Goce Trajcevski, Fan Zhou, and Xueqin Chen.
+                        "<em>Enhancing Fine-Grained Urban Flow Inference via Incremental Neural Operator</em>",
+                        The 33rd International Joint Conference on Artificial Intelligence, <strong>IJCAI-24</strong>.
+                        [<a href="https://www.ijcai.org/proceedings/2024/644">Paper</a>]
+                    </li>
+                    <li>
+                        Kai Yang, Yi Yang, <strong>Qiang Gao</strong>, Ting Zhong, Yong Wang, and Fan Zhou.
+                        "<em>Self-Explainable Next POI Recommendation</em>",
+                        The 47th International ACM SIGIR Conference on Research and Development in Information Retrieval, <strong>SIGIR 2024</strong>.
+                        [<a href="https://dl.acm.org/doi/abs/10.1145/3626772.3657967">Paper</a>]
+                    </li>
+                    <li>
+                        Jinyu Hong, Ping Kuang, <strong>Qiang Gao*</strong>, Fan Zhou.
+                        "<em>Disentanglement-Guided Spatial-Temporal Graph Neural Network for Metro Flow Forecasting (Student Abstract)</em>",
+                        The Thirty-Eighth AAAI Conference on Artificial Intelligence, <strong>AAAI 2024</strong>.
+                        [<a href="https://ojs.aaai.org/index.php/AAAI/article/view/30452">Paper</a>]
+                    </li>
+                    <li>
+                        Hongzhu Fu, Fan Zhou, Qing Guo, <strong>Qiang Gao*</strong>.
+                        "<em>Spatial-Temporal Augmentation for Crime Prediction (Student Abstract)</em>",
+                        The Thirty-Eighth AAAI Conference on Artificial Intelligence, <strong>AAAI 2024</strong>.
+                        [<a href="https://ojs.aaai.org/index.php/AAAI/article/view/30442">Paper</a>]
+                    </li>
+                </ul>
+
+                <h3 class="pub-year">2023</h3>
+                <ul class="pub-list">
+                    <li>
+                        <strong>Qiang Gao</strong>, Xiaojun Shan, Yuchen Zhang, and Fan Zhou.
+                        "<em>Enhancing Knowledge Transfer for Task Incremental Learning with Data-free Subnetwork</em>",
+                        Thirty-seventh Conference on Neural Information Processing Systems, <strong>NeurIPS 2023</strong>.
+                        [<a href="https://openreview.net/pdf?id=uj9PxVTVqq">Paper</a>]
+                    </li>
+                    <li>
+                        <strong>Qiang Gao</strong>, Xiaohan Wang, Chaoran Liu, Goce Trajcevski, Li Huang, Fan Zhou.
+                        "<em>Open Anomalous Trajectory Recognition via Probabilistic Metric Learning</em>",
+                        The 32nd International Joint Conference on Artificial Intelligence, <strong>IJCAI 2023</strong>.
+                        [<a href="https://www.ijcai.org/proceedings/2023/0233.pdf">Paper</a>]
+                    </li>
+                    <li>
+                        <strong>Qiang Gao</strong>, Hongzhu Fu, Yutao Wei, Li Huang, Xingmin Liu, and Guisong Liu.
+                        "<em>Spatial-Temporal Diffusion Probabilistic Learning for Crime Prediction</em>",
+                        The 16th International Conference on Knowledge Science, Engineering and Management, <strong>KSEM 2023</strong>.
+                        [<a href="https://link.springer.com/chapter/10.1007/978-3-031-40286-9_22">Paper</a>]
+                    </li>
+                    <li>
+                        Li Huang, Kai Liu, Chaoran Liu, <strong>Qiang Gao*</strong>, Xiao Zhou, and Guisong Liu.
+                        "<em>HBay: Predicting Human Mobility via Hyperspherical Bayesian Learning</em>",
+                        The 16th International Conference on Knowledge Science, Engineering and Management, <strong>KSEM 2023</strong>.
+                        [<a href="https://link.springer.com/chapter/10.1007/978-3-031-40286-9_21">Paper</a>]
+                        [<a href="https://www.ksem2023.conferences.academy/award"><span class="pub-tag tag-award">Best Paper Award</span></a>]
+                    </li>
+                    <li>
+                        Li Huang, Hongmei Wu, <strong>Qiang Gao*</strong>, Guisong Liu.
+                        "<em>ATTENTION LOCALNESS IN SHARED ENCODER-DECODER MODEL FOR TEXT SUMMARIZATION</em>",
+                        2023 IEEE International Conference on Acoustics, Speech and Signal Processing, <strong>ICASSP 2023</strong>.
+                        [<a href="https://ieeexplore.ieee.org/abstract/document/10096291">Paper</a>]
+                    </li>
+                    <li>
+                        Miaomiao Li, Jiaqi Zhu, Xin Yang, Yi Yang, <strong>Qiang Gao</strong>, Hongan Wang.
+                        "<em>CL-WSTC: Continual Learning for Weakly Supervised Text Classification on the Internet</em>",
+                        The 2023 ACM Web Conference, <strong>WWW 2023</strong>.
+                        [<a href="https://dl.acm.org/doi/abs/10.1145/3543507.3583249">Paper</a>]
+                    </li>
+                    <li>
+                        Jinyu Hong, Fan Zhou, <strong>Qiang Gao*</strong>, Kuang Ping, Kunpeng Zhang.
+                        "<em>Mobility Prediction via Sequential Trajectory Disentanglement (Student Abstract)</em>",
+                        The Thirty-Seventh AAAI Conference on Artificial Intelligence, <strong>AAAI 2023</strong>.
+                        [<a href="https://ojs.aaai.org/index.php/AAAI/article/view/26975">Paper</a>]
+                    </li>
+                    <li>
+                        Yujie Li, Yuxuan Yang, <strong>Qiang Gao*</strong>, Xin Yang.
+                        "<em>Cross-regional Fraud Detection via Continual Learning (Student Abstract)</em>",
+                        The Thirty-Seventh AAAI Conference on Artificial Intelligence, <strong>AAAI 2023</strong>.
+                        [<a href="https://ojs.aaai.org/index.php/AAAI/article/view/26990">Paper</a>]
+                    </li>
+                </ul>
+
+                <h3 class="pub-year">2022 & Earlier</h3>
+                <ul class="pub-list">
+                    <li>
+                        Joojo Walker, Ting Zhong, Fengli Zhang, <strong>Qiang Gao</strong> and Fan Zhou.
+                        "<em>Recommendation via Collaborative Diffusion Generative Model</em>",
+                        The 15th International Conference on Knowledge Science, Engineering and Management, <strong>KSEM 2022</strong>.
+                        [<a href="https://link.springer.com/chapter/10.1007/978-3-031-10989-8_47">Paper</a>]
+                    </li>
+                    <li>
+                        Fan Zhou, Rongfan Li, <strong>Qiang Gao</strong>, Goce Trajcevski, Kunpeng Zhang, Ting Zhong.
+                        "<em>Dynamic Manifold Learning for Land Deformation Forecasting</em>",
+                        Thirty-Sixth AAAI Conference on Artificial Intelligence, <strong>AAAI 2022</strong>.
+                        [<a href="https://ojs.aaai.org/index.php/AAAI/article/view/20398">Paper</a>]
+                    </li>
+                    <li>
+                        <strong>Qiang Gao</strong>, Fan Zhou, Goce Trajcevski, Fengli Zhang, Xucheng Luo.
+                        "<em>Adversity-based Social Circles Inference via Context-Aware Mobility</em>",
+                        2020 IEEE Global Communications Conference, <strong>GLOBECOM 2020</strong>.
+                        [<a href="https://ieeexplore.ieee.org/abstract/document/9322357">Paper</a>]
+                    </li>
+                    <li>
+                        <strong>Qiang Gao</strong>, Goce Trajcevski, Fan Zhou, Kunpeng Zhang, Ting Zhong, and Fengli Zhang.
+                        "<em>DeepTrip: Adversarially Understanding Human Mobility for Trip Recommendation</em>",
+                        The 27th ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems, <strong>SIGSPATIAL 2019</strong>.
+                        [<a href="https://dl.acm.org/doi/abs/10.1145/3347146.3359088">Paper</a>]
+                    </li>
+                    <li>
+                        <strong>Qiang Gao</strong>, Fan Zhou, Goce Trajcevski, Kunpeng Zhang, Ting Zhong and Fengli Zhang.
+                        "<em>Predicting Human mobility via Variational Attention</em>",
+                        The World Wide Web Conference, <strong>WWW 2019</strong>.
+                        [<a href="https://dl.acm.org/doi/abs/10.1145/3308558.3313610">Paper</a>] [<a href="https://github.com/gcooq/VANext">Code</a>]
+                    </li>
+                    <li>
+                        <strong>Qiang Gao</strong>, Goce Trajcevski, Fan Zhou, Kunpeng Zhang, Ting Zhong and Fengli Zhang.
+                        "<em>Trajectory-based Social Circle Inference</em>",
+                        The 26th ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems, <strong>SIGSPATIAL 2018</strong>.
+                        [<a href="https://dl.acm.org/doi/abs/10.1145/3274895.3274908">Paper</a>] [<a href="https://github.com/gcooq/TSCI">Code</a>]
+                    </li>
+                    <li>
+                        Fan Zhou, <strong>Qiang Gao</strong>, Goce Trajcevski, Kunpeng Zhang, Ting Zhong, Fengli Zhang.
+                        "<em>Trajectory-User Linking via Variational AutoEncoder</em>",
+                        <strong>IJCAI 2018</strong>.
+                        [<a href="https://www.ijcai.org/proceedings/2018/0446.pdf">Paper</a>]
+                    </li>
+                    <li>
+                        <strong>Qiang Gao</strong>, Fan Zhou, Kunpeng Zhang, Goce Trajcevski, Xuecheng Luo, Fengli Zhang.
+                        "<em>Identifying Human Mobility via Trajectory Embeddings</em>",
+                        <strong>IJCAI 2017</strong>.
+                        [<a href="https://www.ijcai.org/proceedings/2017/0234.pdf">Paper</a>] [<a href="https://github.com/gcooq/TUL">Code</a>]
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Journal Papers -->
+            <div class="pub-panel" id="journals-panel">
+                <h3 class="pub-year">2026</h3>
+                <ul class="pub-list">
+                    <li>
+                        Li Huang, Letian Ning, Chaoran Liu, Rong Zhang, <strong>Qiang Gao*</strong>, and Goce Trajcevski.
+                        "<em>Dual-Offset Trajectory Recovery on Roads with Dynamic Transition Probability</em>",
+                        IEEE Transactions on Intelligent Transportation Systems, 2026.
+                        <span class="pub-tag tag-accepted">Accepted</span>
+                    </li>
+                    <li>
+                        Li Huang, Yanzhe Xie, Zizheng Wang, <strong>Qiang Gao*</strong>, Kunpeng Zhang, and Philip S. Yu.
+                        "<em>Understanding Interactive Stock Dynamics via Sensitivity-aware Dependency Learning</em>",
+                        IEEE Transactions on Knowledge and Data Engineering, 2026.
+                        <span class="pub-tag tag-accepted">Accepted</span>
+                    </li>
+                </ul>
+
+                <h3 class="pub-year">2025</h3>
+                <ul class="pub-list">
+                    <li>
+                        <strong>Qiang Gao</strong>, Letian Ning, Li Huang, Chaoran Liu, Xueqin Chen, and Fan Zhou.
+                        "<em>Aligning Authentic Location Shares with Mobility Information Bottleneck</em>",
+                        IEEE Transactions on Big Data, 2025.
+                        <span class="pub-tag tag-accepted">Accepted</span>
+                    </li>
+                    <li>
+                        Haolun Ding, Zhengwen Fu, Rong Zhang, Li Huang, Xuan Luo, and <strong>Qiang Gao*</strong>.
+                        "<em>Probabilistic Bayesian Learning with Long-Tail Awareness for Trajectory-User Linking</em>",
+                        Neural Networks, 2025.
+                        [<a href="https://www.sciencedirect.com/science/article/abs/pii/S0893608025011396">Paper</a>]
+                    </li>
+                    <li>
+                        Hongzhu Fu, Yutao Wei, Gege Chen, Xing He, <strong>Qiang Gao</strong>, and Fan Zhou.
+                        "<em>Augmented Graph Information Bottleneck with Type-Aware Periodicity Heterogeneity for Explainable Crime Prediction</em>",
+                        Information Processing and Management, 2025.
+                        [<a href="https://www.sciencedirect.com/science/article/pii/S0306457325001682">Paper</a>]
+                    </li>
+                    <li>
+                        Xueqin Chen, Xiaoyu Huang, <strong>Qiang Gao*</strong>, Li Huang, and Guisong Liu.
+                        "<em>Enhancing Text-centric Fake News Detection via External Knowledge Distillation from LLMs</em>",
+                        Neural Networks, 2025.
+                        [<a href="https://www.sciencedirect.com/science/article/abs/pii/S0893608025002564">Paper</a>]
+                    </li>
+                    <li>
+                        Yanlong Huang, Wenxin Tai, Fan Zhou, <strong>Qiang Gao</strong>, Ting Zhong, and Kunpeng Zhang.
+                        "<em>Extracting Key Insights from Earnings Call Transcript via Information-Theoretic Contrastive Learning</em>",
+                        Information Processing and Management, 2025.
+                        [<a href="https://www.sciencedirect.com/science/article/abs/pii/S0306457324003571">Paper</a>]
+                    </li>
+                </ul>
+
+                <h3 class="pub-year">2024</h3>
+                <ul class="pub-list">
+                    <li>
+                        <strong>Qiang Gao</strong>, Chaoran Liu, Li Huang, Goce Trajcevski, Qing Guo, and Fan Zhou.
+                        "<em>Learning to Discover Anomalous Spatiotemporal Trajectory via Open-World State Space Model</em>",
+                        Knowledge-Based Systems, 2024.
+                        [<a href="https://www.sciencedirect.com/science/article/abs/pii/S0950705124015521">Paper</a>]
+                    </li>
+                    <li>
+                        <strong>Qiang Gao</strong>, Zhengxiang Liu, Li Huang, Kunpeng Zhang, Jun Wang, and Guisong Liu.
+                        "<em>Relational Stock Selection via Probabilistic State Space Learning</em>",
+                        IEEE Transactions on Knowledge and Data Engineering, 2024.
+                        [<a href="https://ieeexplore.ieee.org/abstract/document/10771680">Paper</a>]
+                    </li>
+                    <li>
+                        Yujie Li, Xin Yang, <strong>Qiang Gao</strong>, Hao Wang, Junbo Zhang, and Tianrui Li.
+                        "<em>Cross-regional Fraud Detection via Continual Learning with Knowledge Transfer</em>",
+                        IEEE Transactions on Knowledge and Data Engineering, 2024.
+                        [<a href="https://ieeexplore.ieee.org/abstract/document/10654781">Paper</a>]
+                    </li>
+                    <li>
+                        Nan Liu, Fengli Zhang, <strong>Qiang Gao</strong> and Xueqin Chen.
+                        "<em>Contrastive Learning with Edge-wise Augmentation for Rumor Detection</em>",
+                        International Journal of Intelligent Systems, 2024.
+                        [<a href="https://onlinelibrary.wiley.com/doi/pdf/10.1155/2024/3858526">Paper</a>]
+                    </li>
+                    <li>
+                        Li Huang, Pei Li, <strong>Qiang Gao*</strong>, Guisong Liu, Zhipeng Luo, and Tianrui Li.
+                        "<em>Diffusion Probabilistic Model for Bike-sharing Demand Recovery with Factual Knowledge Fusion</em>",
+                        Neural Networks, 2024.
+                        [<a href="https://www.sciencedirect.com/science/article/abs/pii/S0893608024004623">Paper</a>]
+                    </li>
+                    <li>
+                        Zhipeng Luo, <strong>Qiang Gao</strong>, Yazhou He, Hongjun Wang, Milos Hauskrecht, and Tianrui Li.
+                        "<em>Hierarchical Active Learning with Label Proportions on Data Regions</em>",
+                        IEEE Transactions on Knowledge and Data Engineering, 2024.
+                        [<a href="https://ieeexplore.ieee.org/abstract/document/10579754">Paper</a>]
+                    </li>
+                    <li>
+                        <strong>Qiang Gao*</strong>, Xinzhu Zhou, Li Huang, Kunpeng Zhang, Siyuan Liu, and Fan Zhou.
+                        "<em>Relational Fusion-based Stock Selection with Neural Recursive Ordinary Differential Equation Networks</em>",
+                        Information Fusion, 2024.
+                        [<a href="https://www.sciencedirect.com/science/article/abs/pii/S156625352400246X">Paper</a>]
+                    </li>
+                </ul>
+
+                <h3 class="pub-year">2023</h3>
+                <ul class="pub-list">
+                    <li>
+                        <strong>Qiang Gao</strong>, Jinyu Hong, Xovee Xu, Ping Kuang, Fan Zhou, and Goce Trajcevski.
+                        "<em>Predicting Human Mobility via Self-supervised Disentanglement Learning</em>",
+                        IEEE Transactions on Knowledge and Data Engineering, 2023.
+                        [<a href="https://ieeexplore.ieee.org/document/10265198">Paper</a>]
+                    </li>
+                    <li>
+                        Xovee Xu, Zhiyuan Wang, <strong>Qiang Gao</strong>, Ting Zhong, Bei Hui, Fan Zhou, and Goce Trajcevski.
+                        "<em>Spatial-Temporal Contrasting for Fine-Grained Urban Flow Inference</em>",
+                        IEEE Transactions on Big Data, 2023.
+                        [<a href="https://ieeexplore.ieee.org/abstract/document/10254322">Paper</a>]
+                    </li>
+                    <li>
+                        <strong>Qiang Gao</strong>, Hongzhu Fu, Kunpeng Zhang, Goce Trajcevski, Xu Teng, and Fan Zhou.
+                        "<em>Inferring Real Mobility in Presence of Fake Check-ins Data</em>",
+                        ACM Transactions on Intelligent Systems and Technology, 2023.
+                        [<a href="https://dl.acm.org/doi/10.1145/3604941">Paper</a>]
+                    </li>
+                    <li>
+                        Xin Yang, Metoh Adler LOUA, Meijun Wu, Li Huang, <strong>Qiang Gao</strong>.
+                        "<em>Multi-granularity Stock Prediction with Sequential Three-way Decisions</em>",
+                        Information Sciences, 2023.
+                        [<a href="https://www.sciencedirect.com/science/article/abs/pii/S002002552201369X">Paper</a>]
+                    </li>
+                    <li>
+                        <strong>Qiang Gao</strong>, Wei Wang, Li Huang, Xin Yang, Tianrui Li and Hamido Fujita.
+                        "<em>Dual-grained Human Mobility Learning for Location-aware Trip Recommendation with Spatial-temporal Graph Knowledge Fusion</em>",
+                        Information Fusion, 2023.
+                        [<a href="https://www.sciencedirect.com/science/article/abs/pii/S1566253522002287">Paper</a>]
+                    </li>
+                    <li>
+                        <strong>Qiang Gao</strong>, Fan Zhou, Xin Yang and Guisong Liu.
+                        "<em>When Friendship Meets Sequential Human Check-ins: Inferring Social Circles with Variational Mobility</em>",
+                        Neurocomputing, 2023.
+                        [<a href="https://www.sciencedirect.com/science/article/abs/pii/S0925231222013297">Paper</a>]
+                    </li>
+                </ul>
+
+                <h3 class="pub-year">2022 & Earlier</h3>
+                <ul class="pub-list">
+                    <li>
+                        <strong>Qiang Gao</strong>, Fan Zhou, Ting Zhong, Goce Trajcevski, Xin Yang and Tianrui Li.
+                        "<em>Contextual Spatio-Temporal Graph Representation Learning for Reinforced Human Mobility Mining</em>",
+                        Information Sciences, 2022.
+                        [<a href="https://www.sciencedirect.com/science/article/abs/pii/S0020025522004819">Paper</a>]
+                    </li>
+                    <li>
+                        <strong>Qiang Gao</strong>, Wei Wang, Kunpeng Zhang, Xin Yang, Congcong Miao and Tianrui Li.
+                        "<em>Self-supervised Representation Learning for Trip Recommendation</em>",
+                        Knowledge-Based Systems, 2022.
+                        [<a href="https://www.sciencedirect.com/science/article/abs/pii/S0950705122003720">Paper</a>]
+                    </li>
+                    <li>
+                        <strong>Qiang Gao</strong>, Zhipeng Luo, Diego Klabjan and Fengli Zhang.
+                        "<em>Efficient Architecture Search for Continual Learning</em>",
+                        IEEE Transactions on Neural Networks and Learning Systems, 2022.
+                        [<a href="https://ieeexplore.ieee.org/abstract/document/9724647">Paper</a>]
+                    </li>
+                    <li>
+                        Fan Zhou, Yurou Dai, <strong>Qiang Gao</strong>, Pengyu Wang, and Ting Zhong.
+                        "<em>Self-Supervised Human Mobility Learning for Next Location Prediction and Trajectory Classification</em>",
+                        Knowledge-Based Systems, 2021.
+                        [<a href="https://www.sciencedirect.com/science/article/abs/pii/S0950705121004767">Paper</a>]
+                    </li>
+                    <li>
+                        <strong>Qiang Gao</strong>, Fan Zhou, Goce Trajcevski, Kunpeng Zhang, Ting Zhong and Fengli Zhang.
+                        "<em>Adversarial Human Trajectory Learning for Trip Recommendation</em>",
+                        IEEE Transactions on Neural Networks and Learning Systems, 2021.
+                        [<a href="https://ieeexplore.ieee.org/abstract/document/9361427">Paper</a>]
+                    </li>
+                    <li>
+                        <strong>Qiang Gao</strong>, Fengli Zhang, Fuming Yao, Ailing Li, Lin Mei and Fan Zhou.
+                        "<em>Adversarial Mobility Learning for Human Trajectory Classification</em>",
+                        IEEE Access, 2020.
+                        [<a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8967063">Paper</a>]
+                    </li>
+                    <li>
+                        <strong>Qiang Gao</strong>, Fengli Zhang, Ruijin Wang, and Fan Zhou.
+                        "<em>Trajectory big data: a review of key technologies in data processing</em>",
+                        Journal of Software, 2016, 28(4): 959-992.
+                        [<a href="http://www.jos.org.cn/jos/article/pdf/5143">Paper</a>]
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Funds -->
+        <section class="section" id="funds">
+            <div class="section-header">
+                <div class="section-icon"><i class="fas fa-coins"></i></div>
+                <h2 class="section-title">Some Funds</h2>
+            </div>
+            <div class="card">
+                <ul class="content-list">
+                    <li>Fundamental Research Funds for the Central Universities. Grant No. JBK2406078 (PI, 2024.6-2025.6)</li>
+                    <li>Science and Technology Program of Sichuan Province, Grant No. 2023ZYD0145 (PI, 2023.12-2024.12)</li>
+                    <li>Chengdu Science and Technology Program, Grant No. 2023-JB00-00016-GX (PI, 2023-2025)</li>
+                    <li>National Natural Science Foundation of China, Grant No. 62102326 (PI, 2022.01-2024.12)</li>
+                    <li>Natural Science Foundation of Sichuan Province, Grant No. 2023NSFSC1411 (PI, 2023.01-2024.12)</li>
+                    <li>The Fundamental Research Funds for the Central Universities (PI, Key Grant, 2021)</li>
+                    <li>Guanghua Talent Project of SWUFE (PI, 2023-2025)</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Activities & Services -->
+        <section class="section" id="activities">
+            <div class="section-header">
+                <div class="section-icon"><i class="fas fa-users"></i></div>
+                <h2 class="section-title">Activities & Services</h2>
+            </div>
+            <div class="two-column">
+                <div class="card">
+                    <h3 class="sub-section-title"><i class="fas fa-sitemap"></i> Conference & Journal Organization</h3>
+                    <ul class="content-list">
                         <li>Posters and Short Papers Chair, ACM SIGSPATIAL, 2026</li>
-                         <li>Senior Program Committee Member, IJCAI, 2026</li>
+                        <li>Senior Program Committee Member, IJCAI, 2026</li>
                         <li>Program Committee Member, AAAI, 2026</li>
-                         <li>Program Committee Member, ECAI, 2025</li>
-                         <li>Program Committee Member, IJCAI, 2025/2026</li>
+                        <li>Program Committee Member, ECAI, 2025</li>
+                        <li>Program Committee Member, IJCAI, 2025/2026</li>
                         <li>Program Committee Member, PAKDD, 2026</li>
                         <li>Program Committee Member, ICDE (Demonstration track), 2025</li>
                         <li>Session Chair, IJCAI, 2024</li>
                         <li>Program Committee Member, MDM, 2023-2025</li>
-                    <li>Program Committee Member, KSEM, 2022-2025</li>
+                        <li>Program Committee Member, KSEM, 2022-2025</li>
                         <li>Program Committee Member, SISAP, 2023/2024</li>
-                    <li>Program Committee Member, ACM SIGSPATIAL, 2021-2025</li>
-                    <li>Program Committee Member, EAI CollaborateCom, 2020</li>
+                        <li>Program Committee Member, ACM SIGSPATIAL, 2021-2025</li>
+                        <li>Program Committee Member, EAI CollaborateCom, 2020</li>
                         <li>etc.</li>
                     </ul>
-                    <p>
-                    <p><strong>Reviewing for:</strong></p>
-                    <ul>
+                </div>
+                <div class="card">
+                    <h3 class="sub-section-title"><i class="fas fa-glasses"></i> Reviewing for</h3>
+                    <ul class="content-list">
                         <li>NeurIPS 2025</li>
                         <li>CVPR 2026</li>
                         <li>IEEE Transactions on Knowledge and Data Engineering</li>
@@ -352,23 +1501,33 @@ Chengdu, Sichuan, CHINA, 611130 <br />
                         <li>ACM Transactions on Spatial Algorithms and Systems</li>
                         <li>ISPRS International Journal of Geo-Information</li>
                         <li>Human-Centric Intelligent Systems</li>
-                        <li>KDD (2018-2021/2024-2026), <font size="4" color="red">Outstanding Reviewer (KDD 2025)</font></li>
+                        <li>KDD (2018-2021/2024-2026), <strong>Outstanding Reviewer (KDD 2025)</strong></li>
                         <li>WWW (2025)</li>
                         <li>ICME (2024)</li>
                         <li>IEEE BigData (2019-2022)</li>
                         <li>EAI CollaborateCom (2021)</li>
                         <li>etc.</li>
                     </ul>
-                    <p>
+                </div>
+            </div>
+        </section>
 
-    <p><a name="teach"> </a></p>
-    <h2>Teaching:</h2>
-    <p><strong>Current Courses:</strong></strong></p>
-         <ul>
-              <li>Deep Neural Networks for PhD students, Spring 2026</li>
-         </ul>
-    <p><strong>Previous Courses:</strong></p>
-             <ul>
+        <!-- Teaching -->
+        <section class="section" id="teaching">
+            <div class="section-header">
+                <div class="section-icon"><i class="fas fa-chalkboard-user"></i></div>
+                <h2 class="section-title">Teaching</h2>
+            </div>
+            <div class="two-column">
+                <div class="card">
+                    <h3 class="sub-section-title"><i class="fas fa-book-open"></i> Current Courses</h3>
+                    <ul class="content-list">
+                        <li>Deep Neural Networks for PhD students, Spring 2026</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3 class="sub-section-title"><i class="fas fa-history"></i> Previous Courses</h3>
+                    <ul class="content-list">
                         <li>Deep Neural Networks for PhD students, Spring 2025</li>
                         <li>Deep Learning for Undergraduates, Fall 2024/2025</li>
                         <li>Advanced Machine Learning for Undergraduates, Fall 2022-2024</li>
@@ -376,14 +1535,94 @@ Chengdu, Sichuan, CHINA, 611130 <br />
                         <li>Machine Learning for Undergraduates, Spring 2022-2024</li>
                         <li>Artificial Intelligence for PhD students, Fall 2021</li>
                         <li>Data Mining for Undergraduates, Spring 2021, Fall 2021/2022</li>
-             </ul>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
 
-    <br>
-<!--        </div>-->
-    <div id="toptitle"></div>
-    <div style="text-align:center;display:inline-block;width:200px"><script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=FGF7hJkI2OqB6i3G6d_wR9fRVA3it1lKeUNlrw_UTe4&cl=ffffff&w=a"></script></script></div>
-    Update Time: April. 7, 2026
-    <!--;padding-left: 400px-->
-<!--    <div class="menu-category"><a href="https://www.swufe.edu.cn/"><img src="img/swufe-logo.jpg" width=165px align="center"></a></div>-->
+    <footer class="footer">
+        <div class="footer-content">
+            <div id="clustrmaps-container">
+                <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=FGF7hJkI2OqB6i3G6d_wR9fRVA3it1lKeUNlrw_UTe4&cl=ffffff&w=a"></script>
+            </div>
+            <p>Update Time: April 7, 2026</p>
+            <p>Hosted on <a href="https://github.com/gcooq/gcooq.github.io">GitHub Pages</a> · Domain: <a href="https://qianggao.xyz">qianggao.xyz</a></p>
+        </div>
+    </footer>
+
+    <button class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mobile menu toggle
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const sidebar = document.querySelector('.sidebar');
+
+        mobileToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('open');
+        });
+
+        // Close sidebar when clicking on a link (mobile)
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                sidebar.classList.remove('open');
+            });
+        });
+
+        // Active nav link on scroll
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-menu a');
+
+        function updateActiveLink() {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveLink);
+
+        // Publication tabs
+        const pubTabs = document.querySelectorAll('.pub-tab');
+        const pubPanels = document.querySelectorAll('.pub-panel');
+
+        pubTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                pubTabs.forEach(t => t.classList.remove('active'));
+                pubPanels.forEach(p => p.classList.remove('active'));
+
+                tab.classList.add('active');
+                const panelId = tab.getAttribute('data-panel') + '-panel';
+                document.getElementById(panelId).classList.add('active');
+            });
+        });
+
+        // Back to top button
+        const backToTop = document.querySelector('.back-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
 </body>
 </html>
