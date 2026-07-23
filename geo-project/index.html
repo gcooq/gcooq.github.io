@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>时空数据可视化平台</title>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+  <!-- 自定义样式 -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- 地图容器 -->
+  <div id="map"></div>
+
+  <!-- 左侧控制面板 -->
+  <div id="control-panel">
+    <!-- 标题区 -->
+    <div class="panel-header">
+      <h1>时空数据可视化平台</h1>
+      <div class="subtitle">Spatiotemporal Data Visualization</div>
+      <div class="badges">
+        <span class="badge">出租车轨迹</span>
+        <span class="badge">POI兴趣点</span>
+        <span class="badge">动态热力图</span>
+      </div>
+    </div>
+
+    <!-- 图层控制 -->
+    <div class="section">
+      <h3>图层控制</h3>
+      <div class="layer-toggles">
+        <label>
+          <input type="checkbox" id="layer-taxis" checked>
+          <span class="layer-dot" style="background:#F44336"></span>
+          出租车实时位置
+        </label>
+        <label>
+          <input type="checkbox" id="layer-pois" checked>
+          <span class="layer-dot" style="background:#9C27B0"></span>
+          POI 兴趣点
+        </label>
+        <label>
+          <input type="checkbox" id="layer-heatmap" checked>
+          <span class="layer-dot" style="background:linear-gradient(90deg,#2196F3,#F44336)"></span>
+          时空热力图
+        </label>
+        <label>
+          <input type="checkbox" id="layer-trails">
+          <span class="layer-dot" style="background:rgba(244,67,54,0.5)"></span>
+          轨迹尾迹
+        </label>
+      </div>
+    </div>
+
+    <!-- 实时统计 -->
+    <div class="section">
+      <h3>实时统计</h3>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-value" id="stat-active">0</span>
+          <span class="stat-label">活跃车辆</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value" id="stat-occupied">0</span>
+          <span class="stat-label">载客中</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value" id="stat-cruising">0</span>
+          <span class="stat-label">空驶中</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value" id="stat-speed">0.0</span>
+          <span class="stat-label">均速km/h</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value" id="stat-pois">0</span>
+          <span class="stat-label">POI总数</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 时段分布图 -->
+    <div class="section">
+      <h3>时段活跃度分布</h3>
+      <canvas id="time-chart" width="296" height="80"></canvas>
+      <div class="chart-hint">柱状图显示各时段活跃出租车数量，红线为当前时间</div>
+    </div>
+
+    <!-- 数据来源 -->
+    <div class="section">
+      <h3>数据来源</h3>
+      <div class="data-source-item">
+        <div class="ds-icon">🚕</div>
+        <div class="ds-content">
+          <div class="ds-name">出租车轨迹</div>
+          <div class="ds-source">基于 T-Drive (Microsoft Research) 数据集模式生成</div>
+        </div>
+      </div>
+      <div class="data-source-item">
+        <div class="ds-icon">📍</div>
+        <div class="ds-content">
+          <div class="ds-name">POI 兴趣点</div>
+          <div class="ds-source">北京真实地理坐标 (38个主要兴趣点)</div>
+        </div>
+      </div>
+      <div class="data-source-item">
+        <div class="ds-icon">🔥</div>
+        <div class="ds-content">
+          <div class="ds-name">时空热力图</div>
+          <div class="ds-source">基于时段活动强度模型动态生成</div>
+        </div>
+      </div>
+      <div class="data-source-item">
+        <div class="ds-icon">🗺️</div>
+        <div class="ds-content">
+          <div class="ds-name">底图服务</div>
+          <div class="ds-source">高德地图 (AutoNavi) 标准道路瓦片</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 底部时间控制器 -->
+  <div id="time-controller">
+    <button id="play-btn" title="播放/暂停">&#9654;</button>
+    <div class="time-slider-container">
+      <input type="range" id="time-slider" min="0" max="100" value="0" step="0.1">
+      <div class="time-display">
+        <span id="current-time">06:00</span>
+        <span class="time-range">06:00 — 22:00</span>
+      </div>
+    </div>
+    <div class="speed-control">
+      <label>速度</label>
+      <select id="speed-select">
+        <option value="0.5">0.5x</option>
+        <option value="1" selected>1x</option>
+        <option value="2">2x</option>
+        <option value="4">4x</option>
+        <option value="8">8x</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- 右下角图例 -->
+  <div id="legend">
+    <h4>图例</h4>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#F44336"></div>
+      <span>载客出租车</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#2196F3"></div>
+      <span>空驶出租车</span>
+    </div>
+    <div class="legend-sep"></div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#E91E63"></div>
+      <span>景点地标</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#9C27B0"></div>
+      <span>购物商圈</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#2196F3"></div>
+      <span>商务办公</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#FF9800"></div>
+      <span>交通枢纽</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#4CAF50"></div>
+      <span>休闲娱乐</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#795548"></div>
+      <span>居住社区</span>
+    </div>
+  </div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <!-- Leaflet.heat 热力图插件 -->
+  <script src="https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script>
+
+  <!-- 数据模块 -->
+  <script src="js/data.js"></script>
+  <!-- 应用主逻辑 -->
+  <script src="js/app.js"></script>
+</body>
+</html>
