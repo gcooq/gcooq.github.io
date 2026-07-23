@@ -59,6 +59,14 @@
     }
   ).addTo(map);
 
+  // ---- 填充采样信息 ----
+  if (typeof SAMPLING_INFO !== "undefined") {
+    const siDate = document.getElementById("si-date");
+    const siRange = document.getElementById("si-range");
+    if (siDate) siDate.textContent = SAMPLING_INFO.samplingDate;
+    if (siRange) siRange.textContent = SAMPLING_INFO.timeRange;
+  }
+
   // ---- 图层组 ----
   const taxiLayer = L.layerGroup().addTo(map);
   const poiLayer = L.layerGroup().addTo(map);

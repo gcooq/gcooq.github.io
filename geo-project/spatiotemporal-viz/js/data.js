@@ -12,6 +12,19 @@ const CONFIG = {
   defaultZoom: 12,
 };
 
+// ---- 数据采样元信息 ----
+const SAMPLING_INFO = {
+  samplingDate: "2024-07-15（周一）",       // 采样日期
+  timeRange: "06:00 — 22:00",                // 采样时间范围
+  totalDuration: "16小时",                    // 采样总时长
+  gpsInterval: "约10秒/次",                   // GPS采样间隔
+  poiInterval: "全天静态",                    // POI数据粒度
+  heatmapInterval: "分钟级动态更新",           // 热力图更新频率
+  dataSource: "公开数据集模式生成",             // 数据来源说明
+  referenceDatasets: "T-Drive (Microsoft Research), Geolife",  // 参考数据集
+  generatedAt: "2026-07-23",                  // 数据生成日期
+};
+
 const TOTAL_MINUTES = (CONFIG.endHour - CONFIG.startHour) * 60; // 960分钟
 
 // ---- POI 数据（北京真实坐标） ----

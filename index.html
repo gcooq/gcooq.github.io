@@ -620,6 +620,75 @@
         }
         .info-list strong { color: var(--c-text); }
 
+        /* ===== Demo Cards ===== */
+        .demo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+        .demo-card {
+            display: block;
+            text-decoration: none;
+            background: var(--c-bg-card);
+            border: 1px solid var(--c-border);
+            border-radius: var(--radius-lg);
+            padding: 0;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-card);
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+            position: relative;
+        }
+        .demo-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-card-hover);
+            border-color: var(--c-border-strong);
+        }
+        .demo-card-banner {
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+        .demo-card-banner::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.15), transparent 70%);
+        }
+        .demo-card-banner i { z-index: 1; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2)); }
+        .demo-card-body { padding: 1.25rem 1.5rem 1.5rem; }
+        .demo-card-body h3 {
+            font-size: 1.05rem; font-weight: 700; color: var(--c-text);
+            margin-bottom: 0.5rem;
+            display: flex; align-items: center; gap: 0.4rem;
+        }
+        .demo-card-body p {
+            font-size: 0.83rem; line-height: 1.6;
+            color: var(--c-text-body);
+            margin-bottom: 0.75rem;
+        }
+        .demo-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+        .demo-tag {
+            font-size: 0.72rem; font-weight: 500;
+            padding: 0.15rem 0.6rem;
+            border-radius: 20px;
+            background: var(--c-accent-soft);
+            color: var(--c-accent);
+        }
+        .demo-link {
+            margin-top: 0.85rem;
+            font-size: 0.8rem; font-weight: 600;
+            color: var(--c-accent);
+            display: inline-flex; align-items: center; gap: 0.35rem;
+            transition: gap 0.2s ease;
+        }
+        .demo-card:hover .demo-link { gap: 0.6rem; }
+        @media (max-width: 700px) {
+            .demo-grid { grid-template-columns: 1fr; }
+        }
+
         /* ===== Footer ===== */
         .footer {
             background: rgba(240,244,255,0.6);
@@ -716,6 +785,7 @@
             <li><a href="#news">News</a></li>
             <li><a href="#activities">Service</a></li>
             <li><a href="#teaching">Teaching</a></li>
+            <li><a href="#demos">Demos</a></li>
         </ul>
         <div class="topnav-social">
             <a href="https://scholar.google.com/citations?user=3KPOGeAAAAAJ" title="Google Scholar" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
@@ -1654,6 +1724,51 @@
                     <li>Data Mining for Undergraduates, Spring 2021, Fall 2021/2022</li>
                 </ul>
             </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== Demos ===== -->
+<section class="section" id="demos">
+    <div class="container">
+        <div class="section-head">
+            <h2><i class="fas fa-map-location-dot"></i> Spatio-Temporal Data Demos</h2>
+        </div>
+        <div class="demo-grid">
+            <a class="demo-card" href="geo-project/chengdu-spatiotemporal/index.html">
+                <div class="demo-card-banner" style="background: linear-gradient(135deg, #db2777, #7c3aed);">
+                    <i class="fas fa-city"></i>
+                </div>
+                <div class="demo-card-body">
+                    <h3>Chengdu Spatio-Temporal Visualization</h3>
+                    <p>Interactive map of Chengdu with 6 types of spatio-temporal data: taxi trajectories, POIs, metro stations, check-in data, weather dynamics, and flow lines &mdash; all animated over time on an AMap base layer.</p>
+                    <div class="demo-tags">
+                        <span class="demo-tag">Taxi Trajectory</span>
+                        <span class="demo-tag">POI</span>
+                        <span class="demo-tag">Metro</span>
+                        <span class="demo-tag">Check-in</span>
+                        <span class="demo-tag">Weather</span>
+                        <span class="demo-tag">Flow</span>
+                    </div>
+                    <span class="demo-link">Open Demo <i class="fas fa-arrow-right"></i></span>
+                </div>
+            </a>
+            <a class="demo-card" href="geo-project/spatiotemporal-viz/index.html">
+                <div class="demo-card-banner" style="background: linear-gradient(135deg, #2563eb, #00b8d4);">
+                    <i class="fas fa-taxi"></i>
+                </div>
+                <div class="demo-card-body">
+                    <h3>Beijing Taxi &amp; POI Visualization</h3>
+                    <p>Spatio-temporal visualization of Beijing with 130 taxi trajectories (T-Drive pattern), 38 POIs, dynamic heatmaps, and trail effects. Time controller sweeps from 6:00 to 22:00 with playback speed control.</p>
+                    <div class="demo-tags">
+                        <span class="demo-tag">Taxi Trajectory</span>
+                        <span class="demo-tag">POI</span>
+                        <span class="demo-tag">Heatmap</span>
+                        <span class="demo-tag">Trail</span>
+                    </div>
+                    <span class="demo-link">Open Demo <i class="fas fa-arrow-right"></i></span>
+                </div>
+            </a>
         </div>
     </div>
 </section>

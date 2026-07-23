@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>成都时空数据可视化平台</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- 地图 -->
+  <div id="map"></div>
+  <!-- 雨天遮罩 -->
+  <div id="rain-overlay"></div>
+
+  <!-- 左侧控制面板 -->
+  <div id="control-panel">
+    <!-- 天气栏 -->
+    <div class="weather-bar">
+      <div class="weather-icon" id="weather-icon">--</div>
+      <div class="weather-main">
+        <div class="weather-temp" id="weather-temp">--°C</div>
+        <div class="weather-cond" id="weather-cond">--</div>
+        <div class="weather-extra">
+          <span>💧 <span id="weather-humidity">--%</span></span>
+          <span>💨 <span id="weather-wind">--m/s</span></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 标题 -->
+    <div class="panel-header">
+      <h1>成都时空数据可视化</h1>
+      <div class="subtitle">Chengdu Spatiotemporal Visualization</div>
+      <div class="badges">
+        <span class="badge">出租车轨迹</span>
+        <span class="badge">POI</span>
+        <span class="badge">地铁站</span>
+        <span class="badge">签到数据</span>
+        <span class="badge">天气联动</span>
+        <span class="badge">时空流动</span>
+      </div>
+    </div>
+
+    <!-- 采样信息 -->
+    <div class="sampling-info">
+      <div class="sampling-date">
+        <span class="si-label">采样日期</span>
+        <span class="si-value" id="si-date">2024-07-15（周一）</span>
+      </div>
+      <div class="sampling-time">
+        <span class="si-label">时间范围</span>
+        <span class="si-value" id="si-range">06:00 — 23:00</span>
+        <span class="si-duration">17h</span>
+      </div>
+      <div class="sampling-meta">
+        <span class="si-chip">GPS 10s/次</span>
+        <span class="si-chip">签到 分钟级</span>
+        <span class="si-chip">天气 1-2h</span>
+      </div>
+      <div class="sampling-ref">
+        参考数据集: T-Drive, Geolife, Brightkite · 生成于 2026-07-23
+      </div>
+    </div>
+
+    <!-- 图层控制 -->
+    <div class="section">
+      <h3>图层控制</h3>
+      <div class="layer-toggles">
+        <label><input type="checkbox" id="layer-taxis" checked><span class="layer-dot" style="background:#F44336"></span>出租车实时位置</label>
+        <label><input type="checkbox" id="layer-pois" checked><span class="layer-dot" style="background:#9C27B0"></span>POI 兴趣点</label>
+        <label><input type="checkbox" id="layer-metro" checked><span class="layer-dot" style="background:#004EA2"></span>地铁站点</label>
+        <label><input type="checkbox" id="layer-checkins" checked><span class="layer-dot" style="background:#FF5722"></span>签到脉冲</label>
+        <label><input type="checkbox" id="layer-flows" checked><span class="layer-dot" style="background:#4CAF50"></span>时空流动线</label>
+        <label><input type="checkbox" id="layer-heatmap" checked><span class="layer-dot" style="background:linear-gradient(90deg,#2196F3,#F44336)"></span>时空热力图</label>
+        <label><input type="checkbox" id="layer-trails"><span class="layer-dot" style="background:rgba(244,67,54,0.5)"></span>轨迹尾迹</label>
+      </div>
+    </div>
+
+    <!-- 实时统计 -->
+    <div class="section">
+      <h3>实时统计</h3>
+      <div class="stats-grid">
+        <div class="stat-card"><span class="stat-value" id="stat-active">0</span><span class="stat-label">活跃车辆</span></div>
+        <div class="stat-card"><span class="stat-value" id="stat-occupied">0</span><span class="stat-label">载客中</span></div>
+        <div class="stat-card"><span class="stat-value" id="stat-cruising">0</span><span class="stat-label">空驶中</span></div>
+        <div class="stat-card"><span class="stat-value" id="stat-speed">0.0</span><span class="stat-label">均速km/h</span></div>
+        <div class="stat-card"><span class="stat-value" id="stat-checkins">0</span><span class="stat-label">签到总数</span></div>
+        <div class="stat-card"><span class="stat-value" id="stat-flows">0</span><span class="stat-label">活跃流线</span></div>
+        <div class="stat-card"><span class="stat-value" id="stat-pois">0</span><span class="stat-label">POI数</span></div>
+        <div class="stat-card"><span class="stat-value" id="stat-metro">0</span><span class="stat-label">地铁站数</span></div>
+      </div>
+    </div>
+
+    <!-- 时段分布 -->
+    <div class="section">
+      <h3>时段活跃度分布</h3>
+      <canvas id="time-chart" width="296" height="72"></canvas>
+      <div class="chart-hint">红线为当前时间，柱状图为各时段活跃出租车数量</div>
+    </div>
+
+    <!-- 数据来源 -->
+    <div class="section">
+      <h3>数据来源</h3>
+      <div class="ds-item"><div class="ds-icon">🚕</div><div class="ds-content"><div class="ds-name">出租车轨迹</div><div class="ds-source">基于成都出租车GPS模式生成 · 采样间隔~10s · 06:00-23:00全天</div></div></div>
+      <div class="ds-item"><div class="ds-icon">📍</div><div class="ds-content"><div class="ds-name">POI兴趣点</div><div class="ds-source">成都真实地理坐标 (45个) · 2024年公开POI数据</div></div></div>
+      <div class="ds-item"><div class="ds-icon">🚇</div><div class="ds-content"><div class="ds-name">地铁站点</div><div class="ds-source">成都地铁真实线路 (9条线，50+站点) · 2024年运营数据</div></div></div>
+      <div class="ds-item"><div class="ds-icon">📢</div><div class="ds-content"><div class="ds-name">签到数据</div><div class="ds-source">基于Brightkite/Foursquare模式生成 · 分钟级聚合 · 600条</div></div></div>
+      <div class="ds-item"><div class="ds-icon">🌦️</div><div class="ds-content"><div class="ds-name">天气数据</div><div class="ds-source">成都7月典型天气模拟 · 11个时段 · 每1-2小时更新</div></div></div>
+      <div class="ds-item"><div class="ds-icon">🌐</div><div class="ds-content"><div class="ds-name">时空流动</div><div class="ds-source">城市主要流向路线 (11条) · 按小时级时段激活</div></div></div>
+      <div class="ds-item"><div class="ds-icon">🗺️</div><div class="ds-content"><div class="ds-name">底图服务</div><div class="ds-source">高德地图 (AutoNavi) 标准道路瓦片 · 实时加载</div></div></div>
+    </div>
+  </div>
+
+  <!-- 时间控制器 -->
+  <div id="time-controller">
+    <button id="play-btn" title="播放/暂停">&#9654;</button>
+    <div class="time-slider-container">
+      <input type="range" id="time-slider" min="0" max="100" value="0" step="0.1">
+      <div class="time-display">
+        <span id="current-time">06:00</span>
+        <span class="time-range">06:00 — 23:00</span>
+      </div>
+    </div>
+    <div class="speed-control">
+      <label>速度</label>
+      <select id="speed-select">
+        <option value="0.5">0.5x</option>
+        <option value="1" selected>1x</option>
+        <option value="2">2x</option>
+        <option value="4">4x</option>
+        <option value="8">8x</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- 图例 -->
+  <div id="legend">
+    <h4>图例</h4>
+    <div class="legend-item"><div class="legend-dot" style="background:#F44336"></div><span>载客出租车</span></div>
+    <div class="legend-item"><div class="legend-dot" style="background:#2196F3"></div><span>空驶出租车</span></div>
+    <div class="legend-item"><div class="legend-dot" style="background:#FF5722"></div><span>签到脉冲</span></div>
+    <div class="legend-sep"></div>
+    <div class="legend-item"><div class="legend-line" style="background:#2196F3"></div><span>早高峰流向</span></div>
+    <div class="legend-item"><div class="legend-line" style="background:#4CAF50"></div><span>晚高峰流向</span></div>
+    <div class="legend-item"><div class="legend-line" style="background:#FF9800"></div><span>交通枢纽流</span></div>
+    <div class="legend-item"><div class="legend-line" style="background:#FF5722"></div><span>美食流向</span></div>
+    <div class="legend-sep"></div>
+    <div class="legend-item"><div class="legend-dot" style="background:#004EA2"></div><span>地铁站(1号线)</span></div>
+    <div class="legend-item"><div class="legend-dot" style="background:#E97D1F"></div><span>地铁站(2号线)</span></div>
+    <div class="legend-item"><div class="legend-dot" style="background:#9B5D8C"></div><span>地铁站(3号线)</span></div>
+    <div class="legend-item"><div class="legend-dot" style="background:#008C95"></div><span>地铁站(4号线)</span></div>
+  </div>
+
+  <!-- 库 -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script>
+  <!-- 应用 -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -98,6 +98,38 @@ html, body {
   color: rgba(255, 255, 255, 0.7);
 }
 
+/* ---- 采样信息 ---- */
+.sampling-info {
+  padding: 14px 22px;
+  background: linear-gradient(135deg, rgba(37,99,235,0.12), rgba(0,184,212,0.08));
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.sampling-date, .sampling-time {
+  display: flex; align-items: center; gap: 8px; margin-bottom: 6px;
+}
+.si-label {
+  font-size: 9px; font-weight: 600; color: rgba(255,255,255,0.35);
+  text-transform: uppercase; letter-spacing: 0.5px;
+  min-width: 48px;
+}
+.si-value {
+  font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.9);
+}
+.si-duration {
+  font-size: 10px; color: #60a5fa; font-weight: 700;
+  background: rgba(96,165,250,0.15); padding: 1px 6px; border-radius: 8px;
+}
+.sampling-meta {
+  display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px;
+}
+.si-chip {
+  font-size: 9px; color: rgba(255,255,255,0.55);
+  background: rgba(255,255,255,0.06); padding: 2px 7px; border-radius: 10px;
+}
+.sampling-ref {
+  font-size: 8.5px; color: rgba(255,255,255,0.25); margin-top: 8px; line-height: 1.5;
+}
+
 /* ---- 通用 section ---- */
 .section {
   padding: 16px 22px;

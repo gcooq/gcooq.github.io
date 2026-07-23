@@ -28,6 +28,27 @@
       </div>
     </div>
 
+    <!-- 采样信息 -->
+    <div class="sampling-info">
+      <div class="sampling-date">
+        <span class="si-label">采样日期</span>
+        <span class="si-value" id="si-date">2024-07-15（周一）</span>
+      </div>
+      <div class="sampling-time">
+        <span class="si-label">时间范围</span>
+        <span class="si-value" id="si-range">06:00 — 22:00</span>
+        <span class="si-duration">16h</span>
+      </div>
+      <div class="sampling-meta">
+        <span class="si-chip">GPS 10s/次</span>
+        <span class="si-chip">热力图 分钟级</span>
+        <span class="si-chip">POI 全天</span>
+      </div>
+      <div class="sampling-ref">
+        参考数据集: T-Drive (Microsoft Research), Geolife · 生成于 2026-07-23
+      </div>
+    </div>
+
     <!-- 图层控制 -->
     <div class="section">
       <h3>图层控制</h3>
@@ -96,28 +117,28 @@
         <div class="ds-icon">🚕</div>
         <div class="ds-content">
           <div class="ds-name">出租车轨迹</div>
-          <div class="ds-source">基于 T-Drive (Microsoft Research) 数据集模式生成</div>
+          <div class="ds-source">基于 T-Drive (Microsoft Research) 数据集模式生成 · 采样间隔~10s · 06:00-22:00全天</div>
         </div>
       </div>
       <div class="data-source-item">
         <div class="ds-icon">📍</div>
         <div class="ds-content">
           <div class="ds-name">POI 兴趣点</div>
-          <div class="ds-source">北京真实地理坐标 (38个主要兴趣点)</div>
+          <div class="ds-source">北京真实地理坐标 (38个) · 2024年公开POI数据</div>
         </div>
       </div>
       <div class="data-source-item">
         <div class="ds-icon">🔥</div>
         <div class="ds-content">
           <div class="ds-name">时空热力图</div>
-          <div class="ds-source">基于时段活动强度模型动态生成</div>
+          <div class="ds-source">基于时段活动强度模型动态生成 · 分钟级更新</div>
         </div>
       </div>
       <div class="data-source-item">
         <div class="ds-icon">🗺️</div>
         <div class="ds-content">
           <div class="ds-name">底图服务</div>
-          <div class="ds-source">高德地图 (AutoNavi) 标准道路瓦片</div>
+          <div class="ds-source">高德地图 (AutoNavi) 标准道路瓦片 · 实时加载</div>
         </div>
       </div>
     </div>
