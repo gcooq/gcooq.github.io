@@ -14,36 +14,61 @@
         window.MathJax = { tex: { equationNumbers: { autoNumber: "AMS" } } };
     </script>
     <style>
-        /* ===== Design Tokens ===== */
+        /* ===== Design Tokens — Light Tech Theme ===== */
         :root {
-            --c-bg: #ffffff;
-            --c-bg-soft: #f8fafc;
-            --c-bg-muted: #f1f5f9;
-            --c-text: #0f172a;
-            --c-text-body: #334155;
-            --c-text-light: #64748b;
-            --c-text-faint: #94a3b8;
-            --c-border: #e2e8f0;
-            --c-border-strong: #cbd5e1;
-            --c-accent: #1e40af;
+            --c-bg: #f0f4ff;
+            --c-bg-soft: rgba(255,255,255,0.7);
+            --c-bg-card: rgba(255,255,255,0.65);
+            --c-bg-card-hover: rgba(255,255,255,0.85);
+            --c-text: #0f1e3d;
+            --c-text-body: #334766;
+            --c-text-light: #647088;
+            --c-text-faint: #9ca8c0;
+            --c-border: rgba(50,80,160,0.12);
+            --c-border-strong: rgba(50,80,160,0.22);
+            --c-glow-cyan: #00b8d4;
+            --c-glow-blue: #2563eb;
+            --c-glow-purple: #7c3aed;
+            --c-accent: #2563eb;
             --c-accent-light: #3b82f6;
-            --c-accent-soft: #eff6ff;
-            --c-teal: #0d9488;
-            --c-teal-soft: #f0fdfa;
-            --c-amber: #b45309;
-            --c-amber-soft: #fffbeb;
-            --c-rose: #be123c;
-            --c-rose-soft: #fff1f2;
-            --c-emerald: #047857;
-            --c-emerald-soft: #ecfdf5;
-            --shadow-xs: 0 1px 2px rgba(15,23,42,0.04);
-            --shadow-sm: 0 1px 3px rgba(15,23,42,0.06), 0 1px 2px rgba(15,23,42,0.04);
-            --shadow-md: 0 4px 6px -1px rgba(15,23,42,0.07), 0 2px 4px -2px rgba(15,23,42,0.05);
-            --shadow-lg: 0 10px 15px -3px rgba(15,23,42,0.08), 0 4px 6px -4px rgba(15,23,42,0.05);
-            --radius: 10px;
-            --radius-lg: 16px;
+            --c-accent-soft: rgba(37,99,235,0.06);
+            --c-teal: #0891b2;
+            --c-teal-soft: rgba(8,145,178,0.07);
+            --c-amber: #d97706;
+            --c-amber-soft: rgba(217,119,6,0.07);
+            --c-rose: #db2777;
+            --c-rose-soft: rgba(219,39,119,0.07);
+            --c-emerald: #059669;
+            --c-emerald-soft: rgba(5,150,105,0.07);
+            --shadow-card: 0 4px 24px rgba(30,50,120,0.06);
+            --shadow-card-hover: 0 8px 36px rgba(37,99,235,0.1), 0 0 0 1px rgba(37,99,235,0.12);
+            --radius: 12px;
+            --radius-lg: 20px;
             --maxw: 1080px;
             --nav-h: 64px;
+        }
+
+        /* ===== Starfield Canvas ===== */
+        #starfield {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        /* ===== Nebula Background — Light ===== */
+        .nebula-bg {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            background:
+                radial-gradient(ellipse 80% 60% at 20% 10%, rgba(37,99,235,0.06), transparent 60%),
+                radial-gradient(ellipse 60% 50% at 85% 30%, rgba(124,58,237,0.04), transparent 60%),
+                radial-gradient(ellipse 50% 40% at 50% 80%, rgba(0,184,212,0.04), transparent 60%),
+                radial-gradient(ellipse 70% 50% at 90% 90%, rgba(219,39,119,0.02), transparent 60%);
         }
 
         /* ===== Reset ===== */
@@ -57,19 +82,27 @@
             font-size: 16px;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
         }
-        a { color: var(--c-accent); text-decoration: none; transition: color .2s; }
+        a { color: var(--c-accent); text-decoration: none; transition: all .2s; }
         a:hover { color: var(--c-accent-light); }
         img { max-width: 100%; height: auto; }
+        ::selection { background: rgba(37,99,235,0.15); color: #0f1e3d; }
+
+        /* ===== Scrollbar ===== */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #eef2fb; }
+        ::-webkit-scrollbar-thumb { background: rgba(37,99,235,0.25); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(37,99,235,0.4); }
 
         /* ===== Top Navigation ===== */
         .topnav {
             position: fixed;
             top: 0; left: 0; right: 0;
             height: var(--nav-h);
-            background: rgba(255,255,255,0.92);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: rgba(240,244,255,0.8);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
             border-bottom: 1px solid var(--c-border);
             z-index: 1000;
             display: flex;
@@ -92,7 +125,7 @@
             font-size: 0.95rem;
             color: var(--c-text);
         }
-        .topnav-brand img { height: 32px; }
+        .topnav-brand img { height: 32px; border-radius: 6px; }
         .topnav-links {
             display: flex;
             align-items: center;
@@ -119,11 +152,17 @@
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             color: var(--c-text-light);
-            background: var(--c-bg-soft);
+            background: rgba(255,255,255,0.5);
+            border: 1px solid var(--c-border);
             font-size: 0.85rem;
-            transition: all .2s;
+            transition: all .25s;
         }
-        .topnav-social a:hover { color: var(--c-accent); background: var(--c-accent-soft); }
+        .topnav-social a:hover {
+            color: var(--c-accent);
+            background: rgba(37,99,235,0.08);
+            border-color: var(--c-accent);
+            box-shadow: 0 0 12px rgba(37,99,235,0.15);
+        }
         .mobile-menu-btn { display:none; background:none; border:none; font-size:1.3rem; cursor:pointer; color:var(--c-text); }
 
         /* ===== Layout ===== */
@@ -133,18 +172,20 @@
         /* ===== Hero ===== */
         .hero {
             padding: 4.5rem 2rem 3.5rem;
-            border-bottom: 1px solid var(--c-border);
-            background: var(--c-bg);
             position: relative;
+            overflow: hidden;
         }
         .hero::before {
             content: '';
             position: absolute;
             inset: 0;
             background-image:
-                radial-gradient(circle at 1px 1px, rgba(30,64,175,0.06) 1px, transparent 0);
-            background-size: 32px 32px;
+                linear-gradient(rgba(37,99,235,0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(37,99,235,0.04) 1px, transparent 1px);
+            background-size: 50px 50px;
             pointer-events: none;
+            mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, black, transparent 80%);
+            -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, black, transparent 80%);
         }
         .hero-inner { max-width: var(--maxw); margin: 0 auto; position: relative; }
         .hero-grid {
@@ -154,23 +195,38 @@
             align-items: start;
         }
         .hero-photo { position: relative; }
+        .hero-photo::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, var(--c-glow-cyan), var(--c-glow-blue), var(--c-glow-purple));
+            z-index: 0;
+            opacity: 0.35;
+            filter: blur(8px);
+        }
         .hero-photo img {
             width: 180px; height: 180px;
             object-fit: cover;
-            border-radius: 12px;
-            box-shadow: var(--shadow-md);
+            border-radius: 14px;
+            box-shadow: 0 4px 24px rgba(37,99,235,0.15), 0 8px 32px rgba(0,0,0,0.08);
+            position: relative;
+            z-index: 1;
         }
         .hero-identity-tag {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
             padding: 0.35rem 0.85rem;
-            background: var(--c-accent-soft);
+            background: rgba(37,99,235,0.08);
             color: var(--c-accent);
+            border: 1px solid rgba(37,99,235,0.2);
             border-radius: 20px;
             font-size: 0.8rem;
             font-weight: 600;
             margin-bottom: 1.25rem;
+            box-shadow: 0 0 16px rgba(37,99,235,0.06);
+            white-space: nowrap;
         }
         .hero-identity-tag i { font-size: 0.75rem; }
         .hero h1 {
@@ -181,6 +237,7 @@
             color: var(--c-text);
             letter-spacing: -0.02em;
             margin-bottom: 0.75rem;
+            white-space: nowrap;
         }
         .hero h1 .zh { font-weight: 500; color: var(--c-text-light); font-size: 1.4rem; }
         .hero-statement {
@@ -192,7 +249,11 @@
             max-width: 720px;
             margin-bottom: 1.5rem;
             padding-left: 1rem;
-            border-left: 3px solid var(--c-accent);
+            border-left: 3px solid;
+            border-image: linear-gradient(to bottom, var(--c-glow-blue), var(--c-glow-purple)) 1;
+            text-align: justify;
+            text-align-last: left;
+            hyphens: manual;
         }
         .hero-meta {
             font-size: 0.9rem;
@@ -219,11 +280,24 @@
             border-radius: 8px;
             font-size: 0.85rem; font-weight: 500;
             color: var(--c-text-body);
-            transition: all .2s;
+            transition: all .25s;
+            background: rgba(255,255,255,0.5);
         }
-        .hero-link:hover { border-color: var(--c-accent); color: var(--c-accent); background: var(--c-accent-soft); }
-        .hero-link.primary { background: var(--c-accent); color: #fff; border-color: var(--c-accent); }
-        .hero-link.primary:hover { background: var(--c-accent-light); }
+        .hero-link:hover {
+            border-color: var(--c-accent);
+            color: var(--c-accent);
+            background: var(--c-accent-soft);
+            box-shadow: 0 2px 12px rgba(37,99,235,0.1);
+        }
+        .hero-link.primary {
+            background: linear-gradient(135deg, rgba(37,99,235,0.12), rgba(124,58,237,0.12));
+            color: var(--c-accent);
+            border-color: rgba(37,99,235,0.3);
+        }
+        .hero-link.primary:hover {
+            background: linear-gradient(135deg, rgba(37,99,235,0.18), rgba(124,58,237,0.18));
+            box-shadow: 0 2px 16px rgba(37,99,235,0.15);
+        }
 
         /* ===== Section ===== */
         .section { padding: 3.5rem 2rem; border-bottom: 1px solid var(--c-border); }
@@ -232,6 +306,7 @@
             font-size: 1.5rem; font-weight: 700; color: var(--c-text);
             letter-spacing: -0.01em;
             display: flex; align-items: center; gap: 0.6rem;
+            white-space: nowrap;
         }
         .section-head h2 i { color: var(--c-accent); font-size: 1.2rem; }
         .section-head .subtitle {
@@ -241,23 +316,50 @@
 
         /* ===== Research Framework Diagram ===== */
         .framework-wrap {
-            background: var(--c-bg-soft);
-            border: 1px solid var(--c-border);
+            background: linear-gradient(135deg, rgba(37,99,235,0.04) 0%, rgba(124,58,237,0.03) 50%, rgba(8,145,178,0.04) 100%);
+            border: 1px solid rgba(37,99,235,0.12);
             border-radius: var(--radius-lg);
-            padding: 2.5rem 2rem;
+            padding: 3rem 2rem 2.5rem;
             margin-bottom: 2rem;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 8px 40px rgba(37,99,235,0.06), inset 0 1px 0 rgba(255,255,255,0.6);
+            position: relative;
+            overflow: hidden;
+        }
+        .framework-wrap::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(circle at 15% 20%, rgba(37,99,235,0.05), transparent 40%),
+                radial-gradient(circle at 85% 80%, rgba(124,58,237,0.04), transparent 40%);
+            pointer-events: none;
         }
         .framework-title {
             text-align: center;
             font-size: 1.3rem; font-weight: 700; color: var(--c-text);
             margin-bottom: 0.25rem;
+            position: relative;
+            white-space: nowrap;
         }
         .framework-subtitle {
             text-align: center;
             font-size: 0.9rem; color: var(--c-text-light);
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            white-space: nowrap;
         }
-        .framework-svg { width: 100%; max-width: 760px; margin: 0 auto; display: block; }
+        .framework-svg { width: 100%; max-width: 800px; margin: 0 auto; display: block; position: relative; }
+
+        /* Framework animations */
+        @keyframes fb-flow { to { stroke-dashoffset: -20; } }
+        @keyframes fb-pulse { 0%,100% { opacity: 0.35; } 50% { opacity: 1; } }
+        @keyframes fb-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
+        .fb-flow-line { stroke-dasharray: 5 5; animation: fb-flow 1.2s linear infinite; }
+        .fb-flow-line-2 { stroke-dasharray: 5 5; animation: fb-flow 1.5s linear infinite; }
+        .fb-pulse-dot { animation: fb-pulse 2s ease-in-out infinite; }
+        .fb-core-group { animation: fb-float 4s ease-in-out infinite; transform-origin: center; }
 
         /* ===== Research Theme Cards ===== */
         .themes-grid {
@@ -266,15 +368,22 @@
             gap: 1.5rem;
         }
         .theme-card {
-            background: var(--c-bg);
+            background: var(--c-bg-card);
             border: 1px solid var(--c-border);
             border-radius: var(--radius-lg);
             padding: 1.75rem;
-            transition: all .25s;
+            transition: all .3s;
             display: flex;
             flex-direction: column;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-card);
         }
-        .theme-card:hover { box-shadow: var(--shadow-md); border-color: var(--c-border-strong); }
+        .theme-card:hover {
+            box-shadow: var(--shadow-card-hover);
+            border-color: var(--c-border-strong);
+            transform: translateY(-4px);
+        }
         .theme-card-head {
             display: flex; align-items: center; gap: 0.75rem;
             margin-bottom: 1rem;
@@ -288,16 +397,18 @@
             font-size: 1.1rem;
             flex-shrink: 0;
         }
-        .theme-icon.t1 { background: var(--c-accent-soft); color: var(--c-accent); }
-        .theme-icon.t2 { background: var(--c-teal-soft); color: var(--c-teal); }
-        .theme-icon.t3 { background: var(--c-amber-soft); color: var(--c-amber); }
-        .theme-card h3 { font-size: 1.1rem; font-weight: 700; color: var(--c-text); line-height: 1.3; }
+        .theme-icon.t1 { background: rgba(37,99,235,0.1); color: var(--c-accent); }
+        .theme-icon.t2 { background: rgba(8,145,178,0.1); color: var(--c-teal); }
+        .theme-icon.t3 { background: rgba(217,119,6,0.1); color: var(--c-amber); }
+        .theme-card h3 { font-size: 1.1rem; font-weight: 700; color: var(--c-text); line-height: 1.3; text-wrap: balance; }
         .theme-question {
             font-size: 0.85rem;
             color: var(--c-text-light);
             font-style: italic;
             margin-bottom: 1rem;
             line-height: 1.5;
+            text-align: justify;
+            text-align-last: left;
         }
         .theme-keywords {
             display: flex; flex-wrap: wrap; gap: 0.35rem;
@@ -307,12 +418,12 @@
             font-size: 0.72rem; font-weight: 600;
             padding: 0.2rem 0.55rem;
             border-radius: 4px;
-            background: var(--c-bg-muted);
+            background: rgba(240,244,255,0.5);
             color: var(--c-text-light);
         }
-        .theme-keyword.k1 { background: var(--c-accent-soft); color: var(--c-accent); }
-        .theme-keyword.k2 { background: var(--c-teal-soft); color: var(--c-teal); }
-        .theme-keyword.k3 { background: var(--c-amber-soft); color: var(--c-amber); }
+        .theme-keyword.k1 { background: rgba(37,99,235,0.08); color: var(--c-accent); }
+        .theme-keyword.k2 { background: rgba(8,145,178,0.08); color: var(--c-teal); }
+        .theme-keyword.k3 { background: rgba(217,119,6,0.08); color: var(--c-amber); }
         .theme-apps {
             font-size: 0.82rem;
             color: var(--c-text-body);
@@ -320,22 +431,26 @@
         }
         .theme-apps strong { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--c-text-faint); display: block; margin-bottom: 0.35rem; }
 
-        /* ===== Financial Space Intelligence Callout ===== */
+        /* ===== Financial Intelligence Callout ===== */
         .fsi-callout {
-            background: linear-gradient(135deg, var(--c-bg-soft) 0%, var(--c-accent-soft) 100%);
+            background: linear-gradient(135deg, rgba(37,99,235,0.04) 0%, rgba(124,58,237,0.04) 100%);
             border: 1px solid var(--c-border);
             border-left: 4px solid var(--c-accent);
             border-radius: var(--radius);
             padding: 1.75rem 2rem;
             margin-top: 2rem;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-card);
         }
         .fsi-callout h3 {
             font-size: 1.15rem; font-weight: 700; color: var(--c-text);
             margin-bottom: 0.75rem;
             display: flex; align-items: center; gap: 0.5rem;
+            white-space: nowrap;
         }
         .fsi-callout h3 i { color: var(--c-accent); }
-        .fsi-callout p { font-size: 0.9rem; line-height: 1.7; color: var(--c-text-body); }
+        .fsi-callout p { font-size: 0.9rem; line-height: 1.7; color: var(--c-text-body); text-align: justify; text-align-last: left; hyphens: manual; }
         .fsi-callout .fsi-tags {
             display: flex; flex-wrap: wrap; gap: 0.5rem;
             margin-top: 1rem;
@@ -344,8 +459,9 @@
             font-size: 0.78rem; font-weight: 600;
             padding: 0.25rem 0.7rem;
             border-radius: 6px;
-            background: rgba(30,64,175,0.08);
+            background: rgba(37,99,235,0.08);
             color: var(--c-accent);
+            border: 1px solid rgba(37,99,235,0.12);
         }
 
         /* ===== Publications ===== */
@@ -354,7 +470,8 @@
             display: flex; align-items: center; gap: 0.6rem;
             margin-bottom: 1.25rem;
             padding-bottom: 0.6rem;
-            border-bottom: 2px solid var(--c-border);
+            border-bottom: 2px solid;
+            border-image: linear-gradient(to right, var(--c-border-strong), transparent) 1;
         }
         .pub-theme-head .badge {
             width: 32px; height: 32px;
@@ -362,10 +479,10 @@
             display: flex; align-items: center; justify-content: center;
             font-size: 0.85rem;
         }
-        .pub-theme-head .badge.b1 { background: var(--c-accent-soft); color: var(--c-accent); }
-        .pub-theme-head .badge.b2 { background: var(--c-teal-soft); color: var(--c-teal); }
-        .pub-theme-head .badge.b3 { background: var(--c-amber-soft); color: var(--c-amber); }
-        .pub-theme-head h3 { font-size: 1.1rem; font-weight: 700; color: var(--c-text); }
+        .pub-theme-head .badge.b1 { background: rgba(37,99,235,0.1); color: var(--c-accent); }
+        .pub-theme-head .badge.b2 { background: rgba(8,145,178,0.1); color: var(--c-teal); }
+        .pub-theme-head .badge.b3 { background: rgba(217,119,6,0.1); color: var(--c-amber); }
+        .pub-theme-head h3 { font-size: 1.1rem; font-weight: 700; color: var(--c-text); white-space: nowrap; }
         .pub-theme-head .desc { font-size: 0.82rem; color: var(--c-text-light); margin-left: auto; }
         .pub-type-label {
             font-size: 0.78rem; font-weight: 600; text-transform: uppercase;
@@ -378,7 +495,12 @@
             border-bottom: 1px solid var(--c-border);
             font-size: 0.9rem; line-height: 1.65;
             color: var(--c-text-body);
+            transition: padding-left .2s;
+            text-align: justify;
+            text-align-last: left;
+            hyphens: manual;
         }
+        .pub-list li:hover { padding-left: 0.5rem; }
         .pub-list li:last-child { border-bottom: none; }
         .pub-list li strong { color: var(--c-text); font-weight: 700; }
         .pub-list li em { color: var(--c-text-light); }
@@ -391,15 +513,14 @@
             text-transform: uppercase; letter-spacing: 0.04em;
             margin-left: 0.3rem; vertical-align: middle;
         }
-        .tag-oral { background: var(--c-amber-soft); color: var(--c-amber); }
-        .tag-award { background: var(--c-rose-soft); color: var(--c-rose); }
-        .tag-accepted { background: var(--c-emerald-soft); color: var(--c-emerald); }
+        .tag-oral { background: rgba(217,119,6,0.1); color: var(--c-amber); }
+        .tag-award { background: rgba(219,39,119,0.1); color: var(--c-rose); }
+        .tag-accepted { background: rgba(5,150,105,0.1); color: var(--c-emerald); }
         .pub-venue { font-weight: 600; color: var(--c-accent); }
 
         /* ===== Future Vision ===== */
         .future-section {
-            background: var(--c-bg-soft);
-            border-bottom: 1px solid var(--c-border);
+            background: linear-gradient(180deg, transparent 0%, rgba(37,99,235,0.03) 50%, transparent 100%);
         }
         .future-quote {
             font-family: 'Lora', Georgia, serif;
@@ -412,8 +533,8 @@
             text-align: center;
             padding: 0 1rem;
         }
-        .future-quote::before { content: '\201C'; font-size: 3rem; color: var(--c-accent); opacity: 0.2; line-height: 0; vertical-align: -0.4em; margin-right: 0.2em; }
-        .future-quote::after { content: '\201D'; font-size: 3rem; color: var(--c-accent); opacity: 0.2; line-height: 0; vertical-align: -0.4em; margin-left: 0.1em; }
+        .future-quote::before { content: '\201C'; font-size: 3rem; color: var(--c-accent); opacity: 0.3; line-height: 0; vertical-align: -0.4em; margin-right: 0.2em; }
+        .future-quote::after { content: '\201D'; font-size: 3rem; color: var(--c-accent); opacity: 0.3; line-height: 0; vertical-align: -0.4em; margin-left: 0.1em; }
         .future-tags {
             display: flex; flex-wrap: wrap; gap: 0.6rem;
             justify-content: center;
@@ -421,11 +542,18 @@
         .future-tag {
             display: inline-flex; align-items: center; gap: 0.4rem;
             padding: 0.4rem 0.9rem;
-            background: var(--c-bg);
-            border: 1px solid var(--c-border);
+            background: var(--c-bg-card);
+            border: 1px solid var(--c-border-strong);
             border-radius: 20px;
             font-size: 0.82rem; font-weight: 500;
             color: var(--c-text-body);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            transition: all .25s;
+        }
+        .future-tag:hover {
+            border-color: var(--c-accent);
+            box-shadow: 0 2px 12px rgba(37,99,235,0.1);
         }
         .future-tag i { color: var(--c-accent); font-size: 0.75rem; }
 
@@ -439,20 +567,25 @@
         }
         .news-list li:last-child { border-bottom: none; }
         .news-list li i { color: var(--c-amber); margin-top: 0.2rem; flex-shrink: 0; }
+        .news-list li span { text-align: justify; text-align-last: left; hyphens: manual; }
         .news-list a { font-weight: 600; }
 
         /* ===== Generic lists ===== */
         .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
         .info-card {
-            background: var(--c-bg);
+            background: var(--c-bg-card);
             border: 1px solid var(--c-border);
             border-radius: var(--radius);
             padding: 1.5rem;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-card);
         }
         .info-card h3 {
             font-size: 0.95rem; font-weight: 700; color: var(--c-text);
             margin-bottom: 1rem;
             display: flex; align-items: center; gap: 0.5rem;
+            white-space: nowrap;
         }
         .info-card h3 i { color: var(--c-accent); font-size: 0.85rem; }
         .info-list { list-style: none; }
@@ -478,10 +611,12 @@
 
         /* ===== Footer ===== */
         .footer {
-            background: var(--c-bg-soft);
+            background: rgba(240,244,255,0.6);
             border-top: 1px solid var(--c-border);
             padding: 2.5rem 2rem 2rem;
             text-align: center;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
         .footer-inner { max-width: var(--maxw); margin: 0 auto; }
         .footer-visitor { margin-bottom: 1rem; display: inline-block; }
@@ -493,18 +628,23 @@
             position: fixed; bottom: 1.5rem; right: 1.5rem;
             width: 40px; height: 40px;
             border-radius: 50%;
-            background: var(--c-text);
-            color: #fff; border: none;
+            background: rgba(37,99,235,0.1);
+            color: var(--c-accent); border: 1px solid rgba(37,99,235,0.2);
             cursor: pointer;
             display: flex; align-items: center; justify-content: center;
             font-size: 0.9rem;
             opacity: 0; visibility: hidden;
             transition: all .3s;
             z-index: 999;
-            box-shadow: var(--shadow-md);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
         .back-top.visible { opacity: 1; visibility: visible; }
-        .back-top:hover { background: var(--c-accent); transform: translateY(-2px); }
+        .back-top:hover {
+            background: rgba(37,99,235,0.2);
+            box-shadow: 0 2px 16px rgba(37,99,235,0.15);
+            transform: translateY(-2px);
+        }
 
         /* ===== Responsive ===== */
         @media (max-width: 900px) {
@@ -519,8 +659,10 @@
             .topnav-links.open {
                 display: flex; flex-direction: column;
                 position: absolute; top: var(--nav-h); left: 0; right: 0;
-                background: #fff; border-bottom: 1px solid var(--c-border);
+                background: rgba(240,244,255,0.95); border-bottom: 1px solid var(--c-border);
                 padding: 0.5rem 1rem; gap: 0;
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
             }
             .topnav-links.open a { padding: 0.75rem 1rem; border-radius: 0; }
             .mobile-menu-btn { display: block; }
@@ -530,15 +672,23 @@
             .section { padding: 2.5rem 1rem; }
             .framework-wrap { padding: 1.5rem 0.5rem; }
             .pub-theme-head .desc { display: none; }
+            .framework-title, .framework-subtitle,
+            .hero-identity-tag, .hero h1 { white-space: normal; }
         }
         @media print {
             .topnav, .back-top { display: none !important; }
+            #starfield, .nebula-bg { display: none !important; }
             main { padding-top: 0; }
+            body { background: #fff; color: #000; }
         }
         a:focus-visible, button:focus-visible { outline: 2px solid var(--c-accent); outline-offset: 2px; }
     </style>
 </head>
 <body>
+
+<!-- ===== Starfield Background ===== -->
+<canvas id="starfield"></canvas>
+<div class="nebula-bg"></div>
 
 <!-- ===== Top Navigation ===== -->
 <nav class="topnav">
@@ -572,7 +722,7 @@
     <div class="hero-inner">
         <div class="hero-grid">
             <div class="hero-photo">
-                <img src="img/qg.jpg" alt="Dr. Qiang Gao">
+                <img src="img/qianggao.jpg" alt="Dr. Qiang Gao">
             </div>
             <div class="hero-info">
                 <div class="hero-identity-tag">
@@ -612,86 +762,237 @@
     <div class="container">
         <div class="section-head">
             <h2><i class="fas fa-project-diagram"></i> Research Overview</h2>
-            <p class="subtitle">Three interconnected pillars forming a unified research identity</p>
         </div>
 
         <!-- Framework Diagram -->
         <div class="framework-wrap">
             <div class="framework-title">Open-World Trustworthy Spatio-Temporal Intelligence</div>
             <div class="framework-subtitle">A unified framework integrating perception, adaptation, and trust</div>
-            <svg class="framework-svg" viewBox="0 0 760 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Research framework diagram">
+            <svg class="framework-svg" viewBox="0 0 800 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Research framework diagram">
                 <defs>
-                    <style>
-                        .fb-text { font-family: 'Inter', sans-serif; text-anchor: middle; }
-                        .fb-title { font-size: 13px; font-weight: 700; fill: #0f172a; }
-                        .fb-sub { font-size: 9.5px; fill: #64748b; }
-                        .fb-line { stroke: #cbd5e1; stroke-width: 1.5; fill: none; }
-                        .fb-box { rx: 8; }
-                    </style>
+                    <!-- Core node gradients -->
+                    <linearGradient id="g-core-front" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.18"/>
+                        <stop offset="100%" stop-color="#2563eb" stop-opacity="0.08"/>
+                    </linearGradient>
+                    <linearGradient id="g-core-top" x1="0" y1="0" x2="1" y2="0">
+                        <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.3"/>
+                        <stop offset="100%" stop-color="#818cf8" stop-opacity="0.2"/>
+                    </linearGradient>
+                    <linearGradient id="g-core-side" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#2563eb" stop-opacity="0.15"/>
+                        <stop offset="100%" stop-color="#1e40af" stop-opacity="0.06"/>
+                    </linearGradient>
+
+                    <!-- Pillar 1: Blue -->
+                    <linearGradient id="g-p1-front" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.12"/>
+                        <stop offset="100%" stop-color="#2563eb" stop-opacity="0.04"/>
+                    </linearGradient>
+                    <linearGradient id="g-p1-top" x1="0" y1="0" x2="1" y2="0">
+                        <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.25"/>
+                        <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.15"/>
+                    </linearGradient>
+                    <linearGradient id="g-p1-side" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#2563eb" stop-opacity="0.12"/>
+                        <stop offset="100%" stop-color="#1e40af" stop-opacity="0.04"/>
+                    </linearGradient>
+
+                    <!-- Pillar 2: Teal -->
+                    <linearGradient id="g-p2-front" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.12"/>
+                        <stop offset="100%" stop-color="#0891b2" stop-opacity="0.04"/>
+                    </linearGradient>
+                    <linearGradient id="g-p2-top" x1="0" y1="0" x2="1" y2="0">
+                        <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.25"/>
+                        <stop offset="100%" stop-color="#06b6d4" stop-opacity="0.15"/>
+                    </linearGradient>
+                    <linearGradient id="g-p2-side" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#0891b2" stop-opacity="0.12"/>
+                        <stop offset="100%" stop-color="#0e7490" stop-opacity="0.04"/>
+                    </linearGradient>
+
+                    <!-- Pillar 3: Amber -->
+                    <linearGradient id="g-p3-front" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.12"/>
+                        <stop offset="100%" stop-color="#d97706" stop-opacity="0.04"/>
+                    </linearGradient>
+                    <linearGradient id="g-p3-top" x1="0" y1="0" x2="1" y2="0">
+                        <stop offset="0%" stop-color="#fbbf24" stop-opacity="0.25"/>
+                        <stop offset="100%" stop-color="#f59e0b" stop-opacity="0.15"/>
+                    </linearGradient>
+                    <linearGradient id="g-p3-side" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#d97706" stop-opacity="0.12"/>
+                        <stop offset="100%" stop-color="#b45309" stop-opacity="0.04"/>
+                    </linearGradient>
+
+                    <!-- App boxes: Slate -->
+                    <linearGradient id="g-app-front" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#475569" stop-opacity="0.08"/>
+                        <stop offset="100%" stop-color="#334155" stop-opacity="0.03"/>
+                    </linearGradient>
+                    <linearGradient id="g-app-top" x1="0" y1="0" x2="1" y2="0">
+                        <stop offset="0%" stop-color="#64748b" stop-opacity="0.18"/>
+                        <stop offset="100%" stop-color="#475569" stop-opacity="0.1"/>
+                    </linearGradient>
+                    <linearGradient id="g-app-side" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#334155" stop-opacity="0.1"/>
+                        <stop offset="100%" stop-color="#1e293b" stop-opacity="0.03"/>
+                    </linearGradient>
+
+                    <!-- LLM: Purple -->
+                    <linearGradient id="g-llm-front" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.1"/>
+                        <stop offset="100%" stop-color="#7c3aed" stop-opacity="0.03"/>
+                    </linearGradient>
+                    <linearGradient id="g-llm-top" x1="0" y1="0" x2="1" y2="0">
+                        <stop offset="0%" stop-color="#a78bfa" stop-opacity="0.22"/>
+                        <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0.12"/>
+                    </linearGradient>
+                    <linearGradient id="g-llm-side" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#7c3aed" stop-opacity="0.1"/>
+                        <stop offset="100%" stop-color="#6d28d9" stop-opacity="0.03"/>
+                    </linearGradient>
+
+                    <!-- Glow filter -->
+                    <filter id="fb-glow" x="-30%" y="-30%" width="160%" height="160%">
+                        <feGaussianBlur stdDeviation="3" result="blur"/>
+                        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                    </filter>
+                    <!-- Soft shadow filter -->
+                    <filter id="fb-shadow" x="-20%" y="-10%" width="140%" height="130%">
+                        <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#1e3a5f" flood-opacity="0.08"/>
+                    </filter>
                 </defs>
-                <!-- Top node -->
-                <rect x="220" y="10" width="320" height="48" rx="8" fill="#1e40af" />
-                <text x="380" y="30" class="fb-text" fill="#fff" style="font-size:11px;font-weight:700;">Open-World Trustworthy</text>
-                <text x="380" y="46" class="fb-text" fill="#bfdbfe" style="font-size:11px;font-weight:600;">Spatio-Temporal Intelligence</text>
 
-                <!-- Connecting lines -->
-                <path d="M 380 58 L 380 80" class="fb-line" />
-                <path d="M 140 80 L 620 80" class="fb-line" />
-                <path d="M 140 80 L 140 100" class="fb-line" />
-                <path d="M 380 80 L 380 100" class="fb-line" />
-                <path d="M 620 80 L 620 100" class="fb-line" />
+                <!-- ===== Background decorative particles ===== -->
+                <circle cx="60" cy="50" r="1.5" fill="#2563eb" opacity="0.15"/>
+                <circle cx="740" cy="40" r="1" fill="#7c3aed" opacity="0.12"/>
+                <circle cx="700" cy="200" r="1.2" fill="#0891b2" opacity="0.1"/>
+                <circle cx="40" cy="180" r="1" fill="#2563eb" opacity="0.1"/>
+                <circle cx="750" cy="350" r="1.3" fill="#d97706" opacity="0.08"/>
+                <circle cx="30" cy="380" r="1" fill="#7c3aed" opacity="0.1"/>
+                <circle cx="400" cy="450" r="1.2" fill="#2563eb" opacity="0.08"/>
 
-                <!-- Pillar 1: Dynamic World Modeling -->
-                <rect x="20" y="100" width="240" height="120" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1" />
-                <text x="140" y="122" class="fb-text fb-title">Dynamic World Modeling</text>
-                <text x="140" y="140" class="fb-text fb-sub">How can AI understand and</text>
-                <text x="140" y="152" class="fb-text fb-sub">represent complex real-world</text>
-                <text x="140" y="164" class="fb-text fb-sub">systems evolving across space</text>
-                <text x="140" y="176" class="fb-text fb-sub">and time?</text>
-                <text x="140" y="196" class="fb-text" style="font-size:9px;fill:#1e40af;font-weight:600;">Spatial AI · Temporal AI</text>
-                <text x="140" y="208" class="fb-text" style="font-size:9px;fill:#1e40af;font-weight:600;">Multimodal AI · World Models</text>
+                <!-- ===== Core Node (3D) ===== -->
+                <g class="fb-core-group">
+                    <!-- Drop shadow -->
+                    <ellipse cx="400" cy="82" rx="175" ry="6" fill="rgba(37,99,235,0.06)"/>
+                    <!-- Top face -->
+                    <polygon points="240,25 252,13 572,13 560,25" fill="url(#g-core-top)" stroke="rgba(59,130,246,0.35)" stroke-width="0.8"/>
+                    <!-- Right face -->
+                    <polygon points="560,25 572,13 572,63 560,75" fill="url(#g-core-side)" stroke="rgba(37,99,235,0.3)" stroke-width="0.8"/>
+                    <!-- Front face -->
+                    <rect x="240" y="25" width="320" height="50" rx="6" fill="url(#g-core-front)" stroke="#2563eb" stroke-width="1.5" filter="url(#fb-glow)"/>
+                    <!-- Top highlight line -->
+                    <line x1="246" y1="28" x2="554" y2="28" stroke="rgba(96,165,250,0.4)" stroke-width="1"/>
+                    <!-- Text -->
+                    <text x="400" y="46" font-family="Inter,sans-serif" text-anchor="middle" fill="#2563eb" style="font-size:12px;font-weight:700;">Open-World Trustworthy</text>
+                    <text x="400" y="62" font-family="Inter,sans-serif" text-anchor="middle" fill="#7c3aed" style="font-size:12px;font-weight:600;">Spatio-Temporal Intelligence</text>
+                </g>
 
-                <!-- Pillar 2: Continuous Adaptation -->
-                <rect x="260" y="100" width="240" height="120" rx="8" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1" />
-                <text x="380" y="122" class="fb-text fb-title">Continuous Adaptation</text>
-                <text x="380" y="140" class="fb-text fb-sub">How can AI continuously adapt</text>
-                <text x="380" y="152" class="fb-text fb-sub">to new environments, emerging</text>
-                <text x="380" y="164" class="fb-text fb-sub">knowledge, and evolving tasks</text>
-                <text x="380" y="176" class="fb-text fb-sub">without catastrophic forgetting?</text>
-                <text x="380" y="196" class="fb-text" style="font-size:9px;fill:#0d9488;font-weight:600;">Continual Learning · Open-world</text>
-                <text x="380" y="208" class="fb-text" style="font-size:9px;fill:#0d9488;font-weight:600;">Knowledge Evolution · Lifelong AI</text>
+                <!-- ===== Flow lines: Core → Pillars (animated) ===== -->
+                <path d="M 400 75 L 400 95" stroke="#2563eb" stroke-width="2" fill="none" class="fb-flow-line" opacity="0.5"/>
+                <path d="M 140 95 L 660 95" stroke="#2563eb" stroke-width="2" fill="none" class="fb-flow-line" opacity="0.5"/>
+                <path d="M 140 95 L 140 120" stroke="#2563eb" stroke-width="2" fill="none" class="fb-flow-line" opacity="0.5"/>
+                <path d="M 400 95 L 400 120" stroke="#2563eb" stroke-width="2" fill="none" class="fb-flow-line" opacity="0.5"/>
+                <path d="M 660 95 L 660 120" stroke="#2563eb" stroke-width="2" fill="none" class="fb-flow-line" opacity="0.5"/>
 
-                <!-- Pillar 3: Trustworthy Decision Making -->
-                <rect x="500" y="100" width="240" height="120" rx="8" fill="#fffbeb" stroke="#fde68a" stroke-width="1" />
-                <text x="620" y="122" class="fb-text fb-title">Trustworthy Decision Making</text>
-                <text x="620" y="140" class="fb-text fb-sub">How can AI provide reliable,</text>
-                <text x="620" y="152" class="fb-text fb-sub">explainable, and causally</text>
-                <text x="620" y="164" class="fb-text fb-sub">grounded decisions in</text>
-                <text x="620" y="176" class="fb-text fb-sub">high-stakes domains?</text>
-                <text x="620" y="196" class="fb-text" style="font-size:9px;fill:#b45309;font-weight:600;">Causal AI · Explainable AI</text>
-                <text x="620" y="208" class="fb-text" style="font-size:9px;fill:#b45309;font-weight:600;">Risk-aware AI · Decision Intel.</text>
+                <!-- Junction dots (pulsing) -->
+                <circle cx="400" cy="95" r="4" fill="#2563eb" class="fb-pulse-dot"/>
+                <circle cx="140" cy="95" r="3.5" fill="#3b82f6" class="fb-pulse-dot" style="animation-delay:0.3s"/>
+                <circle cx="660" cy="95" r="3.5" fill="#3b82f6" class="fb-pulse-dot" style="animation-delay:0.6s"/>
 
-                <!-- Connecting lines down -->
-                <path d="M 140 220 L 140 250" class="fb-line" />
-                <path d="M 380 220 L 380 250" class="fb-line" />
-                <path d="M 620 220 L 620 250" class="fb-line" />
-                <path d="M 140 250 L 620 250" class="fb-line" />
-                <path d="M 380 250 L 380 270" class="fb-line" />
+                <!-- ===== Pillar 1: Dynamic World Modeling (3D Blue) ===== -->
+                <ellipse cx="140" cy="272" rx="135" ry="7" fill="rgba(37,99,235,0.05)"/>
+                <polygon points="20,130 30,120 270,120 260,130" fill="url(#g-p1-top)" stroke="rgba(59,130,246,0.3)" stroke-width="0.8"/>
+                <polygon points="260,130 270,120 270,255 260,265" fill="url(#g-p1-side)" stroke="rgba(37,99,235,0.25)" stroke-width="0.8"/>
+                <rect x="20" y="130" width="240" height="135" rx="8" fill="url(#g-p1-front)" stroke="rgba(37,99,235,0.3)" stroke-width="1.2" filter="url(#fb-shadow)"/>
+                <line x1="26" y1="134" x2="254" y2="134" stroke="rgba(96,165,250,0.35)" stroke-width="1"/>
+                <text x="140" y="153" font-family="Inter,sans-serif" text-anchor="middle" fill="#0f1e3d" style="font-size:13px;font-weight:700;">Dynamic World Modeling</text>
+                <text x="140" y="171" font-family="Inter,sans-serif" text-anchor="middle" fill="#647088" style="font-size:9.5px;">How can AI understand and</text>
+                <text x="140" y="183" font-family="Inter,sans-serif" text-anchor="middle" fill="#647088" style="font-size:9.5px;">represent complex real-world</text>
+                <text x="140" y="195" font-family="Inter,sans-serif" text-anchor="middle" fill="#647088" style="font-size:9.5px;">systems evolving across spatial,</text>
+                <text x="140" y="207" font-family="Inter,sans-serif" text-anchor="middle" fill="#647088" style="font-size:9.5px;">temporal, and relational dimensions?</text>
+                <text x="140" y="228" font-family="Inter,sans-serif" text-anchor="middle" fill="#2563eb" style="font-size:9px;font-weight:600;">Spatial AI · Temporal AI</text>
+                <text x="140" y="240" font-family="Inter,sans-serif" text-anchor="middle" fill="#2563eb" style="font-size:9px;font-weight:600;">Multimodal AI · World Models</text>
+                <!-- Pillar number badge -->
+                <circle cx="245" cy="145" r="10" fill="rgba(37,99,235,0.12)" stroke="rgba(37,99,235,0.3)" stroke-width="1"/>
+                <text x="245" y="149" font-family="Inter,sans-serif" text-anchor="middle" fill="#2563eb" style="font-size:10px;font-weight:700;">1</text>
 
-                <!-- Application domains -->
-                <rect x="100" y="270" width="240" height="56" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
-                <text x="220" y="292" class="fb-text" style="font-size:10px;font-weight:700;fill:#334155;">Urban Intelligence</text>
-                <text x="220" y="308" class="fb-text fb-sub">Mobility · Traffic · Spatial Services</text>
+                <!-- ===== Pillar 2: Continuous Adaptation (3D Teal) ===== -->
+                <ellipse cx="400" cy="272" rx="135" ry="7" fill="rgba(8,145,178,0.05)"/>
+                <polygon points="280,130 290,120 530,120 520,130" fill="url(#g-p2-top)" stroke="rgba(34,211,238,0.3)" stroke-width="0.8"/>
+                <polygon points="520,130 530,120 530,255 520,265" fill="url(#g-p2-side)" stroke="rgba(8,145,178,0.25)" stroke-width="0.8"/>
+                <rect x="280" y="130" width="240" height="135" rx="8" fill="url(#g-p2-front)" stroke="rgba(8,145,178,0.3)" stroke-width="1.2" filter="url(#fb-shadow)"/>
+                <line x1="286" y1="134" x2="514" y2="134" stroke="rgba(34,211,238,0.35)" stroke-width="1"/>
+                <text x="400" y="153" font-family="Inter,sans-serif" text-anchor="middle" fill="#0f1e3d" style="font-size:13px;font-weight:700;">Continuous Adaptation</text>
+                <text x="400" y="171" font-family="Inter,sans-serif" text-anchor="middle" fill="#647088" style="font-size:9.5px;">How can AI continuously adapt</text>
+                <text x="400" y="183" font-family="Inter,sans-serif" text-anchor="middle" fill="#647088" style="font-size:9.5px;">to new environments, emerging</text>
+                <text x="400" y="195" font-family="Inter,sans-serif" text-anchor="middle" fill="#647088" style="font-size:9.5px;">knowledge, and evolving tasks</text>
+                <text x="400" y="207" font-family="Inter,sans-serif" text-anchor="middle" fill="#647088" style="font-size:9.5px;">without catastrophic forgetting?</text>
+                <text x="400" y="228" font-family="Inter,sans-serif" text-anchor="middle" fill="#0891b2" style="font-size:9px;font-weight:600;">Continual Learning · Open-world</text>
+                <text x="400" y="240" font-family="Inter,sans-serif" text-anchor="middle" fill="#0891b2" style="font-size:9px;font-weight:600;">Knowledge Evolution · Lifelong AI</text>
+                <circle cx="505" cy="145" r="10" fill="rgba(8,145,178,0.12)" stroke="rgba(8,145,178,0.3)" stroke-width="1"/>
+                <text x="505" y="149" font-family="Inter,sans-serif" text-anchor="middle" fill="#0891b2" style="font-size:10px;font-weight:700;">2</text>
 
-                <rect x="420" y="270" width="240" height="56" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
-                <text x="540" y="292" class="fb-text" style="font-size:10px;font-weight:700;fill:#334155;">Financial Space Intelligence</text>
-                <text x="540" y="308" class="fb-text fb-sub">Markets · Enterprise · Economic Systems</text>
+                <!-- ===== Pillar 3: Trustworthy Decision Making (3D Amber) ===== -->
+                <ellipse cx="660" cy="272" rx="135" ry="7" fill="rgba(217,119,6,0.05)"/>
+                <polygon points="540,130 550,120 790,120 780,130" fill="url(#g-p3-top)" stroke="rgba(251,191,36,0.3)" stroke-width="0.8"/>
+                <polygon points="780,130 790,120 790,255 780,265" fill="url(#g-p3-side)" stroke="rgba(217,119,6,0.25)" stroke-width="0.8"/>
+                <rect x="540" y="130" width="240" height="135" rx="8" fill="url(#g-p3-front)" stroke="rgba(217,119,6,0.3)" stroke-width="1.2" filter="url(#fb-shadow)"/>
+                <line x1="546" y1="134" x2="774" y2="134" stroke="rgba(251,191,36,0.35)" stroke-width="1"/>
+                <text x="660" y="153" font-family="Inter,sans-serif" text-anchor="middle" fill="#0f1e3d" style="font-size:13px;font-weight:700;">Trustworthy Decision Making</text>
+                <text x="660" y="171" font-family="Inter,sans-serif" text-anchor="middle" fill="#647088" style="font-size:9.5px;">How can AI provide reliable,</text>
+                <text x="660" y="183" font-family="Inter,sans-serif" text-anchor="middle" fill="#647088" style="font-size:9.5px;">explainable, and causally</text>
+                <text x="660" y="195" font-family="Inter,sans-serif" text-anchor="middle" fill="#647088" style="font-size:9.5px;">grounded decisions in</text>
+                <text x="660" y="207" font-family="Inter,sans-serif" text-anchor="middle" fill="#647088" style="font-size:9.5px;">high-stakes domains?</text>
+                <text x="660" y="228" font-family="Inter,sans-serif" text-anchor="middle" fill="#d97706" style="font-size:9px;font-weight:600;">Causal AI · Explainable AI</text>
+                <text x="660" y="240" font-family="Inter,sans-serif" text-anchor="middle" fill="#d97706" style="font-size:9px;font-weight:600;">Risk-aware AI · Decision Intel.</text>
+                <circle cx="765" cy="145" r="10" fill="rgba(217,119,6,0.12)" stroke="rgba(217,119,6,0.3)" stroke-width="1"/>
+                <text x="765" y="149" font-family="Inter,sans-serif" text-anchor="middle" fill="#d97706" style="font-size:10px;font-weight:700;">3</text>
 
-                <!-- LLM enabling layer -->
-                <path d="M 380 326 L 380 346" class="fb-line" stroke-dasharray="4,3" />
-                <rect x="180" y="346" width="400" height="40" rx="8" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="4,3" />
-                <text x="380" y="364" class="fb-text" style="font-size:10px;font-weight:600;fill:#64748b;">LLM as Enabling Technology</text>
-                <text x="380" y="378" class="fb-text" style="font-size:8.5px;fill:#94a3b8;">Semantic reasoning · External memory · Multimodal knowledge integration</text>
+                <!-- ===== Flow lines: Pillars → Applications (animated) ===== -->
+                <path d="M 140 265 L 140 288" stroke="#3b82f6" stroke-width="1.8" fill="none" class="fb-flow-line-2" opacity="0.4"/>
+                <path d="M 400 265 L 400 288" stroke="#06b6d4" stroke-width="1.8" fill="none" class="fb-flow-line-2" opacity="0.4"/>
+                <path d="M 660 265 L 660 288" stroke="#f59e0b" stroke-width="1.8" fill="none" class="fb-flow-line-2" opacity="0.4"/>
+                <path d="M 140 288 L 660 288" stroke="#647088" stroke-width="1.5" fill="none" class="fb-flow-line-2" opacity="0.35"/>
+                <path d="M 400 288 L 400 308" stroke="#647088" stroke-width="1.8" fill="none" class="fb-flow-line-2" opacity="0.4"/>
+                <circle cx="400" cy="288" r="3.5" fill="#64748b" class="fb-pulse-dot" style="animation-delay:0.4s"/>
+
+                <!-- ===== Application Domain 1 (3D Slate) ===== -->
+                <ellipse cx="205" cy="370" rx="140" ry="6" fill="rgba(51,65,85,0.04)"/>
+                <polygon points="80,308 88,300 338,300 330,308" fill="url(#g-app-top)" stroke="rgba(100,116,139,0.25)" stroke-width="0.8"/>
+                <polygon points="330,308 338,300 338,360 330,368" fill="url(#g-app-side)" stroke="rgba(51,65,85,0.2)" stroke-width="0.8"/>
+                <rect x="80" y="308" width="250" height="60" rx="7" fill="url(#g-app-front)" stroke="rgba(51,65,85,0.2)" stroke-width="1" filter="url(#fb-shadow)"/>
+                <line x1="85" y1="312" x2="325" y2="312" stroke="rgba(100,116,139,0.3)" stroke-width="1"/>
+                <text x="205" y="332" font-family="Inter,sans-serif" text-anchor="middle" fill="#334766" style="font-size:11px;font-weight:700;">Urban Intelligence</text>
+                <text x="205" y="348" font-family="Inter,sans-serif" text-anchor="middle" fill="#647088" style="font-size:9.5px;">Mobility · Traffic · Spatial Services</text>
+                <!-- Small icon dot -->
+                <circle cx="100" cy="322" r="4" fill="rgba(37,99,235,0.15)" stroke="rgba(37,99,235,0.3)" stroke-width="0.8"/>
+
+                <!-- ===== Application Domain 2 (3D Slate) ===== -->
+                <ellipse cx="595" cy="370" rx="140" ry="6" fill="rgba(51,65,85,0.04)"/>
+                <polygon points="470,308 478,300 728,300 720,308" fill="url(#g-app-top)" stroke="rgba(100,116,139,0.25)" stroke-width="0.8"/>
+                <polygon points="720,308 728,300 728,360 720,368" fill="url(#g-app-side)" stroke="rgba(51,65,85,0.2)" stroke-width="0.8"/>
+                <rect x="470" y="308" width="250" height="60" rx="7" fill="url(#g-app-front)" stroke="rgba(51,65,85,0.2)" stroke-width="1" filter="url(#fb-shadow)"/>
+                <line x1="475" y1="312" x2="715" y2="312" stroke="rgba(100,116,139,0.3)" stroke-width="1"/>
+                <text x="595" y="332" font-family="Inter,sans-serif" text-anchor="middle" fill="#334766" style="font-size:11px;font-weight:700;">Financial Intelligence</text>
+                <text x="595" y="348" font-family="Inter,sans-serif" text-anchor="middle" fill="#647088" style="font-size:9.5px;">Markets · Enterprise · Economic Systems</text>
+                <circle cx="490" cy="322" r="4" fill="rgba(217,119,6,0.15)" stroke="rgba(217,119,6,0.3)" stroke-width="0.8"/>
+
+                <!-- ===== Flow line: Applications → LLM (animated) ===== -->
+                <path d="M 400 368 L 400 392" stroke="#7c3aed" stroke-width="1.8" fill="none" class="fb-flow-line" opacity="0.35" stroke-dasharray="4 4"/>
+                <circle cx="400" cy="380" r="3" fill="#7c3aed" class="fb-pulse-dot" style="animation-delay:0.8s"/>
+
+                <!-- ===== LLM Enabling Layer (3D Purple, dashed) ===== -->
+                <ellipse cx="400" cy="448" rx="215" ry="6" fill="rgba(124,58,237,0.04)"/>
+                <polygon points="200,395 208,387 608,387 600,395" fill="url(#g-llm-top)" stroke="rgba(139,92,246,0.25)" stroke-width="0.8" stroke-dasharray="3 2"/>
+                <polygon points="600,395 608,387 608,431 600,439" fill="url(#g-llm-side)" stroke="rgba(124,58,237,0.2)" stroke-width="0.8" stroke-dasharray="3 2"/>
+                <rect x="200" y="395" width="400" height="44" rx="7" fill="url(#g-llm-front)" stroke="rgba(124,58,237,0.25)" stroke-width="1" stroke-dasharray="4 3" filter="url(#fb-shadow)"/>
+                <line x1="205" y1="399" x2="595" y2="399" stroke="rgba(167,139,250,0.3)" stroke-width="1" stroke-dasharray="3 2"/>
+                <text x="400" y="416" font-family="Inter,sans-serif" text-anchor="middle" fill="#7c3aed" style="font-size:10px;font-weight:600;">LLM as Enabling Technology</text>
+                <text x="400" y="430" font-family="Inter,sans-serif" text-anchor="middle" fill="#9ca8c0" style="font-size:8.5px;">Semantic reasoning · External memory · Multimodal knowledge integration</text>
             </svg>
         </div>
 
@@ -702,7 +1003,7 @@
                     <div class="theme-icon t1"><i class="fas fa-globe-asia"></i></div>
                     <h3>Dynamic World Modeling</h3>
                 </div>
-                <p class="theme-question">How can AI understand and represent complex real-world systems evolving across space, time, and heterogeneous relationships?</p>
+                <p class="theme-question">How can AI understand and represent complex real-world systems evolving across spatial, temporal, and heterogeneous relationships?</p>
                 <div class="theme-keywords">
                     <span class="theme-keyword k1">Spatio-Temporal Intelligence</span>
                     <span class="theme-keyword k1">Dynamic Graph Learning</span>
@@ -755,9 +1056,9 @@
             </div>
         </div>
 
-        <!-- Financial Space Intelligence Callout -->
+        <!-- Financial Intelligence Callout -->
         <div class="fsi-callout">
-            <h3><i class="fas fa-chart-area"></i> Financial Space Intelligence</h3>
+            <h3><i class="fas fa-chart-area"></i> Financial Intelligence</h3>
             <p>
                 Financial systems are not only numerical systems, but also <strong>dynamic relational-spatial systems</strong>
                 involving enterprise locations, supply-chain networks, industrial ecosystems, regional economies, and market events.
@@ -1233,16 +1534,12 @@
         <ul class="news-list">
             <li>
                 <i class="fas fa-arrow-right"></i>
-                <span>课题组主要关注<strong>时空数据挖掘</strong>与<strong>财经科技</strong>，主要涉及开放时空表征建模及其在企业关系分析、证券市场分析、产业链安全应用等。</span>
+                <span>课题组聚焦<strong>开放世界时空智能</strong>，致力于开放时空表征学习与可信决策方法研究，并推动其在企业关系网络分析、证券市场建模、产业链安全评估等财经智能领域的应用。</span>
             </li>
             <li>
                 <i class="fas fa-arrow-right"></i>
-                <span>I am looking for motivated MSc, PhD, and Postdoc to join my research group. Please feel free to contact me if you are interested in my research area.
+                <span>Recruiting motivated MSc, PhD, and Postdoc researchers. Please feel free to contact me if you are interested in my research area.
                 <a href="https://zzrsb.swufe.edu.cn/info/1028/6981.htm">课题组诚招时空数据处理方向博士后1名（西南财经大学光华博士后-管理科学与工程）</a></span>
-            </li>
-            <li>
-                <i class="fas fa-arrow-right"></i>
-                <span>课题组常年招收博士生、硕士生，名额充足。</span>
             </li>
         </ul>
     </div>
@@ -1357,7 +1654,7 @@
         <div class="footer-visitor">
             <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=FGF7hJkI2OqB6i3G6d_wR9fRVA3it1lKeUNlrw_UTe4&cl=ffffff&w=a"></script>
         </div>
-        <p>Update Time: April 7, 2026</p>
+        <p>Update Time: July 23, 2026</p>
         <p>Hosted on <a href="https://github.com/gcooq/gcooq.github.io">GitHub Pages</a> &middot; <a href="https://qianggao.xyz">qianggao.xyz</a></p>
     </div>
 </footer>
@@ -1389,6 +1686,105 @@
         backTop.classList.toggle('visible', scrollY > 600);
     });
     backTop.addEventListener('click', () => scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // ===== Starfield Animation — Light Theme =====
+    const canvas = document.getElementById('starfield');
+    const ctx = canvas.getContext('2d');
+    let stars = [], shootingStars = [], W, H;
+
+    function resize() {
+        W = canvas.width = window.innerWidth;
+        H = canvas.height = window.innerHeight;
+        const count = Math.floor((W * H) / 8000);
+        stars = [];
+        for (let i = 0; i < count; i++) {
+            const t = Math.random();
+            stars.push({
+                x: Math.random() * W,
+                y: Math.random() * H,
+                z: Math.random() * 2.5 + 0.5,
+                r: Math.random() * 1.2 + 0.3,
+                tw: Math.random() * Math.PI * 2,
+                tws: Math.random() * 0.02 + 0.008,
+                color: t > 0.8
+                    ? (t > 0.9 ? '124,58,237' : '37,99,235')
+                    : '120,140,180'
+            });
+        }
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    function spawnShooting() {
+        if (shootingStars.length < 1 && Math.random() < 0.002) {
+            shootingStars.push({
+                x: Math.random() * W * 0.5,
+                y: Math.random() * H * 0.3,
+                vx: Math.random() * 7 + 5,
+                vy: Math.random() * 3.5 + 1.5,
+                life: 1,
+                trail: []
+            });
+        }
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, W, H);
+
+        // Stars
+        for (const s of stars) {
+            s.tw += s.tws;
+            const a = 0.15 + Math.abs(Math.sin(s.tw)) * 0.35;
+            ctx.beginPath();
+            ctx.arc(s.x, s.y, s.r * s.z, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(${s.color},${a})`;
+            ctx.fill();
+            // glow for larger stars
+            if (s.r > 0.9) {
+                ctx.beginPath();
+                ctx.arc(s.x, s.y, s.r * s.z * 2.5, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(${s.color},${a * 0.06})`;
+                ctx.fill();
+            }
+        }
+
+        // Shooting stars
+        spawnShooting();
+        for (let i = shootingStars.length - 1; i >= 0; i--) {
+            const ss = shootingStars[i];
+            ss.trail.push({ x: ss.x, y: ss.y });
+            if (ss.trail.length > 18) ss.trail.shift();
+            ss.x += ss.vx;
+            ss.y += ss.vy;
+            ss.life -= 0.012;
+
+            // Draw trail
+            for (let j = 0; j < ss.trail.length; j++) {
+                const t = ss.trail[j];
+                const ta = (j / ss.trail.length) * ss.life * 0.4;
+                ctx.beginPath();
+                ctx.arc(t.x, t.y, 1.2 * (j / ss.trail.length), 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(37,99,235,${ta})`;
+                ctx.fill();
+            }
+            // Head
+            ctx.beginPath();
+            ctx.arc(ss.x, ss.y, 1.5, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(37,99,235,${ss.life * 0.7})`;
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(ss.x, ss.y, 3, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(124,58,237,${ss.life * 0.15})`;
+            ctx.fill();
+
+            if (ss.life <= 0 || ss.x > W || ss.y > H) {
+                shootingStars.splice(i, 1);
+            }
+        }
+
+        requestAnimationFrame(animate);
+    }
+    animate();
 </script>
 
 </body>
