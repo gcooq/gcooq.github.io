@@ -528,6 +528,17 @@
         .tag-award { background: rgba(219,39,119,0.1); color: var(--c-rose); }
         .tag-accepted { background: rgba(5,150,105,0.1); color: var(--c-emerald); }
         .pub-venue { font-weight: 600; color: var(--c-accent); }
+        .pub-year {
+            font-size: 1.05rem; font-weight: 800; color: var(--c-text);
+            margin: 2.25rem 0 0.25rem;
+            padding-bottom: 0.45rem;
+            border-bottom: 2px solid;
+            border-image: linear-gradient(to right, var(--c-border-strong), transparent) 1;
+        }
+        .pub-year:first-of-type { margin-top: 0; }
+        .tag-conf { background: rgba(37,99,235,0.08); color: var(--c-accent); }
+        .tag-journal { background: rgba(8,145,178,0.08); color: var(--c-teal); }
+        .tag-book { background: rgba(217,119,6,0.1); color: var(--c-amber); }
 
         /* ===== Future Vision ===== */
         .future-section {
@@ -1164,430 +1175,489 @@
     <div class="container">
         <div class="section-head">
             <h2><i class="fas fa-book-open"></i> Selected Publications</h2>
-            <p class="subtitle">Organized by research theme &middot; <em>*Corresponding Author</em></p>
+            <p class="subtitle"><em>*Corresponding Author</em></p>
         </div>
 
-        <!-- Theme 1: Dynamic World Modeling -->
-        <div class="pub-theme-block">
-            <div class="pub-theme-head">
-                <div class="badge b1"><i class="fas fa-globe-asia"></i></div>
-                <h3>Dynamic World Modeling</h3>
-                <span class="desc">Spatio-temporal prediction · Urban computing · Mobility intelligence</span>
-            </div>
-            <p class="pub-type-label">Book Chapter</p>
-            <ul class="pub-list">
-                <li>
-                    <strong>Qiang Gao</strong>. "<em>Deep Learning and Semantic Dynamics of Human Mobility</em>",
-                    <strong><em>Encyclopedia of GIS</em></strong>, Third edition, Springer, 2025. [chapter]
-                </li>
-            </ul>
-            <p class="pub-type-label">Conference Papers</p>
-            <ul class="pub-list">
-                <li>
-                    Ce Li, <strong>Qiang Gao</strong>, Kunpeng Zhang and Goce Trajcevski.
-                    "<em>Impact of Incorporating Multiple Spatial Sources on Different Paradigms for Short-term Power Load Forecast</em>",
-                    <span class="pub-venue">ACM SIGSPATIAL 2026</span>.
-                    <span class="pub-tag tag-accepted">Accepted</span>
-                </li>
-                <li>
-                    Yanzhe Xie, Tuohang Li, Heng Wang, Yujun Ge, Li Huang, <strong>Qiang Gao*</strong>.
-                    "<em>Frequency-Aware Dynamic Graph Learning via Pseudo-Spectral Decomposition for Metro Flow Forecasting</em>",
-                    <span class="pub-venue">ICASSP 2026</span>.
-                    <span class="pub-tag tag-accepted">Accepted</span>
-                </li>
-                <li>
-                    Li Huang, Yujie Wu, Xiaolong Song, <strong>Qiang Gao*</strong>, Goce Trajcevski, and Xueqin Chen.
-                    "<em>Enhancing Urban Region Representation via Adaptive Risk-aware Consensus Learning</em>",
-                    <span class="pub-venue">ACM SIGSPATIAL 2025</span>.
-                    <span class="pub-tag tag-accepted">Accepted</span>
-                </li>
-                <li>
-                    <strong>Qiang Gao</strong>, Zizheng Wang, Li Huang, Goce Trajcevski, Guisong Liu, and Xueqin Chen.
-                    "<em>Responsive Dynamic Graph Disentanglement for Metro Flow Forecasting</em>",
-                    <span class="pub-venue">AAAI 2025</span>.
-                    [<a href="https://ojs.aaai.org/index.php/AAAI/article/view/33272">Paper</a>]
-                    <span class="pub-tag tag-oral">Oral</span>
-                </li>
-                <li>
-                    <strong>Qiang Gao</strong>, Zizheng Wang, Li Huang, Goce Trajcevski, Kunpeng Zhang, and Xueqin Chen.
-                    "<em>Enhancing Dependency Dynamics in Traffic Flow Forecasting via Graph Risk Bootstrap</em>",
-                    <span class="pub-venue">ACM SIGSPATIAL 2024</span>.
-                    [<a href="https://dl.acm.org/doi/pdf/10.1145/3678717.3691237">Paper</a>]
-                </li>
-                <li>
-                    <strong>Qiang Gao</strong>, Xiaolong Song, Li Huang, Goce Trajcevski, Fan Zhou, and Xueqin Chen.
-                    "<em>Enhancing Fine-Grained Urban Flow Inference via Incremental Neural Operator</em>",
-                    <span class="pub-venue">IJCAI 2024</span>.
-                    [<a href="https://www.ijcai.org/proceedings/2024/644">Paper</a>]
-                </li>
-                <li>
-                    Kai Yang, Yi Yang, <strong>Qiang Gao</strong>, Ting Zhong, Yong Wang, and Fan Zhou.
-                    "<em>Self-Explainable Next POI Recommendation</em>",
-                    <span class="pub-venue">SIGIR 2024</span>.
-                    [<a href="https://dl.acm.org/doi/abs/10.1145/3626772.3657967">Paper</a>]
-                </li>
-                <li>
-                    Jinyu Hong, Ping Kuang, <strong>Qiang Gao*</strong>, Fan Zhou.
-                    "<em>Disentanglement-Guided Spatial-Temporal Graph Neural Network for Metro Flow Forecasting (Student Abstract)</em>",
-                    <span class="pub-venue">AAAI 2024</span>.
-                    [<a href="https://ojs.aaai.org/index.php/AAAI/article/view/30452">Paper</a>]
-                </li>
-                <li>
-                    Hongzhu Fu, Fan Zhou, Qing Guo, <strong>Qiang Gao*</strong>.
-                    "<em>Spatial-Temporal Augmentation for Crime Prediction (Student Abstract)</em>",
-                    <span class="pub-venue">AAAI 2024</span>.
-                    [<a href="https://ojs.aaai.org/index.php/AAAI/article/view/30442">Paper</a>]
-                </li>
-                <li>
-                    <strong>Qiang Gao</strong>, Xiaohan Wang, Chaoran Liu, Goce Trajcevski, Li Huang, Fan Zhou.
-                    "<em>Open Anomalous Trajectory Recognition via Probabilistic Metric Learning</em>",
-                    <span class="pub-venue">IJCAI 2023</span>.
-                    [<a href="https://www.ijcai.org/proceedings/2023/0233.pdf">Paper</a>]
-                </li>
-                <li>
-                    <strong>Qiang Gao</strong>, Hongzhu Fu, Yutao Wei, Li Huang, Xingmin Liu, and Guisong Liu.
-                    "<em>Spatial-Temporal Diffusion Probabilistic Learning for Crime Prediction</em>",
-                    <span class="pub-venue">KSEM 2023</span>.
-                    [<a href="https://link.springer.com/chapter/10.1007/978-3-031-40286-9_22">Paper</a>]
-                </li>
-                <li>
-                    Li Huang, Kai Liu, Chaoran Liu, <strong>Qiang Gao*</strong>, Xiao Zhou, and Guisong Liu.
-                    "<em>HBay: Predicting Human Mobility via Hyperspherical Bayesian Learning</em>",
-                    <span class="pub-venue">KSEM 2023</span>.
-                    [<a href="https://link.springer.com/chapter/10.1007/978-3-031-40286-9_21">Paper</a>]
-                    <span class="pub-tag tag-award">Best Paper</span>
-                </li>
-                <li>
-                    Jinyu Hong, Fan Zhou, <strong>Qiang Gao*</strong>, Kuang Ping, Kunpeng Zhang.
-                    "<em>Mobility Prediction via Sequential Trajectory Disentanglement (Student Abstract)</em>",
-                    <span class="pub-venue">AAAI 2023</span>.
-                    [<a href="https://ojs.aaai.org/index.php/AAAI/article/view/26975">Paper</a>]
-                </li>
-                <li>
-                    Joojo Walker, Ting Zhong, Fengli Zhang, <strong>Qiang Gao</strong> and Fan Zhou.
-                    "<em>Recommendation via Collaborative Diffusion Generative Model</em>",
-                    <span class="pub-venue">KSEM 2022</span>.
-                    [<a href="https://link.springer.com/chapter/10.1007/978-3-031-10989-8_47">Paper</a>]
-                </li>
-                <li>
-                    Fan Zhou, Rongfan Li, <strong>Qiang Gao</strong>, Goce Trajcevski, Kunpeng Zhang, Ting Zhong.
-                    "<em>Dynamic Manifold Learning for Land Deformation Forecasting</em>",
-                    <span class="pub-venue">AAAI 2022</span>.
-                    [<a href="https://ojs.aaai.org/index.php/AAAI/article/view/20398">Paper</a>]
-                </li>
-                <li>
-                    <strong>Qiang Gao</strong>, Fan Zhou, Goce Trajcevski, Fengli Zhang, Xucheng Luo.
-                    "<em>Adversity-based Social Circles Inference via Context-Aware Mobility</em>",
-                    <span class="pub-venue">IEEE GLOBECOM 2020</span>.
-                    [<a href="https://ieeexplore.ieee.org/abstract/document/9322357">Paper</a>]
-                </li>
-                <li>
-                    <strong>Qiang Gao</strong>, Goce Trajcevski, Fan Zhou, Kunpeng Zhang, Ting Zhong, and Fengli Zhang.
-                    "<em>DeepTrip: Adversarially Understanding Human Mobility for Trip Recommendation</em>",
-                    <span class="pub-venue">ACM SIGSPATIAL 2019</span>.
-                    [<a href="https://dl.acm.org/doi/abs/10.1145/3347146.3359088">Paper</a>]
-                </li>
-                <li>
-                    <strong>Qiang Gao</strong>, Fan Zhou, Goce Trajcevski, Kunpeng Zhang, Ting Zhong and Fengli Zhang.
-                    "<em>Predicting Human mobility via Variational Attention</em>",
-                    <span class="pub-venue">WWW 2019</span>.
-                    [<a href="https://dl.acm.org/doi/abs/10.1145/3308558.3313610">Paper</a>] [<a href="https://github.com/gcooq/VANext">Code</a>]
-                </li>
-                <li>
-                    <strong>Qiang Gao</strong>, Goce Trajcevski, Fan Zhou, Kunpeng Zhang, Ting Zhong and Fengli Zhang.
-                    "<em>Trajectory-based Social Circle Inference</em>",
-                    <span class="pub-venue">ACM SIGSPATIAL 2018</span>.
-                    [<a href="https://dl.acm.org/doi/abs/10.1145/3274895.3274908">Paper</a>] [<a href="https://github.com/gcooq/TSCI">Code</a>]
-                </li>
-                <li>
-                    Fan Zhou, <strong>Qiang Gao</strong>, Goce Trajcevski, Kunpeng Zhang, Ting Zhong, Fengli Zhang.
-                    "<em>Trajectory-User Linking via Variational AutoEncoder</em>",
-                    <span class="pub-venue">IJCAI 2018</span>.
-                    [<a href="https://www.ijcai.org/proceedings/2018/0446.pdf">Paper</a>]
-                </li>
-                <li>
-                    <strong>Qiang Gao</strong>, Fan Zhou, Kunpeng Zhang, Goce Trajcevski, Xuecheng Luo, Fengli Zhang.
-                    "<em>Identifying Human Mobility via Trajectory Embeddings</em>",
-                    <span class="pub-venue">IJCAI 2017</span>.
-                    [<a href="https://www.ijcai.org/proceedings/2017/0234.pdf">Paper</a>] [<a href="https://github.com/gcooq/TUL">Code</a>]
-                </li>
-            </ul>
-            <p class="pub-type-label">Journal Papers</p>
-            <ul class="pub-list">
-                <li>
-                    Li Huang, Letian Ning, Chaoran Liu, Rong Zhang, <strong>Qiang Gao*</strong>, and Goce Trajcevski.
-                    "<em>Dual-Offset Trajectory Recovery on Roads with Dynamic Transition Probability</em>",
-                    <span class="pub-venue">IEEE T-ITS</span>, 2026.
-                    <span class="pub-tag tag-accepted">Accepted</span>
-                </li>
-                <li>
-                    <strong>Qiang Gao</strong>, Letian Ning, Li Huang, Chaoran Liu, Xueqin Chen, and Fan Zhou.
-                    "<em>Aligning Authentic Location Shares with Mobility Information Bottleneck</em>",
-                    <span class="pub-venue">IEEE T-Big Data</span>, 2025.
-                    <span class="pub-tag tag-accepted">Accepted</span>
-                </li>
-                <li>
-                    Haolun Ding, Zhengwen Fu, Rong Zhang, Li Huang, Xuan Luo, and <strong>Qiang Gao*</strong>.
-                    "<em>Probabilistic Bayesian Learning with Long-Tail Awareness for Trajectory-User Linking</em>",
-                    <span class="pub-venue">Neural Networks</span>, 2025.
-                    [<a href="https://www.sciencedirect.com/science/article/abs/pii/S0893608025011396">Paper</a>]
-                </li>
-                <li>
-                    Hongzhu Fu, Yutao Wei, Gege Chen, Xing He, <strong>Qiang Gao</strong>, and Fan Zhou.
-                    "<em>Augmented Graph Information Bottleneck with Type-Aware Periodicity Heterogeneity for Explainable Crime Prediction</em>",
-                    <span class="pub-venue">IP&amp;M</span>, 2025.
-                    [<a href="https://www.sciencedirect.com/science/article/pii/S0306457325001682">Paper</a>]
-                </li>
-                <li>
-                    <strong>Qiang Gao</strong>, Chaoran Liu, Li Huang, Goce Trajcevski, Qing Guo, and Fan Zhou.
-                    "<em>Learning to Discover Anomalous Spatiotemporal Trajectory via Open-World State Space Model</em>",
-                    <span class="pub-venue">Knowledge-Based Systems</span>, 2024.
-                    [<a href="https://www.sciencedirect.com/science/article/abs/pii/S0950705124015521">Paper</a>]
-                </li>
-                <li>
-                    Li Huang, Pei Li, <strong>Qiang Gao*</strong>, Guisong Liu, Zhipeng Luo, and Tianrui Li.
-                    "<em>Diffusion Probabilistic Model for Bike-sharing Demand Recovery with Factual Knowledge Fusion</em>",
-                    <span class="pub-venue">Neural Networks</span>, 2024.
-                    [<a href="https://www.sciencedirect.com/science/article/abs/pii/S0893608024004623">Paper</a>]
-                </li>
-                <li>
-                    <strong>Qiang Gao</strong>, Jinyu Hong, Xovee Xu, Ping Kuang, Fan Zhou, and Goce Trajcevski.
-                    "<em>Predicting Human Mobility via Self-supervised Disentanglement Learning</em>",
-                    <span class="pub-venue">IEEE T-KDE</span>, 2023.
-                    [<a href="https://ieeexplore.ieee.org/document/10265198">Paper</a>]
-                </li>
-                <li>
-                    Xovee Xu, Zhiyuan Wang, <strong>Qiang Gao</strong>, Ting Zhong, Bei Hui, Fan Zhou, and Goce Trajcevski.
-                    "<em>Spatial-Temporal Contrasting for Fine-Grained Urban Flow Inference</em>",
-                    <span class="pub-venue">IEEE T-Big Data</span>, 2023.
-                    [<a href="https://ieeexplore.ieee.org/abstract/document/10254322">Paper</a>]
-                </li>
-                <li>
-                    <strong>Qiang Gao</strong>, Hongzhu Fu, Kunpeng Zhang, Goce Trajcevski, Xu Teng, and Fan Zhou.
-                    "<em>Inferring Real Mobility in Presence of Fake Check-ins Data</em>",
-                    <span class="pub-venue">ACM TIST</span>, 2023.
-                    [<a href="https://dl.acm.org/doi/10.1145/3604941">Paper</a>]
-                </li>
-                <li>
-                    <strong>Qiang Gao</strong>, Wei Wang, Li Huang, Xin Yang, Tianrui Li and Hamido Fujita.
-                    "<em>Dual-grained Human Mobility Learning for Location-aware Trip Recommendation with Spatial-temporal Graph Knowledge Fusion</em>",
-                    <span class="pub-venue">Information Fusion</span>, 2023.
-                    [<a href="https://www.sciencedirect.com/science/article/abs/pii/S1566253522002287">Paper</a>]
-                </li>
-                <li>
-                    <strong>Qiang Gao</strong>, Fan Zhou, Xin Yang and Guisong Liu.
-                    "<em>When Friendship Meets Sequential Human Check-ins: Inferring Social Circles with Variational Mobility</em>",
-                    <span class="pub-venue">Neurocomputing</span>, 2023.
-                    [<a href="https://www.sciencedirect.com/science/article/abs/pii/S0925231222013297">Paper</a>]
-                </li>
-                <li>
-                    <strong>Qiang Gao</strong>, Fan Zhou, Ting Zhong, Goce Trajcevski, Xin Yang and Tianrui Li.
-                    "<em>Contextual Spatio-Temporal Graph Representation Learning for Reinforced Human Mobility Mining</em>",
-                    <span class="pub-venue">Information Sciences</span>, 2022.
-                    [<a href="https://www.sciencedirect.com/science/article/abs/pii/S0020025522004819">Paper</a>]
-                </li>
-                <li>
-                    <strong>Qiang Gao</strong>, Wei Wang, Kunpeng Zhang, Xin Yang, Congcong Miao and Tianrui Li.
-                    "<em>Self-supervised Representation Learning for Trip Recommendation</em>",
-                    <span class="pub-venue">Knowledge-Based Systems</span>, 2022.
-                    [<a href="https://www.sciencedirect.com/science/article/abs/pii/S0950705122003720">Paper</a>]
-                </li>
-                <li>
-                    Fan Zhou, Yurou Dai, <strong>Qiang Gao</strong>, Pengyu Wang, and Ting Zhong.
-                    "<em>Self-Supervised Human Mobility Learning for Next Location Prediction and Trajectory Classification</em>",
-                    <span class="pub-venue">Knowledge-Based Systems</span>, 2021.
-                    [<a href="https://www.sciencedirect.com/science/article/abs/pii/S0950705121004767">Paper</a>]
-                </li>
-                <li>
-                    <strong>Qiang Gao</strong>, Fan Zhou, Goce Trajcevski, Kunpeng Zhang, Ting Zhong and Fengli Zhang.
-                    "<em>Adversarial Human Trajectory Learning for Trip Recommendation</em>",
-                    <span class="pub-venue">IEEE T-NNLS</span>, 2021.
-                    [<a href="https://ieeexplore.ieee.org/abstract/document/9361427">Paper</a>]
-                </li>
-                <li>
-                    <strong>Qiang Gao</strong>, Fengli Zhang, Fuming Yao, Ailing Li, Lin Mei and Fan Zhou.
-                    "<em>Adversarial Mobility Learning for Human Trajectory Classification</em>",
-                    <span class="pub-venue">IEEE Access</span>, 2020.
-                    [<a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8967063">Paper</a>]
-                </li>
-                <li>
-                    <strong>Qiang Gao</strong>, Fengli Zhang, Ruijin Wang, and Fan Zhou.
-                    "<em>Trajectory big data: a review of key technologies in data processing</em>",
-                    <span class="pub-venue">Journal of Software</span>, 2016, 28(4): 959-992.
-                    [<a href="http://www.jos.org.cn/jos/article/pdf/5143">Paper</a>]
-                </li>
-            </ul>
-        </div>
+        <!-- Unified Publication List (reverse chronological) -->
+        <div class="pub-year">2026</div>
+        <ul class="pub-list">
+            <li>
+                Ce Li, <strong>Qiang Gao</strong>, Kunpeng Zhang and Goce Trajcevski.
+                "<em>Impact of Incorporating Multiple Spatial Sources on Different Paradigms for Short-term Power Load Forecast</em>",
+                <span class="pub-venue">ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems (ACM SIGSPATIAL)</span>.
+                <span class="pub-tag tag-accepted">Accepted</span>
+                <span class="pub-tag tag-conf">Conference</span>
+            </li>
+            <li>
+                Yanzhe Xie, Tuohang Li, Heng Wang, Yujun Ge, Li Huang, <strong>Qiang Gao*</strong>.
+                "<em>Frequency-Aware Dynamic Graph Learning via Pseudo-Spectral Decomposition for Metro Flow Forecasting</em>",
+                <span class="pub-venue">IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)</span>.
+                <span class="pub-tag tag-accepted">Accepted</span>
+                <span class="pub-tag tag-conf">Conference</span>
+            </li>
+            <li>
+                Yanzhe Xie, Li Huang, <strong>Qiang Gao*</strong>, Xueqin Chen, Fan Zhou, Kunpeng Zhang.
+                "<em>Beyond Graph Priors: A Co-evolving Framework under Uncertainty for Enterprise Resilience Assessment</em>",
+                <span class="pub-venue">AAAI Conference on Artificial Intelligence (AAAI)</span>.
+                <span class="pub-tag tag-accepted">Accepted</span>
+                <span class="pub-tag tag-conf">Conference</span>
+            </li>
+            <li>
+                Jiao Li, Jian Lang, Xikai Tang, Wenzheng Shu, Ting Zhong, <strong>Qiang Gao</strong>, Yong Wang, Leiting Chen, and Fan Zhou.
+                "<em>Shedding the Facades, Connecting the Domains: Detecting Shifting Multimodal Malicious Content with Test-Time Adaptation</em>",
+                <span class="pub-venue">AAAI Conference on Artificial Intelligence (AAAI)</span>.
+                <span class="pub-tag tag-accepted">Accepted</span>
+                <span class="pub-tag tag-conf">Conference</span>
+            </li>
+            <li>
+                Jian Lang, Rongpei Hong, Ting Zhong, Leiting Chen, <strong>Qiang Gao</strong>, Fan Zhou.
+                "<em>From Shallow Humor to Metaphor: Towards Label-Free Harmful Meme Detection via LMM Agent Self-Improvement</em>",
+                <span class="pub-venue">ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD)</span>.
+                <span class="pub-tag tag-accepted">Accepted</span>
+                <span class="pub-tag tag-conf">Conference</span>
+            </li>
+            <li>
+                Jian Lang, Rongpei Hong, Meihui Zhong, Kaiju Li, Ting Zhong, <strong>Qiang Gao</strong>, and Fan Zhou.
+                "<em>LEAF: Towards Lightweight Explainable Hateful Video Detection via Self-Grounding CoT Guided Stage-Wise Distillation</em>",
+                <span class="pub-venue">Annual Meeting of the Association for Computational Linguistics (ACL), Findings</span>.
+                <span class="pub-tag tag-accepted">Accepted</span>
+                <span class="pub-tag tag-conf">Conference</span>
+            </li>
+            <li>
+                Li Huang, Letian Ning, Chaoran Liu, Rong Zhang, <strong>Qiang Gao*</strong>, and Goce Trajcevski.
+                "<em>Dual-Offset Trajectory Recovery on Roads with Dynamic Transition Probability</em>",
+                <span class="pub-venue">IEEE Transactions on Intelligent Transportation Systems</span>, 2026.
+                <span class="pub-tag tag-accepted">Accepted</span>
+                <span class="pub-tag tag-journal">Journal</span>
+            </li>
+            <li>
+                Li Huang, Yanzhe Xie, Zizheng Wang, <strong>Qiang Gao*</strong>, Kunpeng Zhang, and Philip S. Yu.
+                "<em>Understanding Interactive Stock Dynamics via Sensitivity-aware Dependency Learning</em>",
+                <span class="pub-venue">IEEE Transactions on Knowledge and Data Engineering</span>, 2026.
+                <span class="pub-tag tag-accepted">Accepted</span>
+                <span class="pub-tag tag-journal">Journal</span>
+            </li>
+        </ul>
 
-        <!-- Theme 2: Open-World Adaptive Learning -->
-        <div class="pub-theme-block">
-            <div class="pub-theme-head">
-                <div class="badge b2"><i class="fas fa-infinity"></i></div>
-                <h3>Learning in Open &amp; Changing Environments</h3>
-                <span class="desc">Continual learning · Open-world recognition · Adaptive AI</span>
-            </div>
-            <p class="pub-type-label">Conference Papers</p>
-            <ul class="pub-list">
-                <li>
-                    Li Huang, Haowen Liu, <strong>Qiang Gao*</strong>, Jiajing Yu, Guisong Liu, and Xueqin Chen.
-                    "<em>Adversity-aware Few-shot Named Entity Recognition via Augmentation Learning</em>",
-                    <span class="pub-venue">AAAI 2025</span>.
-                    [<a href="https://ojs.aaai.org/index.php/AAAI/article/view/34588">Paper</a>]
-                    <span class="pub-tag tag-oral">Oral</span>
-                </li>
-                <li>
-                    <strong>Qiang Gao</strong>, Xiaojun Shan, Yuchen Zhang, and Fan Zhou.
-                    "<em>Enhancing Knowledge Transfer for Task Incremental Learning with Data-free Subnetwork</em>",
-                    <span class="pub-venue">NeurIPS 2023</span>.
-                    [<a href="https://openreview.net/pdf?id=uj9PxVTVqq">Paper</a>]
-                </li>
-                <li>
-                    Miaomiao Li, Jiaqi Zhu, Xin Yang, Yi Yang, <strong>Qiang Gao</strong>, Hongan Wang.
-                    "<em>CL-WSTC: Continual Learning for Weakly Supervised Text Classification on the Internet</em>",
-                    <span class="pub-venue">WWW 2023</span>.
-                    [<a href="https://dl.acm.org/doi/abs/10.1145/3543507.3583249">Paper</a>]
-                </li>
-                <li>
-                    Yujie Li, Yuxuan Yang, <strong>Qiang Gao*</strong>, Xin Yang.
-                    "<em>Cross-regional Fraud Detection via Continual Learning (Student Abstract)</em>",
-                    <span class="pub-venue">AAAI 2023</span>.
-                    [<a href="https://ojs.aaai.org/index.php/AAAI/article/view/26990">Paper</a>]
-                </li>
-            </ul>
-            <p class="pub-type-label">Journal Papers</p>
-            <ul class="pub-list">
-                <li>
-                    Yujie Li, Xin Yang, <strong>Qiang Gao</strong>, Hao Wang, Junbo Zhang, and Tianrui Li.
-                    "<em>Cross-regional Fraud Detection via Continual Learning with Knowledge Transfer</em>",
-                    <span class="pub-venue">IEEE T-KDE</span>, 2024.
-                    [<a href="https://ieeexplore.ieee.org/abstract/document/10654781">Paper</a>]
-                </li>
-                <li>
-                    Zhipeng Luo, <strong>Qiang Gao</strong>, Yazhou He, Hongjun Wang, Milos Hauskrecht, and Tianrui Li.
-                    "<em>Hierarchical Active Learning with Label Proportions on Data Regions</em>",
-                    <span class="pub-venue">IEEE T-KDE</span>, 2024.
-                    [<a href="https://ieeexplore.ieee.org/abstract/document/10579754">Paper</a>]
-                </li>
-                <li>
-                    <strong>Qiang Gao</strong>, Zhipeng Luo, Diego Klabjan and Fengli Zhang.
-                    "<em>Efficient Architecture Search for Continual Learning</em>",
-                    <span class="pub-venue">IEEE T-NNLS</span>, 2022.
-                    [<a href="https://ieeexplore.ieee.org/abstract/document/9724647">Paper</a>]
-                </li>
-            </ul>
-        </div>
+        <div class="pub-year">2025</div>
+        <ul class="pub-list">
+            <li>
+                Li Huang, Yujie Wu, Xiaolong Song, <strong>Qiang Gao*</strong>, Goce Trajcevski, and Xueqin Chen.
+                "<em>Enhancing Urban Region Representation via Adaptive Risk-aware Consensus Learning</em>",
+                <span class="pub-venue">ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems (ACM SIGSPATIAL)</span>.
+                <span class="pub-tag tag-accepted">Accepted</span>
+                <span class="pub-tag tag-conf">Conference</span>
+            </li>
+            <li>
+                Li Huang, Yanzhe Xie, <strong>Qiang Gao*</strong>, Kunpeng Zhang, Guisong Liu, and Xueqin Chen.
+                "<em>Progressive Dependency Representation Learning for Stock Ranking in Uncertain Risk Contrasting</em>",
+                <span class="pub-venue">ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD)</span>.
+                [<a href="https://dl.acm.org/doi/abs/10.1145/3690624.3709189">Paper</a>]
+                <span class="pub-tag tag-conf">Conference</span>
+            </li>
+            <li>
+                Xueqin Chen, Xiaoyu Huang, <strong>Qiang Gao*</strong>, Li Huang, Jiaojing Yu, and Guisong Liu.
+                "<em>Birds of a Feather: Enhancing Multimodal Fake News Detection via Multi-Element Retrieval</em>",
+                <span class="pub-venue">IEEE International Conference on Data Engineering (ICDE)</span>.
+                [<a href="https://www.computer.org/csdl/proceedings-article/icde/2025/360300d615/26FZBSCNLCU">Paper</a>]
+                <span class="pub-tag tag-conf">Conference</span>
+            </li>
+            <li>
+                <strong>Qiang Gao</strong>, Zizheng Wang, Li Huang, Goce Trajcevski, Guisong Liu, and Xueqin Chen.
+                "<em>Responsive Dynamic Graph Disentanglement for Metro Flow Forecasting</em>",
+                <span class="pub-venue">AAAI Conference on Artificial Intelligence (AAAI)</span>.
+                [<a href="https://ojs.aaai.org/index.php/AAAI/article/view/33272">Paper</a>]
+                <span class="pub-tag tag-oral">Oral</span>
+                <span class="pub-tag tag-conf">Conference</span>
+            </li>
+            <li>
+                Li Huang, Haowen Liu, <strong>Qiang Gao*</strong>, Jiajing Yu, Guisong Liu, and Xueqin Chen.
+                "<em>Adversity-aware Few-shot Named Entity Recognition via Augmentation Learning</em>",
+                <span class="pub-venue">AAAI Conference on Artificial Intelligence (AAAI)</span>.
+                [<a href="https://ojs.aaai.org/index.php/AAAI/article/view/34588">Paper</a>]
+                <span class="pub-tag tag-oral">Oral</span>
+                <span class="pub-tag tag-conf">Conference</span>
+            </li>
+            <li>
+                <strong>Qiang Gao</strong>, Letian Ning, Li Huang, Chaoran Liu, Xueqin Chen, and Fan Zhou.
+                "<em>Aligning Authentic Location Shares with Mobility Information Bottleneck</em>",
+                <span class="pub-venue">IEEE Transactions on Big Data</span>, 2025.
+                <span class="pub-tag tag-accepted">Accepted</span>
+                <span class="pub-tag tag-journal">Journal</span>
+            </li>
+            <li>
+                Haolun Ding, Zhengwen Fu, Rong Zhang, Li Huang, Xuan Luo, and <strong>Qiang Gao*</strong>.
+                "<em>Probabilistic Bayesian Learning with Long-Tail Awareness for Trajectory-User Linking</em>",
+                <span class="pub-venue">Neural Networks</span>, 2025.
+                [<a href="https://www.sciencedirect.com/science/article/abs/pii/S0893608025011396">Paper</a>]
+                <span class="pub-tag tag-journal">Journal</span>
+            </li>
+            <li>
+                Hongzhu Fu, Yutao Wei, Gege Chen, Xing He, <strong>Qiang Gao</strong>, and Fan Zhou.
+                "<em>Augmented Graph Information Bottleneck with Type-Aware Periodicity Heterogeneity for Explainable Crime Prediction</em>",
+                <span class="pub-venue">Information Processing &amp; Management</span>, 2025.
+                [<a href="https://www.sciencedirect.com/science/article/pii/S0306457325001682">Paper</a>]
+                <span class="pub-tag tag-journal">Journal</span>
+            </li>
+            <li>
+                Yanlong Huang, Wenxin Tai, Fan Zhou, <strong>Qiang Gao</strong>, Ting Zhong, and Kunpeng Zhang.
+                "<em>Extracting Key Insights from Earnings Call Transcript via Information-Theoretic Contrastive Learning</em>",
+                <span class="pub-venue">Information Processing &amp; Management</span>, 2025.
+                [<a href="https://www.sciencedirect.com/science/article/abs/pii/S0306457324003571">Paper</a>]
+                <span class="pub-tag tag-journal">Journal</span>
+            </li>
+            <li>
+                Xueqin Chen, Xiaoyu Huang, <strong>Qiang Gao*</strong>, Li Huang, and Guisong Liu.
+                "<em>Enhancing Text-centric Fake News Detection via External Knowledge Distillation from LLMs</em>",
+                <span class="pub-venue">Neural Networks</span>, 2025.
+                [<a href="https://www.sciencedirect.com/science/article/abs/pii/S0893608025002564">Paper</a>]
+                <span class="pub-tag tag-journal">Journal</span>
+            </li>
+            <li>
+                <strong>Qiang Gao</strong>. "<em>Deep Learning and Semantic Dynamics of Human Mobility</em>",
+                <strong><em>Encyclopedia of GIS</em></strong>, Third Edition, Springer, 2025.
+                <span class="pub-tag tag-book">Book Chapter</span>
+            </li>
+        </ul>
 
-        <!-- Theme 3: Trustworthy AI & Financial Intelligence -->
-        <div class="pub-theme-block">
-            <div class="pub-theme-head">
-                <div class="badge b3"><i class="fas fa-shield-halved"></i></div>
-                <h3>Trustworthy AI &amp; Financial Intelligence</h3>
-                <span class="desc">Causal reasoning · Risk-aware AI · Financial space intelligence · Content trust</span>
-            </div>
-            <p class="pub-type-label">Conference Papers</p>
-            <ul class="pub-list">
-                <li>
-                    Yanzhe Xie, Li Huang, <strong>Qiang Gao*</strong>, Xueqin Chen, Fan Zhou, Kunpeng Zhang.
-                    "<em>Beyond Graph Priors: A Co-evolving Framework under Uncertainty for Enterprise Resilience Assessment</em>",
-                    <span class="pub-venue">AAAI 2026</span>.
-                    <span class="pub-tag tag-accepted">Accepted</span>
-                </li>
-                <li>
-                    Jiao Li, Jian Lang, Xikai Tang, Wenzheng Shu, Ting Zhong, <strong>Qiang Gao</strong>, Yong Wang, Leiting Chen, and Fan Zhou.
-                    "<em>Shedding the Facades, Connecting the Domains: Detecting Shifting Multimodal Malicious Content with Test-Time Adaptation</em>",
-                    <span class="pub-venue">AAAI 2026</span>.
-                    <span class="pub-tag tag-accepted">Accepted</span>
-                </li>
-                <li>
-                    Jian Lang, Rongpei Hong, Ting Zhong, Leiting Chen, <strong>Qiang Gao</strong>, Fan Zhou.
-                    "<em>From Shallow Humor to Metaphor: Towards Label-Free Harmful Meme Detection via LMM Agent Self-Improvement</em>",
-                    <span class="pub-venue">KDD 2026</span>.
-                    <span class="pub-tag tag-accepted">Accepted</span>
-                </li>
-                <li>
-                    Jian Lang, Rongpei Hong, Meihui Zhong, Kaiju Li, Ting Zhong, <strong>Qiang Gao</strong>, and Fan Zhou.
-                    "<em>LEAF: Towards Lightweight Explainable Hateful Video Detection via Self-Grounding CoT Guided Stage-Wise Distillation</em>",
-                    <span class="pub-venue">ACL 2026 Findings</span>.
-                    <span class="pub-tag tag-accepted">Accepted</span>
-                </li>
-                <li>
-                    Li Huang, Yanzhe Xie, <strong>Qiang Gao*</strong>, Kunpeng Zhang, Guisong Liu, and Xueqin Chen.
-                    "<em>Progressive Dependency Representation Learning for Stock Ranking in Uncertain Risk Contrasting</em>",
-                    <span class="pub-venue">KDD 2025</span>.
-                    [<a href="https://dl.acm.org/doi/abs/10.1145/3690624.3709189">Paper</a>]
-                </li>
-                <li>
-                    Xueqin Chen, Xiaoyu Huang, <strong>Qiang Gao*</strong>, Li Huang, Jiaojing Yu, and Guisong Liu.
-                    "<em>Birds of a Feather: Enhancing Multimodal Fake News Detection via Multi-Element Retrieval</em>",
-                    <span class="pub-venue">ICDE 2025</span>.
-                    [<a href="https://www.computer.org/csdl/proceedings-article/icde/2025/360300d615/26FZBSCNLCU">Paper</a>]
-                </li>
-                <li>
-                    Jianfei Sun#, <strong>Qiang Gao#</strong>, Cong Wu, Yuxian Li, Jiacheng Wang, and Dusit Niyato.
-                    "<em>Secure Resource Allocation via Constrained Deep Reinforcement Learning</em>",
-                    <span class="pub-venue">ML4CS 2024</span>.
-                    [<a href="https://link.springer.com/chapter/10.1007/978-981-96-4566-4_1">Paper</a>]
-                    <span class="pub-tag tag-award">Best Paper</span>
-                </li>
-                <li>
-                    Haoran Li, <strong>Qiang Gao</strong>, Hongmei Wu, and Li Huang.
-                    "<em>Advancing Event Causality Identification via Heuristic Semantic Dependency Inquiry Network</em>",
-                    <span class="pub-venue">EMNLP 2024</span>.
-                    [<a href="https://arxiv.org/pdf/2409.13621">Paper</a>]
-                </li>
-                <li>
-                    Li Huang, Hongmei Wu, <strong>Qiang Gao*</strong>, Guisong Liu.
-                    "<em>Attention Localness in Shared Encoder-Decoder Model for Text Summarization</em>",
-                    <span class="pub-venue">ICASSP 2023</span>.
-                    [<a href="https://ieeexplore.ieee.org/abstract/document/10096291">Paper</a>]
-                </li>
-            </ul>
-            <p class="pub-type-label">Journal Papers</p>
-            <ul class="pub-list">
-                <li>
-                    Li Huang, Yanzhe Xie, Zizheng Wang, <strong>Qiang Gao*</strong>, Kunpeng Zhang, and Philip S. Yu.
-                    "<em>Understanding Interactive Stock Dynamics via Sensitivity-aware Dependency Learning</em>",
-                    <span class="pub-venue">IEEE T-KDE</span>, 2026.
-                    <span class="pub-tag tag-accepted">Accepted</span>
-                </li>
-                <li>
-                    Yanlong Huang, Wenxin Tai, Fan Zhou, <strong>Qiang Gao</strong>, Ting Zhong, and Kunpeng Zhang.
-                    "<em>Extracting Key Insights from Earnings Call Transcript via Information-Theoretic Contrastive Learning</em>",
-                    <span class="pub-venue">IP&amp;M</span>, 2025.
-                    [<a href="https://www.sciencedirect.com/science/article/abs/pii/S0306457324003571">Paper</a>]
-                </li>
-                <li>
-                    Xueqin Chen, Xiaoyu Huang, <strong>Qiang Gao*</strong>, Li Huang, and Guisong Liu.
-                    "<em>Enhancing Text-centric Fake News Detection via External Knowledge Distillation from LLMs</em>",
-                    <span class="pub-venue">Neural Networks</span>, 2025.
-                    [<a href="https://www.sciencedirect.com/science/article/abs/pii/S0893608025002564">Paper</a>]
-                </li>
-                <li>
-                    <strong>Qiang Gao</strong>, Zhengxiang Liu, Li Huang, Kunpeng Zhang, Jun Wang, and Guisong Liu.
-                    "<em>Relational Stock Selection via Probabilistic State Space Learning</em>",
-                    <span class="pub-venue">IEEE T-KDE</span>, 2024.
-                    [<a href="https://ieeexplore.ieee.org/abstract/document/10771680">Paper</a>]
-                </li>
-                <li>
-                    <strong>Qiang Gao*</strong>, Xinzhu Zhou, Li Huang, Kunpeng Zhang, Siyuan Liu, and Fan Zhou.
-                    "<em>Relational Fusion-based Stock Selection with Neural Recursive Ordinary Differential Equation Networks</em>",
-                    <span class="pub-venue">Information Fusion</span>, 2024.
-                    [<a href="https://www.sciencedirect.com/science/article/abs/pii/S156625352400246X">Paper</a>]
-                </li>
-                <li>
-                    Nan Liu, Fengli Zhang, <strong>Qiang Gao</strong> and Xueqin Chen.
-                    "<em>Contrastive Learning with Edge-wise Augmentation for Rumor Detection</em>",
-                    <span class="pub-venue">Int. J. of Intelligent Systems</span>, 2024.
-                    [<a href="https://onlinelibrary.wiley.com/doi/pdf/10.1155/2024/3858526">Paper</a>]
-                </li>
-                <li>
-                    Xin Yang, Metoh Adler LOUA, Meijun Wu, Li Huang, <strong>Qiang Gao</strong>.
-                    "<em>Multi-granularity Stock Prediction with Sequential Three-way Decisions</em>",
-                    <span class="pub-venue">Information Sciences</span>, 2023.
-                    [<a href="https://www.sciencedirect.com/science/article/abs/pii/S002002552201369X">Paper</a>]
-                </li>
-            </ul>
-        </div>
+        <div class="pub-year">2024</div>
+        <ul class="pub-list">
+            <li>
+                <strong>Qiang Gao</strong>, Zizheng Wang, Li Huang, Goce Trajcevski, Kunpeng Zhang, and Xueqin Chen.
+                "<em>Enhancing Dependency Dynamics in Traffic Flow Forecasting via Graph Risk Bootstrap</em>",
+                <span class="pub-venue">ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems (ACM SIGSPATIAL)</span>.
+                [<a href="https://dl.acm.org/doi/pdf/10.1145/3678717.3691237">Paper</a>]
+                <span class="pub-tag tag-conf">Conference</span>
+            </li>
+            <li>
+                <strong>Qiang Gao</strong>, Xiaolong Song, Li Huang, Goce Trajcevski, Fan Zhou, and Xueqin Chen.
+                "<em>Enhancing Fine-Grained Urban Flow Inference via Incremental Neural Operator</em>",
+                <span class="pub-venue">International Joint Conference on Artificial Intelligence (IJCAI)</span>.
+                [<a href="https://www.ijcai.org/proceedings/2024/644">Paper</a>]
+                <span class="pub-tag tag-conf">Conference</span>
+            </li>
+            <li>
+                Kai Yang, Yi Yang, <strong>Qiang Gao</strong>, Ting Zhong, Yong Wang, and Fan Zhou.
+                "<em>Self-Explainable Next POI Recommendation</em>",
+                <span class="pub-venue">ACM SIGIR Conference on Research and Development in Information Retrieval (SIGIR)</span>.
+                [<a href="https://dl.acm.org/doi/abs/10.1145/3626772.3657967">Paper</a>]
+                <span class="pub-tag tag-conf">Conference</span>
+            </li>
+            <li>
+                Jinyu Hong, Ping Kuang, <strong>Qiang Gao*</strong>, Fan Zhou.
+                "<em>Disentanglement-Guided Spatial-Temporal Graph Neural Network for Metro Flow Forecasting (Student Abstract)</em>",
+                <span class="pub-venue">AAAI Conference on Artificial Intelligence (AAAI)</span>.
+                [<a href="https://ojs.aaai.org/index.php/AAAI/article/view/30452">Paper</a>]
+                <span class="pub-tag tag-conf">Conference</span>
+            </li>
+            <li>
+                Hongzhu Fu, Fan Zhou, Qing Guo, <strong>Qiang Gao*</strong>.
+                "<em>Spatial-Temporal Augmentation for Crime Prediction (Student Abstract)</em>",
+                <span class="pub-venue">AAAI Conference on Artificial Intelligence (AAAI)</span>.
+                [<a href="https://ojs.aaai.org/index.php/AAAI/article/view/30442">Paper</a>]
+                <span class="pub-tag tag-conf">Conference</span>
+            </li>
+            <li>
+                Jianfei Sun#, <strong>Qiang Gao#</strong>, Cong Wu, Yuxian Li, Jiacheng Wang, and Dusit Niyato.
+                "<em>Secure Resource Allocation via Constrained Deep Reinforcement Learning</em>",
+                <span class="pub-venue">International Conference on Machine Learning for Cyber Security (ML4CS)</span>.
+                [<a href="https://link.springer.com/chapter/10.1007/978-981-96-4566-4_1">Paper</a>]
+                <span class="pub-tag tag-award">Best Paper</span>
+                <span class="pub-tag tag-conf">Conference</span>
+            </li>
+            <li>
+                Haoran Li, <strong>Qiang Gao</strong>, Hongmei Wu, and Li Huang.
+                "<em>Advancing Event Causality Identification via Heuristic Semantic Dependency Inquiry Network</em>",
+                <span class="pub-venue">Conference on Empirical Methods in Natural Language Processing (EMNLP)</span>.
+                [<a href="https://arxiv.org/pdf/2409.13621">Paper</a>]
+                <span class="pub-tag tag-conf">Conference</span>
+            </li>
+            <li>
+                <strong>Qiang Gao</strong>, Chaoran Liu, Li Huang, Goce Trajcevski, Qing Guo, and Fan Zhou.
+                "<em>Learning to Discover Anomalous Spatiotemporal Trajectory via Open-World State Space Model</em>",
+                <span class="pub-venue">Knowledge-Based Systems</span>, 2024.
+                [<a href="https://www.sciencedirect.com/science/article/abs/pii/S0950705124015521">Paper</a>]
+                <span class="pub-tag tag-journal">Journal</span>
+            </li>
+            <li>
+                Li Huang, Pei Li, <strong>Qiang Gao*</strong>, Guisong Liu, Zhipeng Luo, and Tianrui Li.
+                "<em>Diffusion Probabilistic Model for Bike-sharing Demand Recovery with Factual Knowledge Fusion</em>",
+                <span class="pub-venue">Neural Networks</span>, 2024.
+                [<a href="https://www.sciencedirect.com/science/article/abs/pii/S0893608024004623">Paper</a>]
+                <span class="pub-tag tag-journal">Journal</span>
+            </li>
+            <li>
+                Yujie Li, Xin Yang, <strong>Qiang Gao</strong>, Hao Wang, Junbo Zhang, and Tianrui Li.
+                "<em>Cross-regional Fraud Detection via Continual Learning with Knowledge Transfer</em>",
+                <span class="pub-venue">IEEE Transactions on Knowledge and Data Engineering</span>, 2024.
+                [<a href="https://ieeexplore.ieee.org/abstract/document/10654781">Paper</a>]
+                <span class="pub-tag tag-journal">Journal</span>
+            </li>
+            <li>
+                Zhipeng Luo, <strong>Qiang Gao</strong>, Yazhou He, Hongjun Wang, Milos Hauskrecht, and Tianrui Li.
+                "<em>Hierarchical Active Learning with Label Proportions on Data Regions</em>",
+                <span class="pub-venue">IEEE Transactions on Knowledge and Data Engineering</span>, 2024.
+                [<a href="https://ieeexplore.ieee.org/abstract/document/10579754">Paper</a>]
+                <span class="pub-tag tag-journal">Journal</span>
+            </li>
+            <li>
+                <strong>Qiang Gao</strong>, Zhengxiang Liu, Li Huang, Kunpeng Zhang, Jun Wang, and Guisong Liu.
+                "<em>Relational Stock Selection via Probabilistic State Space Learning</em>",
+                <span class="pub-venue">IEEE Transactions on Knowledge and Data Engineering</span>, 2024.
+                [<a href="https://ieeexplore.ieee.org/abstract/document/10771680">Paper</a>]
+                <span class="pub-tag tag-journal">Journal</span>
+            </li>
+            <li>
+                <strong>Qiang Gao*</strong>, Xinzhu Zhou, Li Huang, Kunpeng Zhang, Siyuan Liu, and Fan Zhou.
+                "<em>Relational Fusion-based Stock Selection with Neural Recursive Ordinary Differential Equation Networks</em>",
+                <span class="pub-venue">Information Fusion</span>, 2024.
+                [<a href="https://www.sciencedirect.com/science/article/abs/pii/S156625352400246X">Paper</a>]
+                <span class="pub-tag tag-journal">Journal</span>
+            </li>
+            <li>
+                Nan Liu, Fengli Zhang, <strong>Qiang Gao</strong> and Xueqin Chen.
+                "<em>Contrastive Learning with Edge-wise Augmentation for Rumor Detection</em>",
+                <span class="pub-venue">International Journal of Intelligent Systems</span>, 2024.
+                [<a href="https://onlinelibrary.wiley.com/doi/pdf/10.1155/2024/3858526">Paper</a>]
+                <span class="pub-tag tag-journal">Journal</span>
+            </li>
+        </ul>
+
+        <div class="pub-year">2023</div>
+        <ul class="pub-list">
+            <li>
+                <strong>Qiang Gao</strong>, Xiaohan Wang, Chaoran Liu, Goce Trajcevski, Li Huang, Fan Zhou.
+                "<em>Open Anomalous Trajectory Recognition via Probabilistic Metric Learning</em>",
+                <span class="pub-venue">International Joint Conference on Artificial Intelligence (IJCAI)</span>.
+                [<a href="https://www.ijcai.org/proceedings/2023/0233.pdf">Paper</a>]
+                <span class="pub-tag tag-conf">Conference</span>
+            </li>
+            <li>
+                <strong>Qiang Gao</strong>, Hongzhu Fu, Yutao Wei, Li Huang, Xingmin Liu, and Guisong Liu.
+                "<em>Spatial-Temporal Diffusion Probabilistic Learning for Crime Prediction</em>",
+                <span class="pub-venue">International Conference on Knowledge Science, Engineering and Management (KSEM)</span>.
+                [<a href="https://link.springer.com/chapter/10.1007/978-3-031-40286-9_22">Paper</a>]
+                <span class="pub-tag tag-conf">Conference</span>
+            </li>
+            <li>
+                Li Huang, Kai Liu, Chaoran Liu, <strong>Qiang Gao*</strong>, Xiao Zhou, and Guisong Liu.
+                "<em>HBay: Predicting Human Mobility via Hyperspherical Bayesian Learning</em>",
+                <span class="pub-venue">International Conference on Knowledge Science, Engineering and Management (KSEM)</span>.
+                [<a href="https://link.springer.com/chapter/10.1007/978-3-031-40286-9_21">Paper</a>]
+                <span class="pub-tag tag-award">Best Paper</span>
+                <span class="pub-tag tag-conf">Conference</span>
+            </li>
+            <li>
+                Jinyu Hong, Fan Zhou, <strong>Qiang Gao*</strong>, Kuang Ping, Kunpeng Zhang.
+                "<em>Mobility Prediction via Sequential Trajectory Disentanglement (Student Abstract)</em>",
+                <span class="pub-venue">AAAI Conference on Artificial Intelligence (AAAI)</span>.
+                [<a href="https://ojs.aaai.org/index.php/AAAI/article/view/26975">Paper</a>]
+                <span class="pub-tag tag-conf">Conference</span>
+            </li>
+            <li>
+                Yujie Li, Yuxuan Yang, <strong>Qiang Gao*</strong>, Xin Yang.
+                "<em>Cross-regional Fraud Detection via Continual Learning (Student Abstract)</em>",
+                <span class="pub-venue">AAAI Conference on Artificial Intelligence (AAAI)</span>.
+                [<a href="https://ojs.aaai.org/index.php/AAAI/article/view/26990">Paper</a>]
+                <span class="pub-tag tag-conf">Conference</span>
+            </li>
+            <li>
+                <strong>Qiang Gao</strong>, Xiaojun Shan, Yuchen Zhang, and Fan Zhou.
+                "<em>Enhancing Knowledge Transfer for Task Incremental Learning with Data-free Subnetwork</em>",
+                <span class="pub-venue">Conference on Neural Information Processing Systems (NeurIPS)</span>.
+                [<a href="https://openreview.net/pdf?id=uj9PxVTVqq">Paper</a>]
+                <span class="pub-tag tag-conf">Conference</span>
+            </li>
+            <li>
+                Miaomiao Li, Jiaqi Zhu, Xin Yang, Yi Yang, <strong>Qiang Gao</strong>, Hongan Wang.
+                "<em>CL-WSTC: Continual Learning for Weakly Supervised Text Classification on the Internet</em>",
+                <span class="pub-venue">ACM Web Conference (WWW)</span>.
+                [<a href="https://dl.acm.org/doi/abs/10.1145/3543507.3583249">Paper</a>]
+                <span class="pub-tag tag-conf">Conference</span>
+            </li>
+            <li>
+                Li Huang, Hongmei Wu, <strong>Qiang Gao*</strong>, Guisong Liu.
+                "<em>Attention Localness in Shared Encoder-Decoder Model for Text Summarization</em>",
+                <span class="pub-venue">IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)</span>.
+                [<a href="https://ieeexplore.ieee.org/abstract/document/10096291">Paper</a>]
+                <span class="pub-tag tag-conf">Conference</span>
+            </li>
+            <li>
+                <strong>Qiang Gao</strong>, Jinyu Hong, Xovee Xu, Ping Kuang, Fan Zhou, and Goce Trajcevski.
+                "<em>Predicting Human Mobility via Self-supervised Disentanglement Learning</em>",
+                <span class="pub-venue">IEEE Transactions on Knowledge and Data Engineering</span>, 2023.
+                [<a href="https://ieeexplore.ieee.org/document/10265198">Paper</a>]
+                <span class="pub-tag tag-journal">Journal</span>
+            </li>
+            <li>
+                Xovee Xu, Zhiyuan Wang, <strong>Qiang Gao</strong>, Ting Zhong, Bei Hui, Fan Zhou, and Goce Trajcevski.
+                "<em>Spatial-Temporal Contrasting for Fine-Grained Urban Flow Inference</em>",
+                <span class="pub-venue">IEEE Transactions on Big Data</span>, 2023.
+                [<a href="https://ieeexplore.ieee.org/abstract/document/10254322">Paper</a>]
+                <span class="pub-tag tag-journal">Journal</span>
+            </li>
+            <li>
+                <strong>Qiang Gao</strong>, Hongzhu Fu, Kunpeng Zhang, Goce Trajcevski, Xu Teng, and Fan Zhou.
+                "<em>Inferring Real Mobility in Presence of Fake Check-ins Data</em>",
+                <span class="pub-venue">ACM Transactions on Intelligent Systems and Technology (TIST)</span>, 2023.
+                [<a href="https://dl.acm.org/doi/10.1145/3604941">Paper</a>]
+                <span class="pub-tag tag-journal">Journal</span>
+            </li>
+            <li>
+                <strong>Qiang Gao</strong>, Wei Wang, Li Huang, Xin Yang, Tianrui Li and Hamido Fujita.
+                "<em>Dual-grained Human Mobility Learning for Location-aware Trip Recommendation with Spatial-temporal Graph Knowledge Fusion</em>",
+                <span class="pub-venue">Information Fusion</span>, 2023.
+                [<a href="https://www.sciencedirect.com/science/article/abs/pii/S1566253522002287">Paper</a>]
+                <span class="pub-tag tag-journal">Journal</span>
+            </li>
+            <li>
+                <strong>Qiang Gao</strong>, Fan Zhou, Xin Yang and Guisong Liu.
+                "<em>When Friendship Meets Sequential Human Check-ins: Inferring Social Circles with Variational Mobility</em>",
+                <span class="pub-venue">Neurocomputing</span>, 2023.
+                [<a href="https://www.sciencedirect.com/science/article/abs/pii/S0925231222013297">Paper</a>]
+                <span class="pub-tag tag-journal">Journal</span>
+            </li>
+            <li>
+                Xin Yang, Metoh Adler LOUA, Meijun Wu, Li Huang, <strong>Qiang Gao</strong>.
+                "<em>Multi-granularity Stock Prediction with Sequential Three-way Decisions</em>",
+                <span class="pub-venue">Information Sciences</span>, 2023.
+                [<a href="https://www.sciencedirect.com/science/article/abs/pii/S002002552201369X">Paper</a>]
+                <span class="pub-tag tag-journal">Journal</span>
+            </li>
+        </ul>
+
+        <div class="pub-year">2022</div>
+        <ul class="pub-list">
+            <li>
+                Joojo Walker, Ting Zhong, Fengli Zhang, <strong>Qiang Gao</strong> and Fan Zhou.
+                "<em>Recommendation via Collaborative Diffusion Generative Model</em>",
+                <span class="pub-venue">International Conference on Knowledge Science, Engineering and Management (KSEM)</span>.
+                [<a href="https://link.springer.com/chapter/10.1007/978-3-031-10989-8_47">Paper</a>]
+                <span class="pub-tag tag-conf">Conference</span>
+            </li>
+            <li>
+                Fan Zhou, Rongfan Li, <strong>Qiang Gao</strong>, Goce Trajcevski, Kunpeng Zhang, Ting Zhong.
+                "<em>Dynamic Manifold Learning for Land Deformation Forecasting</em>",
+                <span class="pub-venue">AAAI Conference on Artificial Intelligence (AAAI)</span>.
+                [<a href="https://ojs.aaai.org/index.php/AAAI/article/view/20398">Paper</a>]
+                <span class="pub-tag tag-conf">Conference</span>
+            </li>
+            <li>
+                <strong>Qiang Gao</strong>, Fan Zhou, Ting Zhong, Goce Trajcevski, Xin Yang and Tianrui Li.
+                "<em>Contextual Spatio-Temporal Graph Representation Learning for Reinforced Human Mobility Mining</em>",
+                <span class="pub-venue">Information Sciences</span>, 2022.
+                [<a href="https://www.sciencedirect.com/science/article/abs/pii/S0020025522004819">Paper</a>]
+                <span class="pub-tag tag-journal">Journal</span>
+            </li>
+            <li>
+                <strong>Qiang Gao</strong>, Wei Wang, Kunpeng Zhang, Xin Yang, Congcong Miao and Tianrui Li.
+                "<em>Self-supervised Representation Learning for Trip Recommendation</em>",
+                <span class="pub-venue">Knowledge-Based Systems</span>, 2022.
+                [<a href="https://www.sciencedirect.com/science/article/abs/pii/S0950705122003720">Paper</a>]
+                <span class="pub-tag tag-journal">Journal</span>
+            </li>
+            <li>
+                <strong>Qiang Gao</strong>, Zhipeng Luo, Diego Klabjan and Fengli Zhang.
+                "<em>Efficient Architecture Search for Continual Learning</em>",
+                <span class="pub-venue">IEEE Transactions on Neural Networks and Learning Systems</span>, 2022.
+                [<a href="https://ieeexplore.ieee.org/abstract/document/9724647">Paper</a>]
+                <span class="pub-tag tag-journal">Journal</span>
+            </li>
+        </ul>
+
+        <div class="pub-year">2021</div>
+        <ul class="pub-list">
+            <li>
+                Fan Zhou, Yurou Dai, <strong>Qiang Gao</strong>, Pengyu Wang, and Ting Zhong.
+                "<em>Self-Supervised Human Mobility Learning for Next Location Prediction and Trajectory Classification</em>",
+                <span class="pub-venue">Knowledge-Based Systems</span>, 2021.
+                [<a href="https://www.sciencedirect.com/science/article/abs/pii/S0950705121004767">Paper</a>]
+                <span class="pub-tag tag-journal">Journal</span>
+            </li>
+            <li>
+                <strong>Qiang Gao</strong>, Fan Zhou, Goce Trajcevski, Kunpeng Zhang, Ting Zhong and Fengli Zhang.
+                "<em>Adversarial Human Trajectory Learning for Trip Recommendation</em>",
+                <span class="pub-venue">IEEE Transactions on Neural Networks and Learning Systems</span>, 2021.
+                [<a href="https://ieeexplore.ieee.org/abstract/document/9361427">Paper</a>]
+                <span class="pub-tag tag-journal">Journal</span>
+            </li>
+        </ul>
+
+        <div class="pub-year">2020</div>
+        <ul class="pub-list">
+            <li>
+                <strong>Qiang Gao</strong>, Fan Zhou, Goce Trajcevski, Fengli Zhang, Xucheng Luo.
+                "<em>Adversity-based Social Circles Inference via Context-Aware Mobility</em>",
+                <span class="pub-venue">IEEE Global Communications Conference (IEEE GLOBECOM)</span>.
+                [<a href="https://ieeexplore.ieee.org/abstract/document/9322357">Paper</a>]
+                <span class="pub-tag tag-conf">Conference</span>
+            </li>
+            <li>
+                <strong>Qiang Gao</strong>, Fengli Zhang, Fuming Yao, Ailing Li, Lin Mei and Fan Zhou.
+                "<em>Adversarial Mobility Learning for Human Trajectory Classification</em>",
+                <span class="pub-venue">IEEE Access</span>, 2020.
+                [<a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=8967063">Paper</a>]
+                <span class="pub-tag tag-journal">Journal</span>
+            </li>
+        </ul>
+
+        <div class="pub-year">2019</div>
+        <ul class="pub-list">
+            <li>
+                <strong>Qiang Gao</strong>, Goce Trajcevski, Fan Zhou, Kunpeng Zhang, Ting Zhong, and Fengli Zhang.
+                "<em>DeepTrip: Adversarially Understanding Human Mobility for Trip Recommendation</em>",
+                <span class="pub-venue">ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems (ACM SIGSPATIAL)</span>.
+                [<a href="https://dl.acm.org/doi/abs/10.1145/3347146.3359088">Paper</a>]
+                <span class="pub-tag tag-conf">Conference</span>
+            </li>
+            <li>
+                <strong>Qiang Gao</strong>, Fan Zhou, Goce Trajcevski, Kunpeng Zhang, Ting Zhong and Fengli Zhang.
+                "<em>Predicting Human mobility via Variational Attention</em>",
+                <span class="pub-venue">International World Wide Web Conference (WWW)</span>.
+                [<a href="https://dl.acm.org/doi/abs/10.1145/3308558.3313610">Paper</a>] [<a href="https://github.com/gcooq/VANext">Code</a>]
+                <span class="pub-tag tag-conf">Conference</span>
+            </li>
+        </ul>
+
+        <div class="pub-year">2018</div>
+        <ul class="pub-list">
+            <li>
+                <strong>Qiang Gao</strong>, Goce Trajcevski, Fan Zhou, Kunpeng Zhang, Ting Zhong and Fengli Zhang.
+                "<em>Trajectory-based Social Circle Inference</em>",
+                <span class="pub-venue">ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems (ACM SIGSPATIAL)</span>.
+                [<a href="https://dl.acm.org/doi/abs/10.1145/3274895.3274908">Paper</a>] [<a href="https://github.com/gcooq/TSCI">Code</a>]
+                <span class="pub-tag tag-conf">Conference</span>
+            </li>
+            <li>
+                Fan Zhou, <strong>Qiang Gao</strong>, Goce Trajcevski, Kunpeng Zhang, Ting Zhong, Fengli Zhang.
+                "<em>Trajectory-User Linking via Variational AutoEncoder</em>",
+                <span class="pub-venue">International Joint Conference on Artificial Intelligence (IJCAI)</span>.
+                [<a href="https://www.ijcai.org/proceedings/2018/0446.pdf">Paper</a>]
+                <span class="pub-tag tag-conf">Conference</span>
+            </li>
+        </ul>
+
+        <div class="pub-year">2017</div>
+        <ul class="pub-list">
+            <li>
+                <strong>Qiang Gao</strong>, Fan Zhou, Kunpeng Zhang, Goce Trajcevski, Xuecheng Luo, Fengli Zhang.
+                "<em>Identifying Human Mobility via Trajectory Embeddings</em>",
+                <span class="pub-venue">International Joint Conference on Artificial Intelligence (IJCAI)</span>.
+                [<a href="https://www.ijcai.org/proceedings/2017/0234.pdf">Paper</a>] [<a href="https://github.com/gcooq/TUL">Code</a>]
+                <span class="pub-tag tag-conf">Conference</span>
+            </li>
+        </ul>
+
+        <div class="pub-year">2016</div>
+        <ul class="pub-list">
+            <li>
+                <strong>Qiang Gao</strong>, Fengli Zhang, Ruijin Wang, and Fan Zhou.
+                "<em>Trajectory big data: a review of key technologies in data processing</em>",
+                <span class="pub-venue">Journal of Software (软件学报)</span>, 2016, 28(4): 959-992.
+                [<a href="http://www.jos.org.cn/jos/article/pdf/5143">Paper</a>]
+                <span class="pub-tag tag-journal">Journal</span>
+            </li>
+        </ul>
     </div>
 </section>
 
