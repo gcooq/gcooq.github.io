@@ -11,3 +11,18 @@
 
 /* Parallel research scenarios */
 .research-scenarios{margin-top:28px;padding-top:28px;border-top:1px solid var(--line);scroll-margin-top:100px}.scenario-heading>h3{font-size:25px}.scenario-heading>p:not(.eyebrow){font-size:14px;color:var(--muted);max-width:800px}.scenario-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;margin-top:24px}.scenario{padding:26px;background:var(--soft);border-top:2px solid var(--blue)}.scenario h4{margin:0 0 8px;font-size:23px;line-height:1.35;letter-spacing:-.025em}.scenario p{font-size:14px;color:var(--muted)}.scenario .eyebrow{font-size:11px;color:var(--blue)}.scenario .scenario-zh{font-size:15px;color:var(--ink);margin-bottom:18px}.scenario .scenario-topics{font-size:12px;color:var(--blue)}.scenario a{font-size:13px}.scenario-shared{font-size:13px;color:var(--muted);margin:18px 0 0}.publication-group-heading{font-size:25px;margin:30px 0 18px}.publication-group-heading span{display:block;font-size:14px;color:var(--muted);font-weight:400;margin-top:7px;letter-spacing:0}.scenario-publications{border-top:1px solid var(--line);margin-top:18px;scroll-margin-top:100px}.scenario-publications>.section-intro{font-size:14px;margin-bottom:12px}.hero-domain{max-width:650px}.hero-domain strong{font-weight:600}@media(max-width:600px){.scenario-grid{grid-template-columns:1fr;gap:20px}.scenario{padding:22px}.scenario h4{font-size:22px}}
+
+/* Give scenario labels, body text, and research links clear vertical separation. */
+.scenario-grid { row-gap: 36px; }
+.scenario { display: flex; flex-direction: column; align-items: flex-start; }
+.scenario .eyebrow { line-height: 1.9; margin-bottom: 20px; }
+.scenario h4 { line-height: 1.5; margin-bottom: 12px; }
+.scenario .scenario-zh { line-height: 1.8; margin-bottom: 22px; }
+.scenario > p:not(.eyebrow):not(.scenario-zh):not(.scenario-topics) { line-height: 1.9; margin-bottom: 20px; }
+.scenario .scenario-topics { line-height: 1.9; margin-bottom: 0; }
+.scenario > a { display: inline-block; line-height: 1.9; margin-top: auto; padding-top: 22px; }
+@media (max-width: 600px) {
+  .scenario-grid { row-gap: 36px; }
+  .scenario { padding: 28px 24px; }
+}
+
